@@ -1,21 +1,23 @@
 .formulario{
-    background-color: #978b8b30;
+    background-color: var(--secundaria);
     display: flex;
     flex-direction: column;
     justify-content: center;
     margin: 70px auto;
     width: 20%;
-    border: 1px solid #fd9800;
+    border: 1px solid var(--detalhes);
     border-radius: 0px 20px 0px 20px;
 }
 
 .formulario h1{
+    color: var(--branco);
+    font-size: 30px;
     text-align: center;
-    margin-bottom: 0px;
+    margin: 10px 0px;
 }
 
 hr{
-    border-color: #fd9800;
+    border-color:var(--detalhes);
     width: 80%; 
    }
 
@@ -29,13 +31,16 @@ hr{
     width: 80%;
     margin: 0 auto;
     padding: 5px;
-
 }
 
 .formulario input{
     margin-bottom: 10px;
     border-radius: 5px;
-    border: 1px solid #fd9800;
+    border: 1px solid var(--detalhes);
+}
+
+.formulario label{
+    color: var(--branco);
 }
 
 .botoes{
@@ -47,12 +52,13 @@ hr{
 
 .botoes button{
     border: none;
+    cursor: pointer;
 }
 
 .botao{
     text-decoration: none;
     color: #ffff;
-    background-color: #fd9800;
+    background-color: var(--detalhes);
     padding: 10px;
     border-radius: 5px;
 }

@@ -8,7 +8,7 @@ export const routes: Routes = [
     },
 
     {
-        path:'CadastrarAtleta', component : CadastrarAtletaComponent
+        path:'cadastraratleta', component : CadastrarAtletaComponent
     }
 
 

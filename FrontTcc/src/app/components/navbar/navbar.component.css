@@ -1,0 +1,21 @@
+.cabecalho{
+    margin: 0;
+    width: 100%;
+    padding: 20px 0px;
+    background-color: var(--secundaria);
+    display: flex;
+}
+
+.logo{
+    display: flex;
+    justify-content: start;
+}
+
+.navegacao{
+    display: flex;
+}
+
+a{
+    color: var(--branco);
+    text-decoration: none;
+}
