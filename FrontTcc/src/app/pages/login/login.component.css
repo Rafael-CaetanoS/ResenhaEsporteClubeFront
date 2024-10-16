@@ -1,0 +1,96 @@
+.principal{
+    display: flex;
+}
+
+.imagens{
+    display: flex;
+    width: 60%;
+}
+
+.imagem{
+    height: 94vh;
+}
+
+#futebol{
+    width: 80vh;
+    position: absolute;
+    margin-left: 210px;
+}
+
+.formulario{
+    background-color: var(--secundaria);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 100px auto;
+    width: 25%;
+
+}
+
+.formulario h1{
+    text-transform: uppercase;
+    color: var(--branco);
+    font-size: 30px;
+    text-align: center;
+    margin: 60px 0px 0px;
+}
+
+hr{
+    border-color:var(--detalhes);
+    width: 80%; 
+    margin-bottom: 40px;
+   }
+
+.formulario form{
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.formulario input, label{
+    width: 80%;
+    margin: 0 auto;
+    padding: 5px;
+}
+
+.formulario input{
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid var(--detalhes);
+}
+
+.formulario label{
+    text-transform: uppercase;
+    color: var(--branco);
+}
+
+.botao{
+    align-items: center;
+    text-align: center;
+    margin: 20px 0 40px;
+}
+
+.botao button{
+    width: 60%;
+    padding: 10px 0px;
+    background-color: var(--detalhes);
+    color: var(--branco);
+    border: none;
+    cursor: pointer;
+    align-items: center;
+    text-align: center;
+
+}
+
+.links{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 60px;
+}
+
+.link{
+    color: var(--branco);
+    text-decoration: none;
+}

@@ -1,12 +1,21 @@
 <nav>
     <div class="cabecalho">
         <div class="logo">
-            <li class="itens"><a [routerLink]="['']">Logo</a></li>
+            <li id="logo"><a class="itens" [routerLink]="['']">Logo</a></li>
         </div>
 
         <div class="navegacao">
-            <li class="itens"><a [routerLink]="['']">Home</a></li>
-            <li class="itens"><a [routerLink]="['']">Login</a></li>
+            <li *ngIf="routeCadastro()">
+                <a class="itens" [routerLink]="['']">Home</a>
+            </li>
+
+            <li *ngIf="routeHome()">
+                <a class="itens" [routerLink]="['/Cadastraratleta']">Cadastrar</a>
+            </li>
+
+            <li *ngIf="!routeLogin()">
+                <a class="itens" id="login" [routerLink]="['/Login']">Login</a>
+            </li>
         </div>
        
     </div>

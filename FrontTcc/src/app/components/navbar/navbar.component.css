@@ -1,21 +1,46 @@
 .cabecalho{
     margin: 0;
     width: 100%;
-    padding: 20px 0px;
+    padding: 15px 0px;
     background-color: var(--secundaria);
     display: flex;
 }
 
 .logo{
     display: flex;
+    width: 50%;
     justify-content: start;
 }
 
 .navegacao{
     display: flex;
+
+    justify-content: end;
+    width: 50%;
 }
 
-a{
+.itens{
     color: var(--branco);
+    padding: 15px 30px;
     text-decoration: none;
+}
+
+.itens:hover{
+    color: var(--detalhes)
+}
+
+#login{
+    background-color: var(--detalhes);
+    border-radius: 2px;
+    transition: background-color 0.8s ease; 
+}
+
+#login:hover{
+    background-color: var(--branco);
+    border-radius: 8px 0px 0px 8px;
+}
+
+
+li{
+    list-style-type: none;
 }
