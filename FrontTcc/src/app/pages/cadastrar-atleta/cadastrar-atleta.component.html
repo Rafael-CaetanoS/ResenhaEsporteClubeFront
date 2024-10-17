@@ -1,34 +1,35 @@
 <app-navbar></app-navbar>
-<div class="containner">
+<div class="container">
     <div class="formulario">
         <h1>Cadastrar</h1>
         <hr>
-        <form action="">
-            <Label for="">Nome</Label>
-            <input type="text">
+        <form [formGroup]="formCadastro">
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" placeholder="Nome" formControlName="Nome">
 
-            <label for="">Apelido</label>
-            <input type="text">
+            <label for="apelido">Apelido</label>
+            <input type="text" id="apelido" placeholder="Apelido" formControlName="Apelido">
+
             
-            <label for="">Data de nascimento</label>
-            <input type="date">
+            <label for="data">Data de nascimento</label>
+            <input type="date" id="data" placeholder="Data de Nascimento" formControlName="Data">
 
-            <label for="">E-mail</label>
-            <input type="email">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" placeholder="E-mail" formControlName="Email">
 
-            <label for="">Telefone</label>
-            <input type="text">
+            <label for="telefone">Telefone</label>
+            <input type="text" id="telefone" placeholder="Telefone" formControlName="Telefone">
 
-            <label for="">Senha</label>
-            <input type="password">
+            <label for="senha">Senha</label>
+            <input type="password" id="senha" placeholder="Senha" formControlName="Senha">
 
-            <label for="">Confirmar Senha</label>
-            <input type="password">
+            <label for="confirmaSenha">Confirmar Senha</label>
+            <input type="password" id="confirmaSenha" placeholder="Confirmar Senha" formControlName="ConfirmaSenha">
+
             <div class="botoes">
                 <a [routerLink]="['']" class="botao voltar">Cancelar</a>
-                <button type="submit" class="botao">Cadastrar</button>
+                <button type="submit" (click)="postar()" class="botao">Cadastrar</button>
             </div>
-
         </form>
     </div>
 </div>
