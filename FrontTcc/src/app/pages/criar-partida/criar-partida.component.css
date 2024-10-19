@@ -1,0 +1,98 @@
+.container{
+    display: flex;
+    flex-direction: row; 
+    gap: 3vw;
+}
+app-sidebar{
+    width:20vw;
+}
+
+.content{
+    display: flex;
+    flex-direction: column;
+}
+
+.texto{
+    color: var(--branco);
+    font-size: 1.7rem;
+    margin-top: 5rem;
+    margin-bottom: 2rem;
+}
+
+.formulario{
+    background-color: var(--secundaria);
+    width: 75vw;
+    height: 60vh;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.titulo{
+    font-size: 2.5rem;
+    margin-top: 3rem;
+    color: var(--detalhes);
+}
+
+hr{
+    border-color:var(--detalhes);
+    width: 30%;
+    margin-bottom:  2rem; 
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: start;
+}
+
+.row{
+    display: flex;
+    gap: 3rem;
+}
+.col{
+    display: flex;
+    flex-direction: column;
+}
+
+.formulario input, label, select{
+    width: 20vw;
+    padding: 1vh;
+}
+
+.formulario label{
+    color: var(--branco);
+}
+.formulario input, select {
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid var(--detalhes);
+}
+.botoes{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    gap: 1rem;
+    margin: 2vw 0;
+    margin-right: 6vw;
+}
+
+.botao{
+    text-decoration: none;
+    color: #ffff;
+    background-color: var(--detalhes);
+    padding: 1rem;
+    border-radius: 5px;
+}
+
+.botoes button{
+    border: none;
+    cursor: pointer;
+}
+
+#camposObrigatorios{
+    color: var(--detalhes);
+    margin-top: 2rem;
+    margin-left: 2rem;
+    font-size: 1.3rem;
+}

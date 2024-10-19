@@ -1,0 +1,74 @@
+<div class="container">
+    <app-sidebar nomeAtleta="rafael"></app-sidebar>
+    
+    <div class="content">
+        <p class="texto">Preencha os campos do formulário abaixo.</p>
+
+        <div class="formulario">
+            <h1 class="titulo">Criar Partida</h1>
+            <hr>
+            <form action="">
+                <div class="row">
+                    <div class="col">
+                        <label for="">Nome da Partida</label>
+                        <input type="text">
+                    </div>
+
+                    <div class="col">
+                        <Label>Selecione o Esporte</Label>
+                        <select name="" id="">
+                            <option value="">Teste</option>
+                        </select>
+                    </div>
+
+                    <div class="col">
+                        <label for="">Data</label>
+                        <input type="date" name="" id="">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <label for="">Horáio de início</label>
+                        <input type="time" name="" id="">
+                    </div>
+                    <div class="col">
+                        <label for="">Horáio de Término</label>
+                        <input type="time" name="" id="">
+                    </div>
+
+                    <div class="col">
+                        <label for="">Endereço</label>
+                        <input type="text">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <label for="">Nome do Local</label>
+                        <input type="text">
+        
+                    </div>
+    
+                    <div class="col">
+                        <label for="">Descricao</label>
+                        <input type="text">
+                    </div>
+    
+                    <div class="col">
+                        <label for="">Link da Localização</label>
+                        <input type="text">
+                    </div> 
+                </div>
+
+                <div class="botoes">
+                    <a [routerLink]="['/Inicio']" class="botao">Cancelar</a>
+                    <button type="submit" (click)="postar()" class="botao">Cadastrar</button>
+                </div>
+
+            </form>
+        </div>
+        <span id="camposObrigatorios">Campos Obrigatórios *</span>
+    </div>
+
+</div>

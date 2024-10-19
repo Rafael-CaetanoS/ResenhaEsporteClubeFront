@@ -1,0 +1,25 @@
+.card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: var(--branco);
+    width: 20vw;
+    height: 35vh;
+    border-radius: 4%;
+}
+
+a{
+    text-decoration: none;
+    text-align: center;
+}
+.imagem img{
+    width: 11vw;
+}
+
+.titulo{
+    color: #000;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    margin: 1rem 0;
+}

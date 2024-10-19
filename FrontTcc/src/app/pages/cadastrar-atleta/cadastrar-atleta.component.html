@@ -9,7 +9,9 @@
 
             <label for="apelido">Apelido</label>
             <input type="text" id="apelido" placeholder="Apelido" formControlName="Apelido">
-
+            <!-- <span *ngIf="formCadastro.get('Apelido')?.errors?.['required'] || formCadastro.get('Apelido')?.touched">
+                Campo Obrigatório
+            </span> -->
             
             <label for="data">Data de nascimento</label>
             <input type="date" id="data" placeholder="Data de Nascimento" formControlName="Data">

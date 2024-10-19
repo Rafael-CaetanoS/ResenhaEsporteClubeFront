@@ -1,0 +1,40 @@
+.container{
+    display: flex;
+    flex-direction: row; 
+    gap: 3vw;
+}
+app-sidebar{
+    width:20vw;
+}
+
+.content{
+    width: 80vw;
+}
+.mensagem{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.bem-vindo{
+    margin: 10vh 0em 7vh;
+}
+
+.titulo1{
+    font-size: 5em;
+    color: var(--branco);
+}
+
+.pergunta{
+    margin-bottom: 10vh;
+}
+
+.titulo2{
+    font-size: 3rem;
+    color: var(--branco);
+}
+
+.cards{
+    display: flex;
+    justify-content: space-around;
+}
