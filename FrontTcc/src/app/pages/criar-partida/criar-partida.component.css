@@ -1,35 +1,23 @@
-.container{
-    display: flex;
-    flex-direction: row; 
-    gap: 3vw;
-}
-app-sidebar{
-    width:20vw;
-}
-
-.content{
-    display: flex;
-    flex-direction: column;
-}
-
 .texto{
     color: var(--branco);
     font-size: 1.7rem;
     margin-top: 5rem;
     margin-bottom: 2rem;
+    margin-left: 3rem;
 }
 
 .formulario{
     background-color: var(--secundaria);
     width: 75vw;
-    height: 60vh;
-    margin: 0 auto;
+    height:30rem;
+    margin: 1rem auto;
+    align-items: center;
     text-align: center;
 }
 
 .titulo{
+    padding-top: 2rem;
     font-size: 2.5rem;
-    margin-top: 3rem;
     color: var(--detalhes);
 }
 
@@ -93,6 +81,6 @@ form{
 #camposObrigatorios{
     color: var(--detalhes);
     margin-top: 2rem;
-    margin-left: 2rem;
+    margin-left: 3rem;
     font-size: 1.3rem;
 }

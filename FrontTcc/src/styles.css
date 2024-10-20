@@ -54,3 +54,16 @@ table {
 body{
     background-color: var(--principal);
 }
+
+.container-sidebar{
+    display: flex;
+    flex-direction: row; 
+    gap: 3vw;
+}
+app-sidebar{
+    width:20vw;
+}
+
+.content{
+    width: 75vw;
+}

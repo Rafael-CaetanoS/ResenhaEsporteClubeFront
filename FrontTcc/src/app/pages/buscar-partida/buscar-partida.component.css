@@ -1,0 +1,44 @@
+.titulo{
+    font-size: 4rem;
+    color: var(--branco);
+    margin-top: 4rem;
+}
+
+hr{
+    border-color:var(--branco);
+    width: 98%; 
+    margin-bottom: 20px;
+    margin-left: 0px;
+}
+
+.filtros{
+    display: flex;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.filtros p {
+    color: var(--branco);
+    margin-left: 3vw;
+    margin-right: 1rem ;
+}
+
+#pesquisa{
+    width: 30vw;
+    margin-left: 0rem;
+    border-radius: 20px;
+    border: none;
+    padding: 7px;
+}
+
+.filtro{
+    border-radius: 10px;
+    border: none;
+    padding: 7px;
+}
+
+.cards{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}

@@ -4,6 +4,8 @@ import { CadastrarAtletaComponent } from './pages/cadastrar-atleta/cadastrar-atl
 import { LoginComponent } from './pages/login/login.component';
 import { InicioComponent } from './pages/inicio/inicio.component';
 import { CriarPartidaComponent } from './pages/criar-partida/criar-partida.component';
+import { BuscarPartidaComponent } from './pages/buscar-partida/buscar-partida.component';
+import { VizualizarPartidasComponent } from './pages/vizualizar-partidas/vizualizar-partidas.component';
 
 export const routes: Routes = [
     {path: '', 
@@ -24,7 +26,16 @@ export const routes: Routes = [
 
     {
         path:'Criarpartida', component : CriarPartidaComponent
+    },
+    {
+        path:'Buscarpartida', component : BuscarPartidaComponent
+    },
+
+    {
+        path:'Vizualizarpartida', component : VizualizarPartidasComponent
     }
+
+
 
 
     
