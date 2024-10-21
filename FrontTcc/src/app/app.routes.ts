@@ -1,10 +1,11 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './pages/home/home.component';
-import { CadastrarAtletaComponent } from './pages/cadastrar-atleta/cadastrar-atleta.component';
-import { LoginComponent } from './pages/login/login.component';
-import { InicioComponent } from './pages/inicio/inicio.component';
-import { CriarPartidaComponent } from './pages/criar-partida/criar-partida.component';
 import { BuscarPartidaComponent } from './pages/buscar-partida/buscar-partida.component';
+import { CadastrarAtletaComponent } from './pages/cadastrar-atleta/cadastrar-atleta.component';
+import { CriarPartidaComponent } from './pages/criar-partida/criar-partida.component';
+import { GerenciarPartidasComponent } from './pages/gerenciar-partidas/gerenciar-partidas.component';
+import { HomeComponent } from './pages/home/home.component';
+import { InicioComponent } from './pages/inicio/inicio.component';
+import { LoginComponent } from './pages/login/login.component';
 import { VizualizarPartidasComponent } from './pages/vizualizar-partidas/vizualizar-partidas.component';
 
 export const routes: Routes = [
@@ -33,6 +34,10 @@ export const routes: Routes = [
 
     {
         path:'Vizualizarpartida', component : VizualizarPartidasComponent
+    },
+    
+    {
+        path:'gerenciarPartidas', component : GerenciarPartidasComponent
     }
 
 
