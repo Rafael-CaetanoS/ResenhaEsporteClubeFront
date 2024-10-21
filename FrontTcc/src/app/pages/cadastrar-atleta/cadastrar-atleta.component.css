@@ -63,3 +63,9 @@ hr{
     border-radius: 5px;
 }
 
+span{
+    margin-left: 20px;
+    color:red;
+    font-size: 10px;
+}
+
