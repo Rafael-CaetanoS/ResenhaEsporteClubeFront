@@ -18,13 +18,13 @@ export class CadastrarAtletaComponent {
 
   constructor(private service:CadastrarAtletaService, private formBuilder: FormBuilder) { 
     this.formCadastro = this.formBuilder.group({
-      Nome: ['', Validators.required],
-      Apelido: ['', Validators.required],
-      Data: ['', Validators.required],
-      Email: ['', [Validators.required, Validators.email]],
-      Telefone: ['', Validators.required],
-      Senha: ['', Validators.required],
-      ConfirmaSenha: ['', Validators.required],
+      nomeAtleta: ['', Validators.required],
+      apelido: ['', Validators.required],
+      dataNascimento: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      telefone: ['', Validators.required],
+      senha: ['', Validators.required],
+      confirmaSenha: ['', Validators.required],
     }, { validator: this.senhasIguaisValidator });
   }
 
