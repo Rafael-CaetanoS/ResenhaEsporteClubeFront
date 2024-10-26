@@ -9,19 +9,19 @@
         <div class="formulario">
             <h1>Login</h1>
             <hr>
-            <form action="">
-                <Label for="">E-mail</Label>
-                <input type="email">
-                <Label for="">Senha</Label>
-                <input type="password" name="" id="">
+            <form [formGroup]="loginForm">
+                <Label for="email">E-mail</Label>
+                <input type="email" id="email" formControlName="email">
+                <Label for="senha">Senha</Label>
+                <input type="password" id="senha" formControlName="senha">
                 <div class="botao">
-                    <button type="submit">Entrar</button> 
+                    <button type="submit" (click)="logar()">Entrar</button> 
                 </div>
                 
             </form>
             <div class="links">
                 <a [routerLink]="['/Cadastraratleta']" class="link">REGISTRAR-SE</a>
-                <a href="" class="link">ESQUECEU A SENHA?</a>
+                <a  class="link">ESQUECEU A SENHA?</a>
             </div>
 
         </div>
