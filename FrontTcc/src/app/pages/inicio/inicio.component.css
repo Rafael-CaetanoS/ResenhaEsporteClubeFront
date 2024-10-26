@@ -10,7 +10,8 @@
 
 .titulo1{
     font-size: 5em;
-    color: var(--branco);
+    color: var(--secundaria);
+    font-weight: bold;
 }
 
 .pergunta{
@@ -19,7 +20,8 @@
 
 .titulo2{
     font-size: 3rem;
-    color: var(--branco);
+    color: var(--secundaria);
+    font-weight: bold;
 }
 
 .cards{

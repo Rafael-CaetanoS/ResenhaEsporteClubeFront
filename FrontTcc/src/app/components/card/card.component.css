@@ -17,9 +17,10 @@ a{
 }
 
 .titulo{
-    color: #000;
+    color: #0C004D;
     text-align: center;
     text-transform: uppercase;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     margin: 1rem 0;
+    font-weight: bold;
 }

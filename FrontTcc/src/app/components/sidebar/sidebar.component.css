@@ -28,11 +28,6 @@
     text-transform: uppercase;
 }
 
-.reputacao{
-    display: flex;
-    justify-content: center;
-}
-
 .corpo{
     display: flex;
     align-items: start;

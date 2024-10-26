@@ -12,6 +12,6 @@ export class CadastrarAtletaService {
 
   cadastrarAtleta(atletaData: any): Observable<any> {
 
-    return this.http.post('http://localhost:8080/atletas', atletaData);
+    return this.http.post('http://localhost:8080/auth/register', atletaData);
   }
 }
