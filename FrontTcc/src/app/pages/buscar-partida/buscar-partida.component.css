@@ -1,11 +1,11 @@
 .titulo{
     font-size: 4rem;
-    color: var(--branco);
+    color: var(--secundaria);
     margin-top: 4rem;
 }
 
 hr{
-    border-color:var(--branco);
+    border-color:var(--secundaria);
     width: 98%; 
     margin-bottom: 20px;
     margin-left: 0px;
@@ -18,7 +18,7 @@ hr{
 }
 
 .filtros p {
-    color: var(--branco);
+    color: var(--secundaria);
     margin-left: 3vw;
     margin-right: 1rem ;
 }
@@ -41,4 +41,11 @@ hr{
     display: flex;
     flex-wrap: wrap;
     gap: 2rem;
+}
+
+h3{
+    margin-top: 2em;
+    text-align: center;
+    font-size: 2em;
+    color: var(--detalhes);
 }

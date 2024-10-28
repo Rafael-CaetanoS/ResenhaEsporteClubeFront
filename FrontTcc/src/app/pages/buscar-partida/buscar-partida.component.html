@@ -10,9 +10,10 @@
             <input type="search" id="pesquisa">
 
             <p>ESPORTE:</p>
-            <select name="" id="" class="filtro" >
-                <option value="" disabled>Escolha uma opção</option>
-            </select>
+            <select name="esporte" id="esporte" class="filtro" >
+                <option value="" disabled selected>Selecione um esporte</option>
+                <option *ngFor="let esporte of esporte" value="{{esporte.idEsporte}}">{{esporte.nomeEsporte}}</option>
+            </select>        
 
             <p>KM:</p>
             <select name="" id="" class="filtro">
@@ -20,15 +21,21 @@
             </select>
         </div> 
         
-        <div class="cards">
-            <app-card-buscar-partida></app-card-buscar-partida>
-            <app-card-buscar-partida></app-card-buscar-partida>
-            <app-card-buscar-partida></app-card-buscar-partida>
-            <app-card-buscar-partida></app-card-buscar-partida>
-            <app-card-buscar-partida></app-card-buscar-partida>
-            <app-card-buscar-partida></app-card-buscar-partida>
+        <div class="cards" *ngIf="partidas != null ">
+            <app-card-buscar-partida 
+                *ngFor="let partida of partidas" 
+                titulo="{{partida.titulo}}" 
+                data="{{partida?.data}}" 
+                horario="{{partida?.horaInicio}}" 
+                local="{{partida?.nomeLocal}}"
+                idEsporte="{{partida.esporte.idEsporte}}"
+                nomeEsporte="{{partida.esporte.nomeEsporte}}">
+            </app-card-buscar-partida>
+          </div>
 
-        </div>
+          <div *ngIf="partidas == null ||  partidas.length === 0 ">
+            <h3>Não foram encontradas partidas. </h3>
+          </div>
 
     </div>
 

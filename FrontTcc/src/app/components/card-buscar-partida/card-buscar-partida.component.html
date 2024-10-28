@@ -2,19 +2,19 @@
     <div class="card">
         <span>20 km</span>
         <div class="topo">
-            <img src="../../../assets/images/bolabasquete.png" alt="">
-            <h1 class="titulo">PELADA DOS AMIGOS</h1>
+            <img src="../../../assets/images/{{imagem}}" alt="{{nomeEsporte}}">
+            <h1 class="titulo">{{titulo}}</h1>
         </div>
 
         <div class="baixo">
-            <p>DATA: 22/10/24</p>
-            <p>HORÁRIO: 22:10</p>
-            <p>LOCAL: SINTETICO NOVO GAMA</p>
-          
+            <p>Data: {{ data | date: 'dd/MM/yyyy' }}</p>
+            <p>Horário: {{horario}}</p>
+            <p>Local: {{local}}</p>
+
         </div>
 
         <div class="button">
-            <button href="" class="button-modal">SAIBA MAIS</button>
+            <button href="" class="button-modal" >SAIBA MAIS</button>
         </div>
     </div>
 </div>

@@ -7,68 +7,74 @@
         <div class="formulario">
             <h1 class="titulo">Criar Partida</h1>
             <hr>
-            <form action="">
+            <form [formGroup]="formPartida">
                 <div class="row">
                     <div class="col">
                         <label for="">Nome da Partida</label>
-                        <input type="text">
+                        <input type="text" formControlName="titulo">
                     </div>
 
                     <div class="col">
-                        <Label>Selecione o Esporte</Label>
-                        <select name="" id="">
-                            <option value="">Teste</option>
+                        <label>Esporte</label>
+                        <select formControlName="idEsporte">
+                            <option value="" disabled selected>Selecione um esporte</option>
+                            <option *ngFor="let esporte of esporte" [value]="esporte.idEsporte">{{esporte.nomeEsporte}}</option>
                         </select>
                     </div>
 
                     <div class="col">
-                        <label for="">Data</label>
-                        <input type="date" name="" id="">
+                        <label for="">Quantidade máxima de atletas</label>
+                        <input type="text" formControlName="qtdeAtletas">
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col">
-                        <label for="">Horáio de início</label>
-                        <input type="time" name="" id="">
+                        <label for="">Data</label>
+                        <input type="date" formControlName="data">
                     </div>
+                    
                     <div class="col">
-                        <label for="">Horáio de Término</label>
-                        <input type="time" name="" id="">
+                        <label for="">Horário de Início</label>
+                        <input type="text" formControlName="horaInicio">
                     </div>
 
                     <div class="col">
-                        <label for="">Endereço</label>
-                        <input type="text">
+                        <label for="">Horário de Término</label>
+                        <input type="text" formControlName="horaFim">
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col">
                         <label for="">Nome do Local</label>
-                        <input type="text">
-        
+                        <input type="text" formControlName="nomeLocal">
+                    </div>
+                    
+                    <div class="col">
+                        <label for="">Endereço</label>
+                        <input type="text" formControlName="endereco">
                     </div>
     
                     <div class="col">
-                        <label for="">Descricao</label>
-                        <input type="text">
-                    </div>
-    
-                    <div class="col">
-                        <label for="">Link da Localização</label>
-                        <input type="text">
+                        <label for="">Faixa Etária</label>
+                        <input type="text" formControlName="faixaEtaria">
                     </div> 
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <label for="">Descrição</label>
+                        <textarea formControlName="descricao"></textarea>
+                    </div>
                 </div>
 
                 <div class="botoes">
                     <a [routerLink]="['/Inicio']" class="botao">Cancelar</a>
                     <button type="submit" (click)="postar()" class="botao">Cadastrar</button>
                 </div>
-
             </form>
         </div>
         <span id="camposObrigatorios">Campos Obrigatórios *</span>
     </div>
-
 </div>

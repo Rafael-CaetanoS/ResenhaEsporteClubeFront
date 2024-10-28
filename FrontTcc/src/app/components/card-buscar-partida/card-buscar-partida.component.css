@@ -18,11 +18,12 @@ span{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-bottom: 15vh;
+    margin-bottom: 13vh;
 }
 
 
 .titulo{
+    font-size: 1.2rem;
     color: var(--branco);
 }
 
@@ -35,7 +36,7 @@ span{
 
 .baixo p {
     margin-bottom: 5px;
-    font-size: 0.8rem;
+    font-size: 1rem;
 }
 
 
