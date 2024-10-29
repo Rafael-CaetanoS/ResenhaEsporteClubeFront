@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { SidebarComponent } from "../../components/sidebar/sidebar.component";
 import { CardBuscarPartidaComponent } from "../../components/card-buscar-partida/card-buscar-partida.component";
 import { PartidaResponse } from '../../types/partida-response.type';
@@ -6,11 +6,13 @@ import { PartidasService } from '../../services/partidas.service';
 import { CommonModule } from '@angular/common';
 import { EsportesService } from '../../services/esportes.service';
 import { EsporteResponse } from '../../types/esportes-response.type';
+import { ModalComponent } from '../../components/modal/modal.component';
+
 
 @Component({
   selector: 'app-buscar-partida',
   standalone: true,
-  imports: [SidebarComponent, CardBuscarPartidaComponent, CommonModule],
+  imports: [SidebarComponent, CardBuscarPartidaComponent, CommonModule,ModalComponent],
   templateUrl: './buscar-partida.component.html',
   styleUrls: ['./buscar-partida.component.css']
 })

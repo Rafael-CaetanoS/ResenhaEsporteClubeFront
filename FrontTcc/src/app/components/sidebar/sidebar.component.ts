@@ -14,7 +14,7 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit(): void {
     if (typeof window !== 'undefined') {
-      this.nomeAtleta = localStorage.getItem('nomeAtleta');
+      this.nomeAtleta = sessionStorage.getItem('name');
     }
   }
 }

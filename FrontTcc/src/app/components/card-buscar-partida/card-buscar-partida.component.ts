@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component, input, Input, OnInit } from '@angular/core';
+import { Component, input, Input, OnInit, Output } from '@angular/core';
+import { EventEmitter } from 'stream';
 
 
 @Component({
@@ -20,15 +21,11 @@ horario:string =""
 local:string =""
 @Input()
 idEsporte:string =""
-
+imagem:string=""
 @Input()
 nomeEsporte:string =""
 
-imagem:string=""
-
-constructor(){
-
-}
+constructor(){}
 
 ngOnInit(): void {
   this.setarImagem()
@@ -48,4 +45,5 @@ setarImagem(){
      this.imagem = "bolaVol.png"
   }
 }
+
 }

@@ -26,7 +26,7 @@ export class CriarPartidaComponent implements OnInit {
       data: ['', Validators.required],
       descricao: ['', Validators.required],
       horaInicio: ['', Validators.required],
-      horarFim: ['', Validators.required],
+      horaFim: ['', Validators.required],
       qtdeAtletas: ['', Validators.required],
       idAtleta: ['', Validators.required],
       idEsporte: ['', Validators.required],
@@ -38,7 +38,8 @@ export class CriarPartidaComponent implements OnInit {
 
   ngOnInit(): void {
     if (typeof window !== 'undefined') {
-      this.idAtleta = localStorage.getItem('idAtleta');
+      this.idAtleta = sessionStorage.getItem('idAtleta');
+      console.log(this.idAtleta)
     }
     this.serviceEsporte.getEsportes().subscribe({
       next: (res) => {
@@ -52,10 +53,10 @@ export class CriarPartidaComponent implements OnInit {
 
     postar() {
   
-      if (this.formPartida.invalid) {
-        this.formPartida.markAllAsTouched();
-        return;
-      }
+      // if (this.formPartida.invalid) {
+      //   this.formPartida.markAllAsTouched();
+      //   return;
+      // }
     
       
       const partidaData: PartidaResponse = {
@@ -79,6 +80,8 @@ export class CriarPartidaComponent implements OnInit {
         }
       };
     
+      console.log(partidaData)
+
       this.servicePartida.postPartidas(partidaData).subscribe({
         next: (response) => {
           console.log('Cadastro realizado com sucesso:', response);

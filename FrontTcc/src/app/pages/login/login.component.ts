@@ -30,7 +30,7 @@ export class LoginComponent {
 
         const nomeAtleta = response.name;
 
-        localStorage.setItem('nomeAtleta', nomeAtleta);
+        // localStorage.setItem('nomeAtleta', nomeAtleta);
 
         this.router.navigate(['/Inicio']);
       },
