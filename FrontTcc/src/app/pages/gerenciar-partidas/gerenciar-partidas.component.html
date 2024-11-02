@@ -1,0 +1,42 @@
+<div class="container-sidebar">
+    <app-sidebar></app-sidebar>
+    
+    <div class="content">
+        <h1 class="titulo">Gerenciar Partida</h1>
+        <div class="nav">
+            <nav>
+                <li class="link ativo">Editar</li>
+                <li class="link">Sorteio</li>
+                <li class="link">Times</li>
+                <li class="link">Partidas</li>
+                <li class="link">Finalizar partida</li>
+            </nav>
+        </div>
+
+        <div class="editar">
+            <div class="dados">
+                <div class="informacoes">
+                    <p class="info">Titulo: {{titulo}}</p>
+                    <p class="info">Data:{{ data | date: 'dd/MM/yyyy' }}</p>
+                    <p class="info">Horário Inicío:{{horaInicio}}</p>
+                    <p class="info">Horário fim:{{horaFim}}</p>
+                    <p class="info">Local: {{local}}</p>
+                    <p class="info">Esporte:{{esporte}}</p>
+                </div>
+
+                <div class="botoes">
+                <a  class="botao">Editar Partida</a>
+                <button type="submit" class="botao">Cancelar Partida</button>
+                </div>
+            </div>
+
+            <div class="inscritos">
+                <h2>Inscritos</h2>
+                <div class="inscrito">
+                    <p>Nome{{nomeAtleta}}</p>
+                    <span>X</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>  

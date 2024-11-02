@@ -14,7 +14,8 @@
         </div>
 
         <div class="button">
-            <button href="" class="button-modal">SAIBA MAIS</button>
+            <button *ngIf="routeBusar()" href="" class="button-modal" >SAIBA MAIS</button>
+            <button *ngIf="routeMinhas()" href="" class="button-modal" >GERENCIAR</button>
         </div>
     </div>
 </div>

@@ -1,0 +1,18 @@
+.titulo{
+    font-size: 4rem;
+    color: var(--secundaria);
+    margin-top: 4rem;
+}
+
+hr{
+    border-color:var(--secundaria);
+    width: 98%; 
+    margin-bottom: 20px;
+    margin-left: 0px;
+}
+
+.cards{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}

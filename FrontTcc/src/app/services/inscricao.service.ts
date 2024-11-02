@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { inscricaoResponse } from '../types/inscricao-response.Type';
+import { PartidaResponse } from '../types/partida-response.type';
 
 @Injectable({
   providedIn: 'root'
@@ -21,4 +22,11 @@ export class InscricaoService {
     }
     return new Observable<inscricaoResponse>();
   }
+
+  // getInscritosPartidas(idPartida:string): Observable<inscricaoResponse>{
+  //   if (typeof window !== 'undefined') {
+  //     this.token = sessionStorage.getItem('auth-token');
+  //     const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
+  //     return this.http.get<inscricaoResponse>(this.apiUrl, inscricao, { headers });
+  // }
 }

@@ -1,0 +1,101 @@
+.titulo{
+    font-size: 4rem;
+    color: var(--secundaria);
+    margin-top: 4rem;
+}
+
+.nav{
+    margin-top: 20px;
+    padding: 10px 0px;
+    background-color: var(--secundaria);
+}
+nav{
+    display: flex;
+    width: 100%;
+}
+
+.link{
+    cursor: pointer;
+    color: var(--branco);
+    padding: 0px 30px;
+    list-style-type: none;
+}
+
+.link:hover{
+    color: var(--detalhes);
+}
+
+.ativo{
+    color: var(--detalhes);
+}
+
+.editar{
+    display: flex;
+}
+
+.dados
+{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    height: 60vh;
+    margin-top: 10vh;
+}
+
+.informacoes{
+    margin: 1rem 5em;
+}
+
+.info{
+    font-size: 1.8rem;
+    margin-bottom:1rem ;
+}
+
+.botoes{
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 16vh;
+}
+
+
+.botoes button{
+    border: none;
+    cursor: pointer;
+}
+
+.botao{
+    text-decoration: none;
+    color: #ffff;
+    background-color: var(--detalhes);
+    padding: 10px 6vw;
+    border-radius: 5px;
+}
+
+.inscritos{
+    width: 45%;
+    background-color: var(--secundaria);
+    color: var(--branco);
+    margin-top: 10px;
+}
+
+.inscritos h2{
+    margin-top: 2rem;
+    margin-bottom: 20px;
+    font-size: 2rem;
+    text-align: center;
+    color: var(--detalhes);
+}
+
+.inscrito{
+    display: flex;
+    justify-content: space-between;
+    margin: 0 50px;
+}
+
+.inscrito p, span{
+    font-size: 1.4rem;
+}
+
+
+

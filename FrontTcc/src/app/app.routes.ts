@@ -7,10 +7,11 @@ import { HomeComponent } from './pages/home/home.component';
 import { InicioComponent } from './pages/inicio/inicio.component';
 import { LoginComponent } from './pages/login/login.component';
 import { VizualizarPartidasComponent } from './pages/vizualizar-partidas/vizualizar-partidas.component';
+import { MinhaPartidasComponent } from './pages/minhas-partidas/minhas-partidas.component';
 
 export const routes: Routes = [
     {path: '', 
-        component: HomeComponent
+        component: LoginComponent
     },
 
     {
@@ -38,13 +39,18 @@ export const routes: Routes = [
     
     {
         path:'gerenciarPartidas', component : GerenciarPartidasComponent
+    },
+
+
+
+
+    
+    
+
+
+    {
+        path:'MinhasPartidas', component : MinhaPartidasComponent
     }
-
-
-
-
-    
-    
 
 
 ];

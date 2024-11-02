@@ -1,16 +1,20 @@
 import { CommonModule } from '@angular/common';
-import { Component, input, Input, OnInit, Output } from '@angular/core';
-import { EventEmitter } from 'stream';
+import { Component, Input, OnInit } from '@angular/core';
+import { RouterLink, RouterModule, Router } from '@angular/router';
+
+
 
 
 @Component({
   selector: 'app-card-buscar-partida',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,RouterLink,RouterModule],
   templateUrl: './card-buscar-partida.component.html',
   styleUrls: ['./card-buscar-partida.component.css'] 
 })
 export class CardBuscarPartidaComponent implements OnInit{
+urlAtual: string = '';
+
 @Input()
 titulo:string =""
 @Input()
@@ -25,11 +29,20 @@ imagem:string=""
 @Input()
 nomeEsporte:string =""
 
-constructor(){}
+constructor(private router: Router){}
 
 ngOnInit(): void {
   this.setarImagem()
+  this.urlAtual = this.router.url;
 }
+
+routeBusar(): boolean {
+  return this.urlAtual.includes('/Buscarpartida');
+}
+routeMinhas(): boolean {
+  return this.urlAtual === '/MinhasPartidas';
+}
+
 
 setarImagem(){
   if(this.idEsporte =="1"){
