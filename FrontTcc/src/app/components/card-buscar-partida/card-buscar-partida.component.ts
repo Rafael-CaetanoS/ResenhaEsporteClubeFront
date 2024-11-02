@@ -20,6 +20,7 @@ urlAtual: string = '';
 @Input() horario:string ="";
 @Input() local:string ="";
 @Input() idEsporte:string ="";
+@Input() idPartida:string = ""
 @Input() nomeEsporte:string ="";
 
 @Output() selecionarPartida = new EventEmitter<void>();

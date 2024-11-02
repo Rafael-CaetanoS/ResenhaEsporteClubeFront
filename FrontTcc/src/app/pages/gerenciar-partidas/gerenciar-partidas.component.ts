@@ -3,6 +3,8 @@ import { SidebarComponent } from "../../components/sidebar/sidebar.component";
 import { InscricaoService } from '../../services/inscricao.service';
 import { PartidasService } from '../../services/partidas.service';
 import { CommonModule } from '@angular/common';
+import { PartidaResponse } from '../../types/partida-response.type';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-gerenciar-partidas',
@@ -13,25 +15,24 @@ import { CommonModule } from '@angular/common';
 })
 export class GerenciarPartidasComponent implements OnInit{
 
-@Input()
-titulo:string="";
-@Input()
-data:string="";
-@Input()
-horaInicio:string="";
-@Input()
-horaFim:string="";
-@Input()
-local:string="";
-@Input()
-esporte:string="";
-@Input()
-nomeAtleta:string="";
+  partida!: PartidaResponse 
+  idUrl: string =""
 
-constructor(private serviceInscricao: InscricaoService, private servicePartida: PartidasService){}
+constructor(private serviceInscricao: InscricaoService, private servicePartida: PartidasService, private route:ActivatedRoute){}
 
 ngOnInit(): void {
- 
-}
+  this.route.paramMap.subscribe(value => {
+    const id = value.get("id");
+    if (id) {
+      this.idUrl = id;
 
+      this.servicePartida.getPartidaById(`${this.idUrl}`).subscribe({
+        next: partida => (this.partida = partida),
+        error: err => console.error('Erro ao buscar partida:', err)
+      });
+    } else {
+      console.error("ID não encontrado na URL");
+    }
+  })
+  }
 }

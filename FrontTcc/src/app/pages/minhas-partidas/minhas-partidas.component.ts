@@ -19,7 +19,7 @@ export class MinhaPartidasComponent implements OnInit {
   constructor(private service: PartidasService){}
 
   ngOnInit(): void {
-    this.service.getPartidas().subscribe({
+    this.service.getPartidasAtleta().subscribe({
       next: (res) => {
         this.partidas = res
         .map((item) => ({

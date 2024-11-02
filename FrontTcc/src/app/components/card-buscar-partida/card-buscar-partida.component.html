@@ -15,8 +15,7 @@
 
         <div class="button">
             <button *ngIf="routeBusar()" (click)="abrirDetalhes()" class="button-modal" >SAIBA MAIS</button>
-            <button *ngIf="routeMinhas()" href="" class="button-modal" >GERENCIAR</button>
-            
+            <button *ngIf="routeMinhas()" [routerLink]="['/GerenciarPartidas', idPartida]" class="button-modal" >GERENCIAR</button>
         </div>
     </div>
 </div>

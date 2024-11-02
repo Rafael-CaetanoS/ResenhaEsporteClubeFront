@@ -38,15 +38,8 @@ export const routes: Routes = [
     },
     
     {
-        path:'gerenciarPartidas', component : GerenciarPartidasComponent
+        path:'GerenciarPartidas/:id', component : GerenciarPartidasComponent
     },
-
-
-
-
-    
-    
-
 
     {
         path:'MinhasPartidas', component : MinhaPartidasComponent
