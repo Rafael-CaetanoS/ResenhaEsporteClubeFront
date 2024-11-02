@@ -7,13 +7,13 @@
         <hr>
 
         <div class="filtros">
-            <input type="search" id="pesquisa">
+            <input type="search" id="pesquisa" placeholder="Buscar" (input)="onSearch($event)">
 
             <p>ESPORTE:</p>
             <select name="esporte" id="esporte" class="filtro" >
                 <option value="" disabled selected>Selecione um esporte</option>
                 <option *ngFor="let esporte of esporte" value="{{esporte.idEsporte}}">{{esporte.nomeEsporte}}</option>
-            </select>        
+            </select> 
 
             <p>KM:</p>
             <select name="" id="" class="filtro">
@@ -21,35 +21,36 @@
             </select>
         </div> 
         
-        <div class="cards" *ngIf="partidas != null ">
+        
+        <div class="cards" *ngIf="partidasParaExibir && partidasParaExibir.length > 0">
             <app-card-buscar-partida 
-                *ngFor="let partida of partidas" 
-                titulo="{{partida.titulo}}" 
-                data="{{partida?.data}}" 
-                horario="{{partida?.horaInicio}}" 
-                local="{{partida?.nomeLocal}}"
-                idEsporte="{{partida.esporte.idEsporte}}"
-                idPartida="{{partida.idPartida}}"
-                nomeEsporte="{{partida.esporte.nomeEsporte}}"
-                (abrirModal)="abrirModal(partida)">
-
+              *ngFor="let partida of partidasParaExibir" 
+              titulo="{{partida.titulo}}" 
+              data="{{partida?.data}}" 
+              horario="{{partida?.horaInicio}}" 
+              local="{{partida?.nomeLocal}}"
+              idEsporte="{{partida.esporte.idEsporte}}"
+              idPartida="{{partida.idPartida}}"
+              nomeEsporte="{{partida.esporte.nomeEsporte}}"
+              (abrirModal)="abrirModal(partida)">
             </app-card-buscar-partida>
             
             <app-modal *ngIf="mostrarModal"
-                titulo="{{partidaSelecionada?.titulo}}"
-                descricao="{{partidaSelecionada?.descricao}}"
-                imagem="{{partidaSelecionada?.esporte?.nomeEsporte}}"
-                data="{{partidaSelecionada?.data}}"
-                horaInicio="{{partidaSelecionada?.horaInicio}}"
-                horaFim="{{partidaSelecionada?.horaFim}}"
-                organizador="{{partidaSelecionada?.atleta?.nomeAtleta}}"
-                idEsporte="{{partidaSelecionada?.esporte?.idEsporte}}"
-                idPartida="{{partidaSelecionada?.idPartida}}"
-                (closeModal)="fecharModal()">
+              titulo="{{partidaSelecionada?.titulo}}"
+              descricao="{{partidaSelecionada?.descricao}}"
+              imagem="{{partidaSelecionada?.esporte?.nomeEsporte}}"
+              data="{{partidaSelecionada?.data}}"
+              horaInicio="{{partidaSelecionada?.horaInicio}}"
+              horaFim="{{partidaSelecionada?.horaFim}}"
+              organizador="{{partidaSelecionada?.atleta?.nomeAtleta}}"
+              idEsporte="{{partidaSelecionada?.esporte?.idEsporte}}"
+              idPartida="{{partidaSelecionada?.idPartida}}"
+              (closeModal)="fecharModal()">
             </app-modal>
           </div>
-          <div *ngIf="partidas == null ||  partidas.length === 0 ">
-            <h3>Não foram encontradas partidas. </h3>
+          
+          <div *ngIf="!partidasParaExibir || partidasParaExibir.length === 0">
+            <h3>Não foram encontradas partidas.</h3>
           </div>
 
     </div>

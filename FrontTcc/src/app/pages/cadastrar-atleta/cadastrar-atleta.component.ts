@@ -16,7 +16,7 @@ import { CadastrarAtletaService } from '../../services/cadastrar-atleta.service'
 export class CadastrarAtletaComponent {
   formCadastro!: FormGroup;
 
-  constructor(private service:CadastrarAtletaService, private formBuilder: FormBuilder) { 
+  constructor(private service:CadastrarAtletaService, private formBuilder: FormBuilder, private router:Router) { 
     this.formCadastro = this.formBuilder.group({
       nomeAtleta: ['', Validators.required],
       apelido: ['', Validators.required],
@@ -44,7 +44,7 @@ export class CadastrarAtletaComponent {
     this.service.cadastrarAtleta(this.formCadastro.value).subscribe({
       next: (response) => {
         console.log('Cadastro realizado com sucesso:', response);
-        alert('Cadastro realizado com sucesso!'); 
+        alert('Cadastro realizado com sucesso!'); // Redireciona para a tela de login
       },
       error: (error) => {
         console.error('Erro ao cadastrar:', error);

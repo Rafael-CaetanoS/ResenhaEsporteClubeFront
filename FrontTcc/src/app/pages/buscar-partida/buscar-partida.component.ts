@@ -19,11 +19,15 @@ import { ModalComponent } from '../../components/modal/modal.component';
 export class BuscarPartidaComponent implements OnInit {
   partidas: PartidaResponse[] = [];
   esporte: EsporteResponse [] =[]; 
+  partidasFiltradas: PartidaResponse[] = [];
+  partidasParaExibir: PartidaResponse[] = [];
 
   mostrarModal = false;
   partidaSelecionada: PartidaResponse | null = null;
+  dataAtual = new Date();
 
-  constructor(private service: PartidasService, private serviceEsporte: EsportesService) {}
+  constructor(private service: PartidasService, private serviceEsporte: EsportesService) {
+  }
 
   ngOnInit(): void {
     this.serviceEsporte.getEsportes().subscribe({
@@ -37,12 +41,13 @@ export class BuscarPartidaComponent implements OnInit {
     })
 
 
-    const dataAtual = new Date();
+    
 
     this.service.getPartidas().subscribe({
       next: (res) => {
         this.partidas = res
-        .filter((item) => new Date(item.data) >= dataAtual)
+        this.partidasParaExibir = res
+        .filter((item) => new Date(item.data) >= this.dataAtual)
         .map((item) => ({
           idPartida: item.idPartida,
           titulo: item.titulo,
@@ -67,6 +72,15 @@ export class BuscarPartidaComponent implements OnInit {
       },
       error: (err) => console.log(err),
     });
+  }
+
+  onSearch(event: Event): void {
+    const query = (event.target as HTMLInputElement).value.toLowerCase().trim();
+    this.partidasFiltradas = this.partidas.filter((partida) =>
+      partida.titulo.toLowerCase().trim().includes(query) 
+    );
+
+    this.partidasParaExibir = query ? this.partidasFiltradas.filter((partida) =>new Date(partida.data) >= this.dataAtual) : this.partidas.filter((partida) =>new Date(partida.data) >= this.dataAtual);
   }
 
   abrirModal(partida: PartidaResponse) {

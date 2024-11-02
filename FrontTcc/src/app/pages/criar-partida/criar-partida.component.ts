@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SidebarComponent } from "../../components/sidebar/sidebar.component";
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { EsportesService } from '../../services/esportes.service';
 import { EsporteResponse } from '../../types/esportes-response.type';
@@ -20,7 +20,7 @@ export class CriarPartidaComponent implements OnInit {
   formPartida!: FormGroup;
   esporte: EsporteResponse[] = [];
 
-  constructor(private formBuilder: FormBuilder, private serviceEsporte: EsportesService, private servicePartida: PartidasService) {
+  constructor(private formBuilder: FormBuilder, private serviceEsporte: EsportesService, private servicePartida: PartidasService, private router: Router) {
     this.formPartida = this.formBuilder.group({
       titulo: ['', Validators.required],
       data: ['', Validators.required],
@@ -86,6 +86,7 @@ export class CriarPartidaComponent implements OnInit {
         next: (response) => {
           console.log('Cadastro realizado com sucesso:', response);
           alert('Cadastro realizado com sucesso!');
+          this.router.navigate([`/GerenciarPartidas/${response.idPartida}`]);
         },
         error: (error) => {
           console.error('Erro ao cadastrar:', error);
