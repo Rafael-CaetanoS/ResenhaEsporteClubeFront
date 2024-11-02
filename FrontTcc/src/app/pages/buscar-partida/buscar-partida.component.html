@@ -29,8 +29,22 @@
                 horario="{{partida?.horaInicio}}" 
                 local="{{partida?.nomeLocal}}"
                 idEsporte="{{partida.esporte.idEsporte}}"
-                nomeEsporte="{{partida.esporte.nomeEsporte}}">
+                nomeEsporte="{{partida.esporte.nomeEsporte}}"
+                (abrirModal)="abrirModal(partida)">
             </app-card-buscar-partida>
+            
+            <app-modal *ngIf="mostrarModal"
+                titulo="{{partidaSelecionada?.titulo}}"
+                descricao="{{partidaSelecionada?.descricao}}"
+                imagem="{{partidaSelecionada?.esporte?.nomeEsporte}}"
+                data="{{partidaSelecionada?.data}}"
+                horaInicio="{{partidaSelecionada?.horaInicio}}"
+                horaFim="{{partidaSelecionada?.horaFim}}"
+                organizador="{{partidaSelecionada?.atleta?.nomeAtleta}}"
+                idEsporte="{{partidaSelecionada?.esporte?.idEsporte}}"
+                idPartida="{{partidaSelecionada?.idPartida}}"
+                (closeModal)="fecharModal()">
+            </app-modal>
           </div>
           <div *ngIf="partidas == null ||  partidas.length === 0 ">
             <h3>Não foram encontradas partidas. </h3>

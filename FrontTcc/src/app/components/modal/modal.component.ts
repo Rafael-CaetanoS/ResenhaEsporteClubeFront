@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { InscricaoService } from '../../services/inscricao.service';
 import { inscricaoResponse } from '../../types/inscricao-response.Type';
 import { CommonModule } from '@angular/common';
@@ -11,32 +11,25 @@ import { CommonModule } from '@angular/common';
   styleUrl: './modal.component.css'
 })
 export class ModalComponent {
-  @Input()
-  titulo:string =''
+  @Input() titulo:string ='';
 
-  @Input()
-  descricao:string =''
+  @Input() descricao:string ='';
 
-  @Input()
-  imagem:string =''
+  @Input() imagem:string ='';
 
-  @Input()
-  data:string =''
+  @Input() data:string ='';
 
-  @Input()
-  horaInicio:string =''
+  @Input() horaInicio:string ='';
 
-  @Input()
-  horaFim:string =''
+  @Input() horaFim:string ='';
 
-  @Input()
-  organizador:string =''
+  @Input() organizador:string ='';
 
-  @Input()
-  idEsporte:string =''
+  @Input() idEsporte:string ='';
 
-  @Input()
-  idPartida:string=''
+  @Input() idPartida:string='';
+
+  @Output() closeModal = new EventEmitter<void>(); 
 
   idAtleta: string | null = null;
 constructor(private service: InscricaoService){
@@ -67,5 +60,9 @@ constructor(private service: InscricaoService){
         alert('Erro ao cadastrar. Tente novamente mais tarde.');
       }
     });
+  }
+
+  onClose() {
+    this.closeModal.emit();
   }
 }

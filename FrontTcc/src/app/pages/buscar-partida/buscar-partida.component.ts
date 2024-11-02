@@ -12,13 +12,16 @@ import { ModalComponent } from '../../components/modal/modal.component';
 @Component({
   selector: 'app-buscar-partida',
   standalone: true,
-  imports: [SidebarComponent, CardBuscarPartidaComponent, CommonModule,ModalComponent],
+  imports: [SidebarComponent, CardBuscarPartidaComponent, CommonModule, ModalComponent],
   templateUrl: './buscar-partida.component.html',
   styleUrls: ['./buscar-partida.component.css']
 })
 export class BuscarPartidaComponent implements OnInit {
   partidas: PartidaResponse[] = [];
   esporte: EsporteResponse [] =[]; 
+
+  mostrarModal = false;
+  partidaSelecionada: PartidaResponse | null = null;
 
   constructor(private service: PartidasService, private serviceEsporte: EsportesService) {}
 
@@ -64,5 +67,15 @@ export class BuscarPartidaComponent implements OnInit {
       },
       error: (err) => console.log(err),
     });
+  }
+
+  abrirModal(partida: PartidaResponse) {
+    this.partidaSelecionada = partida;
+    this.mostrarModal = true;
+  }
+
+  fecharModal() {
+    this.mostrarModal = false;
+    this.partidaSelecionada = null;
   }
 }

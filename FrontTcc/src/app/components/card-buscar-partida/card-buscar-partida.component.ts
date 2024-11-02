@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { RouterLink, RouterModule, Router } from '@angular/router';
 
 
@@ -15,19 +15,17 @@ import { RouterLink, RouterModule, Router } from '@angular/router';
 export class CardBuscarPartidaComponent implements OnInit{
 urlAtual: string = '';
 
-@Input()
-titulo:string =""
-@Input()
-data:string=""
-@Input()
-horario:string =""
-@Input()
-local:string =""
-@Input()
-idEsporte:string =""
-imagem:string=""
-@Input()
-nomeEsporte:string =""
+@Input() titulo:string ="";
+@Input() data:string="";
+@Input() horario:string ="";
+@Input() local:string ="";
+@Input() idEsporte:string ="";
+@Input() nomeEsporte:string ="";
+
+@Output() selecionarPartida = new EventEmitter<void>();
+@Output() abrirModal = new EventEmitter<void>();
+
+imagem:string="";
 
 constructor(private router: Router){}
 
@@ -57,6 +55,14 @@ setarImagem(){
   else{
      this.imagem = "bolaVol.png"
   }
+}
+
+onClickDetalhes(){
+  this.selecionarPartida.emit();
+}
+
+abrirDetalhes() {
+  this.abrirModal.emit();
 }
 
 }
