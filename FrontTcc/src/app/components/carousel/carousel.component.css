@@ -1,0 +1,86 @@
+.carousel-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    height: 100px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.carousel-slides {
+    display: flex;
+    justify-content: center;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+    width: 100px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0.5;
+    transform: scale(0.7);
+}
+
+.slide:nth-child(1),
+.slide:nth-child(5) {
+    opacity: 0.5;
+    transform: scale(0.7);
+}
+
+.slide:nth-child(2),
+.slide:nth-child(4) {
+    opacity: 0.7;
+    transform: scale(0.85);
+}
+
+.slide.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.slide img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.carousel-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 7%;
+    position: absolute;
+    top: 30%;
+    transform: translateY(-50%);
+    padding: 0 15px;
+}
+.carousel-controls1 {
+    display: flex;
+    width: 7%;
+    position: absolute;
+    top: 30%;
+    transform: translateY(-50%);
+    padding: 1px -6px;
+    align-content: center;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    right: 35px;
+}
+
+.control {
+    color: #fff;
+    background-color: #e65100;
+    padding: 5px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 30px;
+    font-weight: bold;
+    user-select: none;
+}
+
+.control:hover {
+    background-color: #d84315;
+}

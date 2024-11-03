@@ -1,0 +1,27 @@
+.titulo{
+    font-size: 4rem;
+    color: var(--secundaria);
+    margin-top: 4rem;
+}
+
+hr{
+    border-color:var(--secundaria);
+    width: 98%;
+    margin-bottom: 20px;
+    margin-left: 0px;
+}
+.cards{
+    display: flex;
+    flex-wrap: wrap;
+    gap:2rem;
+    width: 100%;
+}
+.card {
+    background-color: #bdbdbd;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 20px auto;
+    width: 100%;
+    max-width: 600px;
+}

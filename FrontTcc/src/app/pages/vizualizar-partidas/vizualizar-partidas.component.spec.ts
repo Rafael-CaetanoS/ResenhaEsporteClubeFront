@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { VizualizarPartidasComponent } from './vizualizar-partidas.component';
 
+
 describe('VizualizarPartidasComponent', () => {
   let component: VizualizarPartidasComponent;
   let fixture: ComponentFixture<VizualizarPartidasComponent>;

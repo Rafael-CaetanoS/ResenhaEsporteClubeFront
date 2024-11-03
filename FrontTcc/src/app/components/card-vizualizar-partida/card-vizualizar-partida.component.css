@@ -1,0 +1,105 @@
+.card {
+    background-color:var(--secundaria);
+    width: 1850px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 20px auto;
+}
+
+.partida-header {
+    text-align: left;
+    margin-bottom: 10px;
+    font-size: 50px;
+    font-weight: bold;
+    color: var(--detalhes);
+}
+
+/* Estilo do carrossel */
+.carousel-container {
+    position: relative;
+    width: 100%;
+    height: 150px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+/* Informações da partida */
+.partida-info {
+    display: flex;
+    justify-content:space-between;
+    margin-top: 15px;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    font-size: 30px;
+    flex-direction: column;
+    color: var(--branco);
+}
+
+.icon {
+    margin-right: 5px;
+}
+
+.btn-container {
+    text-align: right;
+    margin-top: 15px;
+}
+
+.ver-partida {
+    background-color: #e65100;
+    color: #fff;
+    border: none;
+    padding: 25px 40px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.ver-partida:hover {
+    background-color: #d84315;
+}
+
+/* Carrossel com inputs radio */
+input[type="radio"] {
+    display: none;
+}
+
+.slides {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+input#slide1:checked ~ .carousel-slides {
+    transform: translateX(0%);
+}
+
+input#slide2:checked ~ .carousel-slides {
+    transform: translateX(-100%);
+}
+
+input#slide3:checked ~ .carousel-slides {
+    transform: translateX(-200%);
+}
+
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.carousel-dots label {
+    cursor: pointer;
+    width: 10px;
+    height: 10px;
+    margin: 0 5px;
+    background-color: var(--principal);
+    border-radius: 50%;
+    display: inline-block;
+}
+
+input#slide1:checked ~ .carousel-dots label[for="slide1"],
+input#slide2:checked ~ .carousel-dots label[for="slide2"],
+input#slide3:checked ~ .carousel-dots label[for="slide3"] {
+    background-color: #e65100;
+}

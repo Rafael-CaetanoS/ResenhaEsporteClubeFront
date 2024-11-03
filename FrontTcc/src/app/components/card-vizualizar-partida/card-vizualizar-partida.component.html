@@ -1,0 +1,29 @@
+ <div class="card">
+        <div class="partida-header">
+            <h1 class="titulo">{{titulo}}</h1>
+        </div>
+    
+        <!-- Carrossel de Imagens Horizontal -->
+        <div class="carousel-container">
+        <app-carousel></app-carousel>
+            </div>
+        <hr>
+        <!-- Informações da partida -->
+        <div class="partida-info">
+            <div class="info-item">
+                <span class="text">DATA</span>
+                <span class="text">{{ data | date: 'dd/MM/yyyy' }}</span>
+            </div>
+            <div class="info-item">
+                <span class="text">LOCAL</span>
+                <span class="text">{{local}}</span>
+            </div>
+            <div class="info-item">
+                <span class="text">ESPORTE</span>
+                <span class="text">{{nomeEsporte}}</span>
+            </div>
+            <div class="btn-container">
+                <button class="ver-partida" [routerLink]="['/DetalhesPartida']">Ver Partida</button>
+            </div>
+        </div>
+    </div>
