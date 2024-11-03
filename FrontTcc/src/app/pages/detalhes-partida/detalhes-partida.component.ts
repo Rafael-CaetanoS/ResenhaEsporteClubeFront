@@ -1,14 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { CardDetalhesPartidaComponent } from "../../components/card-detalhes-partida/card-detalhes-partida.component";
 import { CarouselComponent } from '../../components/carousel/carousel.component';
 import { SidebarComponent } from '../../components/sidebar/sidebar.component';
 
 @Component({
   selector: 'app-detalhes-partida',
   standalone: true,
-  imports: [SidebarComponent, CardDetalhesPartidaComponent, RouterLink,CarouselComponent,CommonModule],
+  imports: [SidebarComponent,RouterLink,CarouselComponent,CommonModule],
   templateUrl: './detalhes-partida.component.html',
   styleUrl: './detalhes-partida.component.css'
 })
