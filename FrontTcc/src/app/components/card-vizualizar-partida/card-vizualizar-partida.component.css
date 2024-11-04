@@ -1,6 +1,11 @@
+.titulo{
+    font-size: 2rem;
+    font-weight: 100;
+}
+
 .card {
     background-color:var(--secundaria);
-    width: 1850px;
+    width: 72vw;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -19,7 +24,6 @@
 .carousel-container {
     position: relative;
     width: 100%;
-    height: 150px;
     overflow: hidden;
     margin-bottom: 20px;
 }
@@ -27,7 +31,8 @@
 .partida-info {
     display: flex;
     justify-content:space-between;
-    margin-top: 15px;
+    align-items: center;
+    text-align: center;
 }
 
 .info-item {
@@ -51,7 +56,7 @@
     background-color: #e65100;
     color: #fff;
     border: none;
-    padding: 25px 40px;
+    padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
 }
@@ -102,4 +107,8 @@ input#slide1:checked ~ .carousel-dots label[for="slide1"],
 input#slide2:checked ~ .carousel-dots label[for="slide2"],
 input#slide3:checked ~ .carousel-dots label[for="slide3"] {
     background-color: #e65100;
+}
+
+.text{
+    font-size: 1rem;
 }

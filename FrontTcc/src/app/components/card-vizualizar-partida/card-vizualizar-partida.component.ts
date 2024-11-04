@@ -12,17 +12,17 @@ import { CarouselComponent } from '../carousel/carousel.component';
 })
 export class CardVizualizarPartidaComponent {
 @Input()
-titulo:string ="PELADA DOS AMIGOS"
+titulo:string =""
 @Input()
-data:string="20241101"
+data:string=""
 @Input()
 horario:string =""
 @Input()
-local:string ="sintetico do homi"
+local:string =""
 @Input()
 idEsporte:string =""
 imagem:string=""
 @Input()
-nomeEsporte:string ="Futebol"
+nomeEsporte:string =""
 
 }
