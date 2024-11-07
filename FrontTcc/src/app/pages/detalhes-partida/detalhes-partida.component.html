@@ -1,39 +1,63 @@
 <div class="container-sidebar">
     <app-sidebar></app-sidebar>
-<div class="content">
-    <h1 class="titulo">VIZUALIZAR PARTIDA</h1>
-        <hr class="topo">
-        <div class="card">
-            <div class="partida-header">
-                <h2 class="titulo1">{{titulo}}</h2>
+    <div class="content">
+        <h1 class="titulo">VIZUALIZAR PARTIDA</h1>
+        <hr>
+        <div class="cards">
+            <div class="card">
+                <div class="card1">
+                <div class="partida-header">
+                    <h1 class="titulo1">{{titulo}}</h1>
+                </div>
+            
+                <!-- Carrossel de Imagens Horizontal -->
+                <div class="carousel-container">
+                    <app-carousel></app-carousel>
+                </div>
+                <hr>
+                <!-- Informações da partida -->
+                <div class="partida-info">
+                    <div class="info-item">
+                        <span class="text">DATA</span>
+                        <span class="text">{{ data | date: 'dd/MM/yyyy' }}</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="text">LOCAL</span>
+                        <span class="text">{{local}}</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="text">ESPORTE</span>
+                        <span class="text">{{nomeEsporte}}</span>
+                    </div>
+                </div>
+                    <div class="table-container">
+                    <h2>TIME COM MAIS VITÓRIAS :</h2>
+                    <div class="table-title">TIME 3</div>
+                    <div class="table-content">
+                        <p>9 - Rafael Caetano</p>
+                        <p>10 - Rafael Caetano</p>
+                        <p>11 - Rafael Caetano</p>
+                        <p>12 - Rafael Caetano</p>
+                        <p>13 - Rafael Caetano</p>
+                    </div>
+                    </div>
+                    <div class="table-container1">
+                        <h2>TIME COM MAIS VITÓRIAS :</h2>
+                        <div class="table-title1">TIME 3</div>
+                        <div class="table-content1">
+                            <p>9 - Rafael Caetano</p>
+                            <p>10 - Rafael Caetano</p>
+                            <p>11 - Rafael Caetano</p>
+                            <p>12 - Rafael Caetano</p>
+                            <p>13 - Rafael Caetano</p>
+                        </div>
+                        </div>
+                    <div class="btn-container">
+                        <button class="ver-partida" [routerLink]="['/DetalhesPartida']">Cancelar inscrição</button>
+                        <button class="ver-partida" [routerLink]="['/Vizualizarpartida']">Voltar</button>
+                    </div>
+                </div>
+                </div>
             </div>
-                <app-carousel></app-carousel>
-                    <hr>
-            <!-- Informações da partida -->
-            <div class="partida-info">
-                <div class="info-item">
-                    <span class="text">DATA</span>
-                    <span class="text">{{data | date: 'dd/MM/yyyy' }}</span>
-                </div>
-                <div class="info-item">
-                    <span class="text">LOCAL</span>
-                    <span class="text">{{local}}</span>
-                </div>
-                <div class="info-item">
-                    <span class="text">ESPORTE</span>
-                    <span class="text">{{nomeEsporte}}</span>
-                </div>
-                </div>
-                <div class="estatisticas">
-                </div>
-                <div class="times">
-                </div>
-                <div class="btn-container">
-                    <button class="ver-partida" [routerLink]="['/vizualizarPatidas']">Voltar</button>
-                </div>
-                <div class="btn-container1">
-                    <button class="ver-partida" [routerLink]="['/inicio']">Cancelar Inscrição</button>
-                </div>
-            </div>
-        </div>
-</div>
+            
+    </div>

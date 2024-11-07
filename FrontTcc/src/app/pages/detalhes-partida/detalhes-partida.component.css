@@ -4,152 +4,141 @@
     margin-top: 4rem;
 }
 
-.topo{
+hr{
     border-color:var(--secundaria);
     width: 98%;
     margin-bottom: 20px;
     margin-left: 0px;
 }
-.card {
-    background-color:var(--secundaria);
+.cards{
+    display: flex;
+    flex-wrap: wrap;
+    gap:2rem;
     width: 100%;
-    padding: 20px;
+}
+.titulo1{
+    font-size: 2rem;
+    font-weight: 100;
+}
+.card {
+    background-color: var(--secundaria);
+    width: 74vw;
+    padding: 0vw;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    margin: 20px auto;
-    height: 730px;
+    position: relative;
+    height: 30vw;
 }
-
-
+.card1 {
+    position: relative;
+    top: 1vw;
+    z-index: 0;
+    width: 72vw;
+    right: -1vw;
+}
 .partida-header {
     text-align: left;
     margin-bottom: 10px;
-    font-size: 30px;
+    font-size: 50px;
     font-weight: bold;
     color: var(--detalhes);
 }
-
-/* Estilo do carrossel */
 .carousel-container {
     position: relative;
     width: 100%;
-    height: 150px;
     overflow: hidden;
     margin-bottom: 20px;
 }
-/* Informações da partida */
 .partida-info {
     display: flex;
     justify-content:space-between;
-    margin-top: 15px;
+    align-items: center;
+    text-align: center;
 }
-
 .info-item {
     display: flex;
     align-items: center;
     font-size: 20px;
     flex-direction: column;
     color: var(--branco);
+    line-height: 28px;
 }
-
-.icon {
-    margin-right: 5px;
-}
-
 .btn-container {
-    text-align: end;
-    margin-top: 0px;
-    height: 92px;
     position: absolute;
-    right: 230px;
-    top: 863px;
-
+    top: 26vw;
+    z-index: 0;
+    width: auto;
+    right: -0.5vw;
 }
+.ver-partida{
 
-.btn-container1 {
-    text-align: end;
-    margin-top: 480px;
-    height: 92px;
-}
-
-.estatisticas{
-    background-color: rgb(75, 75, 75);
-    width: 41%;
-    border-radius: 40px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    margin: 2px 3px;
-    height: 414px;
-    position: absolute;
-    right: 20px;
-    top: 430px;
-}
-
-.times{
-
-    background-color: rgb(75, 75, 75);
-    width: 21%;
-    border-radius: 40px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    margin: 2px 3px;
-    height: 414px;
-    position: absolute;
-    right: 1300px;
-    top: 430px;
-
-}
-.ver-partida {
-    background-color: #e65100;
-    color: #fff;
     border: none;
-    padding: 12px 40px;
+    cursor: pointer;
+    width: 122px;
+    text-decoration: none;
+    color: #ffff;
+    background-color: var(--detalhes);
     border-radius: 5px;
-    cursor: pointer;
+    margin: 0.3vw;
+    height: 2vw;
 }
-
-.ver-partida:hover {
-    background-color: #d84315;
+.table-container {
+    background-color: #2D2A53;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    height: 13vw;
+    width: 20%;
+    top: 12vw;
+    right: 54vw;
 }
-
-/* Carrossel com inputs radio */
-input[type="radio"] {
-    display: none;
+.table-container h2 {
+        font-size: 1vw;
+        font-weight: normal;
+        margin: 0 0 10px;
+        color: #CCCCFF;
 }
-
-.slides {
-    display: flex;
-    transition: transform 0.5s ease;
+.table-title {
+    font-size: 1vw;
+    font-weight: bold;
+    margin: 10px 0;
+    color: #FFFFFF;
 }
-
-input#slide1:checked ~ .carousel-slides {
-    transform: translateX(0%);
+.table-content {
+    font-size: 1vw;
+    line-height: 1.8;
+    position: relative;
 }
-
-input#slide2:checked ~ .carousel-slides {
-    transform: translateX(-100%);
+.table-container1 {
+    background-color: #2D2A53;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    height: 13vw;
+    width: 49%;
+    top: 12vw;
+    right: 13vw;
 }
-
-input#slide3:checked ~ .carousel-slides {
-    transform: translateX(-200%);
+.table-container1 h2 {
+        font-size: 1vw;
+        font-weight: normal;
+        margin: 0 0 10px;
+        color: #CCCCFF;
 }
-
-.carousel-dots {
-    display: flex;
-    justify-content: center;
-    margin-top: 10px;
+.table-title1 {
+    font-size: 1vw;
+    font-weight: bold;
+    margin: 10px 0;
+    color: #FFFFFF;
 }
-
-.carousel-dots label {
-    cursor: pointer;
-    width: 10px;
-    height: 10px;
-    margin: 0 5px;
-    background-color: var(--principal);
-    border-radius: 50%;
-    display: inline-block;
-}
-
-input#slide1:checked ~ .carousel-dots label[for="slide1"],
-input#slide2:checked ~ .carousel-dots label[for="slide2"],
-input#slide3:checked ~ .carousel-dots label[for="slide3"] {
-    background-color: #e65100;
+.table-content1 {
+    font-size: 1vw;
+    line-height: 1.8;
+    position: relative;
 }
