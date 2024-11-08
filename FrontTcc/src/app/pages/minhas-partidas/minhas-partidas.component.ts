@@ -15,6 +15,7 @@ import { PartidasService } from '../../services/partidas.service';
 })
 export class MinhaPartidasComponent implements OnInit {
   partidas: PartidaResponse[] = [];
+  dataAtual = new Date();
 
   constructor(private service: PartidasService){}
 
@@ -22,6 +23,7 @@ export class MinhaPartidasComponent implements OnInit {
     this.service.getPartidasAtleta().subscribe({
       next: (res) => {
         this.partidas = res
+        .filter((item) => new Date(item.data) >= this.dataAtual)
         .map((item) => ({
           idPartida: item.idPartida,
           titulo: item.titulo,

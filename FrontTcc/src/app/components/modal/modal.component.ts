@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { InscricaoService } from '../../services/inscricao.service';
 import { inscricaoResponse } from '../../types/inscricao-response.Type';
 import { CommonModule } from '@angular/common';
@@ -10,12 +10,10 @@ import { CommonModule } from '@angular/common';
   templateUrl: './modal.component.html',
   styleUrl: './modal.component.css'
 })
-export class ModalComponent {
+export class ModalComponent implements OnInit{
   @Input() titulo:string ='';
 
   @Input() descricao:string ='';
-
-  @Input() imagem:string ='';
 
   @Input() data:string ='';
 
@@ -32,8 +30,16 @@ export class ModalComponent {
   @Output() closeModal = new EventEmitter<void>(); 
 
   idAtleta: string | null = null;
+
+  imagem:string ='';
+
+
 constructor(private service: InscricaoService){
 
+}
+
+ngOnInit(): void {
+  this.setarImagem();
 }
 
   inscrever(){
@@ -64,5 +70,21 @@ constructor(private service: InscricaoService){
 
   onClose() {
     this.closeModal.emit();
+  }
+
+
+  setarImagem(){
+    if(this.idEsporte =="1"){
+      this.imagem = "futebol.jpg"
+    }
+    else if(this.idEsporte =="2"){
+      this.imagem = "basquete.png"
+    }
+    else if(this.idEsporte =="3"){
+       this.imagem = "futvolei.jpg"
+    }
+    else{
+       this.imagem = "volei.jpg"
+    }
   }
 }

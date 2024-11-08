@@ -29,6 +29,8 @@
 
 img{
     width: 16vw;
+    height: 20vh;
+    border-radius: 15px;
 }
 .centro{
     display: flex;
