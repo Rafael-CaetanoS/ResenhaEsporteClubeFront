@@ -1,16 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { RouterLink, RouterModule, Router } from '@angular/router';
-
-
-
+import { Router, RouterLink, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-card-buscar-partida',
   standalone: true,
   imports: [CommonModule,RouterLink,RouterModule],
   templateUrl: './card-buscar-partida.component.html',
-  styleUrls: ['./card-buscar-partida.component.css'] 
+  styleUrls: ['./card-buscar-partida.component.css']
 })
 export class CardBuscarPartidaComponent implements OnInit{
 urlAtual: string = '';
@@ -51,10 +48,10 @@ setarImagem(){
     this.imagem = "bolaBas.png"
   }
   else if(this.idEsporte =="3"){
-     this.imagem = "bolaFutVol.png"
+    this.imagem = "bolaFutVol.png"
   }
   else{
-     this.imagem = "bolaVol.png"
+    this.imagem = "bolaVol.png"
   }
 }
 

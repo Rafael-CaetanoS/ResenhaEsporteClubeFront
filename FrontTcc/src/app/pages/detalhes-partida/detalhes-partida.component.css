@@ -1,0 +1,144 @@
+.titulo{
+    font-size: 4rem;
+    color: var(--secundaria);
+    margin-top: 4rem;
+}
+
+hr{
+    border-color:var(--secundaria);
+    width: 98%;
+    margin-bottom: 20px;
+    margin-left: 0px;
+}
+.cards{
+    display: flex;
+    flex-wrap: wrap;
+    gap:2rem;
+    width: 100%;
+}
+.titulo1{
+    font-size: 2rem;
+    font-weight: 100;
+}
+.card {
+    background-color: var(--secundaria);
+    width: 74vw;
+    padding: 0vw;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+    height: 30vw;
+}
+.card1 {
+    position: relative;
+    top: 1vw;
+    z-index: 0;
+    width: 72vw;
+    right: -1vw;
+}
+.partida-header {
+    text-align: left;
+    margin-bottom: 10px;
+    font-size: 50px;
+    font-weight: bold;
+    color: var(--detalhes);
+}
+.carousel-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+.partida-info {
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    text-align: center;
+}
+.info-item {
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    flex-direction: column;
+    color: var(--branco);
+    line-height: 28px;
+}
+.btn-container {
+    position: absolute;
+    top: 26vw;
+    z-index: 0;
+    width: auto;
+    right: -0.5vw;
+}
+.ver-partida{
+
+    border: none;
+    cursor: pointer;
+    width: 122px;
+    text-decoration: none;
+    color: #ffff;
+    background-color: var(--detalhes);
+    border-radius: 5px;
+    margin: 0.3vw;
+    height: 2vw;
+}
+.table-container {
+    background-color: #2D2A53;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    height: 13vw;
+    width: 20%;
+    top: 12vw;
+    right: 54vw;
+}
+.table-container h2 {
+        font-size: 1vw;
+        font-weight: normal;
+        margin: 0 0 10px;
+        color: #CCCCFF;
+}
+.table-title {
+    font-size: 1vw;
+    font-weight: bold;
+    margin: 10px 0;
+    color: #FFFFFF;
+}
+.table-content {
+    font-size: 1vw;
+    line-height: 1.8;
+    position: relative;
+}
+.table-container1 {
+    background-color: #2D2A53;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    height: 13vw;
+    width: 49%;
+    top: 12vw;
+    right: 13vw;
+}
+.table-container1 h2 {
+        font-size: 1vw;
+        font-weight: normal;
+        margin: 0 0 10px;
+        color: #CCCCFF;
+}
+.table-title1 {
+    font-size: 1vw;
+    font-weight: bold;
+    margin: 10px 0;
+    color: #FFFFFF;
+}
+.table-content1 {
+    font-size: 1vw;
+    line-height: 1.8;
+    position: relative;
+}

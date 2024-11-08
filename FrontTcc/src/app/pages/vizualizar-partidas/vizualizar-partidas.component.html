@@ -1,0 +1,21 @@
+<div class="container-sidebar">
+    <app-sidebar></app-sidebar>
+    <div class="content">
+        <h1 class="titulo">HISTORICO DE PARTIDAS</h1>
+        <hr>
+        <div class="cards" *ngIf="partidas != null">
+                <app-card-vizualizar-partida
+                    *ngFor="let partida of partidas" 
+                    titulo="{{partida.titulo}}" 
+                    data="{{partida?.data}}" 
+                    horario="{{partida?.horaInicio}}" 
+                    local="{{partida?.nomeLocal}}"
+                    idEsporte="{{partida.esporte.idEsporte}}"
+                    nomeEsporte="{{partida.esporte.nomeEsporte}}"
+                ></app-card-vizualizar-partida>
+        </div>
+        <div *ngIf="partidas == null ||  partidas.length === 0 ">
+            <h3>Não foram encontradas partidas. </h3>
+        </div>
+    </div>
+</div>
