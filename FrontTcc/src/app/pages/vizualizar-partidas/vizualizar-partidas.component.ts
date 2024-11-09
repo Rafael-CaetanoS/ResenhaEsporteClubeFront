@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-vizualizar-partidas',
   standalone: true,
-  imports: [SidebarComponent,CardVizualizarPartidaComponent,CarouselComponent, CommonModule],
+  imports: [SidebarComponent,CardVizualizarPartidaComponent, CommonModule],
   templateUrl: './vizualizar-partidas.component.html',
   styleUrl: './vizualizar-partidas.component.css'
 })

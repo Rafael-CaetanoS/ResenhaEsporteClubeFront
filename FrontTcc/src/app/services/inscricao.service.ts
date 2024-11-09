@@ -14,19 +14,22 @@ export class InscricaoService {
   constructor(private http: HttpClient) {}
 
 
-  postInscricao(inscricao: inscricaoResponse): Observable <inscricaoResponse> {
+  postInscricao(inscricao: inscricaoResponse): Observable <inscricaoResponse[]> {
     if (typeof window !== 'undefined') {
       this.token = sessionStorage.getItem('auth-token');
       const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
-      return this.http.post<inscricaoResponse>(this.apiUrl, inscricao, { headers });
+      return this.http.post<inscricaoResponse[]>(this.apiUrl, inscricao, { headers });
     }
-    return new Observable<inscricaoResponse>();
+    return new Observable<inscricaoResponse[]>();
   }
 
-  // getInscritosPartidas(idPartida:string): Observable<inscricaoResponse>{
-  //   if (typeof window !== 'undefined') {
-  //     this.token = sessionStorage.getItem('auth-token');
-  //     const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
-  //     return this.http.get<inscricaoResponse>(this.apiUrl, inscricao, { headers });
-  // }
+  getInscritosPartidas(idPartida: string): Observable<inscricaoResponse[]> {
+    if (typeof window !== 'undefined') {
+        this.token = sessionStorage.getItem('auth-token');
+        const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
+        return this.http.get<inscricaoResponse[]>(`${this.apiUrl}/partida/${idPartida}`, { headers });
+    }
+    return new Observable<inscricaoResponse[]>();
+  }
+
 }

@@ -1,0 +1,22 @@
+.placar{
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.placar span{
+    font-size: 2.4rem;
+    color: var(--detalhes);
+}
+
+.time1{
+    display: flex;
+    flex-direction: column;
+}
+
+button{
+    cursor: pointer;
+    padding: 0px 20px;
+    color: var(--secundaria);
+    font-size: 20px;
+}

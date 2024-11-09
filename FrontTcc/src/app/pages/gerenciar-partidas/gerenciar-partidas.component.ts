@@ -5,17 +5,23 @@ import { PartidasService } from '../../services/partidas.service';
 import { CommonModule } from '@angular/common';
 import { PartidaResponse } from '../../types/partida-response.type';
 import { ActivatedRoute } from '@angular/router';
+import { inscricaoResponse } from '../../types/inscricao-response.Type';
+import { CardTimeComponent } from "../../components/card-time/card-time.component";
+import { CronometroComponent } from "../../components/cronometro/cronometro.component";
+import { PlacarComponent } from "../../components/placar/placar.component";
 
 @Component({
   selector: 'app-gerenciar-partidas',
   standalone: true,
-  imports: [SidebarComponent, CommonModule],
+  imports: [SidebarComponent, CommonModule, CardTimeComponent, CronometroComponent, PlacarComponent],
   templateUrl: './gerenciar-partidas.component.html',
-  styleUrl: './gerenciar-partidas.component.css'
+  styleUrls: ['./gerenciar-partidas.component.css', './sortear.css', './partidas.css']
 })
 export class GerenciarPartidasComponent implements OnInit{
+  activeTab: string = 'editar';
 
   partida!: PartidaResponse 
+  inscricoes: inscricaoResponse[] = [];
   idUrl: string =""
 
 constructor(private serviceInscricao: InscricaoService, private servicePartida: PartidasService, private route:ActivatedRoute){}
@@ -30,9 +36,18 @@ ngOnInit(): void {
         next: partida => (this.partida = partida),
         error: err => console.error('Erro ao buscar partida:', err)
       });
+
+      this.serviceInscricao.getInscritosPartidas(this.idUrl).subscribe({
+        next: inscricoes => (this.inscricoes = inscricoes),
+        error: err => console.error('Não há inscricoes', err)
+      });
     } else {
       console.error("ID não encontrado na URL");
     }
   })
+  }
+  
+  setActiveTab(tab: string) {
+    this.activeTab = tab;
   }
 }

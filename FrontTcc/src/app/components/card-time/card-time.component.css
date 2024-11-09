@@ -1,0 +1,23 @@
+.card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--secundaria);
+    width: 15vw;
+}
+
+.titulo{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: var(--detalhes);
+}
+
+.jogadores{
+    margin-bottom: 30px;
+}
+
+.jogador{
+    color: var(--principal);
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}

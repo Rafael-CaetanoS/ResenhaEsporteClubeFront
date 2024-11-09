@@ -1,0 +1,20 @@
+<div class="placar">
+    <div class="time1">
+        <span>{{ pontuacaoTime1 }}</span>
+        <div>
+            <button (click)="incrementarPlacar(1)">+</button>
+            <button (click)="decrementarPlacar(1)">-</button>
+        </div>
+    </div>
+   
+    <span>X</span>
+
+    <div class="time2">
+        <span>{{ pontuacaoTime2 }}</span>
+        <div>
+            <button (click)="decrementarPlacar(2)">-</button>
+            <button (click)="incrementarPlacar(2)">+</button>
+        </div>
+    </div>
+
+</div>

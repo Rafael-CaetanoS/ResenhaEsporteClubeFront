@@ -50,6 +50,7 @@ ngOnInit(): void {
     const inscricaoData: inscricaoResponse = {
       atleta: { 
         idAtleta: this.idAtleta ? this.idAtleta : '',  
+        nomeAtleta:''
       },
       partida: {
         idPartida: this.idPartida

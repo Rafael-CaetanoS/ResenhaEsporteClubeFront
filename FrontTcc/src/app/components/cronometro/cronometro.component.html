@@ -1,0 +1,18 @@
+<div class="cronometro">
+    <div class="tempo">
+      <span id="cronometro">{{ minutos }}:{{ segundos }}</span>
+      <hr>
+    </div>
+  
+    <div class="botoes-cronometro">
+      <button (click)="pausarCronometro()">
+        <img src="../../../assets/images/pause.png" alt="pause">
+      </button>
+      <button (click)="iniciarCronometro()">
+        <img src="../../../assets/images/Play.png" alt="start">
+      </button>
+      <button (click)="resetarCronometro()">
+        <img src="../../../assets/images/Refresh.png" alt="Refresh">
+      </button>
+    </div>
+  </div>
