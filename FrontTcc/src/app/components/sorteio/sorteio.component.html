@@ -1,0 +1,33 @@
+<div class="sorteio">
+  <h2>Sortear times</h2>
+  <div class="filtros">
+
+    <div class="qtde button-sorteio">
+      <button (click)="decrementar()">-</button>
+      <span>{{ jogadoresPorTime }}x{{ jogadoresPorTime }}</span>
+      <button (click)="incrementar()">+</button>
+    </div>
+
+    <div>
+      <button class="button-sorteio" (click)="sortear()" >Sortear</button>
+    </div>
+
+    <div>
+      <button class="button-sorteio" >Concluir</button>
+    </div>
+  </div>
+
+  <div *ngIf="timesGerados.length === 0" style="text-align: center; font-weight: bold; font-size: 1.5rem; margin-top: 1rem; color: red; display: flex; flex-direction: column; gap:20px">
+    <span>Quantidade de jogadores inscritos {{qtdejogadores}} </span>
+    <span>Não tem times cadastrados</span>
+  </div>
+
+
+  <div class="times">
+    <div *ngFor="let time of timesGerados">
+      <app-card-time [times]="time"></app-card-time>
+    </div>
+  </div>
+  
+
+</div>

@@ -6,22 +6,20 @@
         <div class="nav">
             <nav>
                 <li class="link" [ngClass]="{'ativo': activeTab === 'editar'}" (click)="setActiveTab('editar')">Editar</li>
-                <li class="link" [ngClass]="{'ativo': activeTab === 'sorteio'}" (click)="setActiveTab('sorteio')">Sorteio</li>
                 <li class="link" [ngClass]="{'ativo': activeTab === 'times'}" (click)="setActiveTab('times')">Times</li>
                 <li class="link" [ngClass]="{'ativo': activeTab === 'partidas'}" (click)="setActiveTab('partidas')">Partidas</li>
-                <li class="link">Finalizar partida</li>
             </nav>
         </div>
 
         <div class="editar" *ngIf="activeTab === 'editar'">
             <div class="dados">
                 <div class="informacoes">
-                    <p class="info">Titulo: {{partida?.titulo}}</p>
-                    <p class="info">Data:{{ partida?.data| date: 'dd/MM/yyyy' }}</p>
-                    <p class="info">Horário Inicío:{{partida?.horaInicio}}</p>
-                    <p class="info">Horário fim:{{partida?.horaFim}}</p>
-                    <p class="info">Local: {{partida?.nomeLocal}}</p>
-                    <p class="info">Esporte:{{partida?.esporte?.nomeEsporte}}</p>
+                    <p class="info">Titulo: {{partida.titulo}}</p>
+                    <p class="info">Data:{{ partida.data| date: 'dd/MM/yyyy' }}</p>
+                    <p class="info">Horário Inicío:{{partida.horaInicio}}</p>
+                    <p class="info">Horário fim:{{partida.horaFim}}</p>
+                    <p class="info">Local: {{partida.nomeLocal}}</p>
+                    <p class="info">Esporte:{{partida.esporte.nomeEsporte}}</p>
                 </div>
 
                 <div class="botoes">
@@ -32,43 +30,15 @@
 
             <div class="inscritos">
                 <h2>Inscritos</h2>
-                <div class="inscrito" *ngFor="let inscricoes of inscricoes ">
-                    <p>{{inscricoes.atleta.nomeAtleta | uppercase}}</p>
+                <div class="inscrito" *ngFor="let inscricao of inscricoes; let i = index">
+                    <p>{{ i + 1 }} - {{ inscricao.atleta.nomeAtleta | uppercase }}</p>
                     <span>X</span>
                 </div>
             </div>
         </div> 
 
-        <div class="sorteio" *ngIf="activeTab === 'sorteio'">
-            <div class="inscritos-sorteio">
-                <h1 class="titulo-sorteio"> SELECIONE JOGADORES PARA O SORTEIO </h1>
-                
-                <div class="lista-sorteio">
-                    <p class="inscrito" *ngFor="let inscricoes of inscricoes ">{{inscricoes.atleta.nomeAtleta | uppercase}}</p>
-                </div>
-            </div>
-
-            <div class="filtros">
-                <div class="botoes-sorteio">
-                    <label for="">Quantidade de jogadores por time</label>
-                    <button class="button-sorteio">5X5</button>
-                </div>
-
-                <div class="botoes-sorteio">
-                    <label for="">Tipo de sorteio</label>
-                    <button class="button-sorteio">Aleatório</button>
-                </div>
-
-                <button class="button-sorteio">SORTEAR</button>
-
-            </div>
-        </div>
-
         <div class="times"  *ngIf="activeTab === 'times'">
-            <app-card-time></app-card-time>
-            <app-card-time></app-card-time>
-            <app-card-time></app-card-time>
-
+            <app-sorteio [inscricoes]="inscricoes"></app-sorteio>
         </div>
 
         <div class="partidas" *ngIf="activeTab === 'partidas'"> 
@@ -79,6 +49,7 @@
             <div class="placar">
                 <app-placar></app-placar>
             </div>
+
             <div class="times-partidas">
                 <app-card-time></app-card-time>
                 <app-card-time></app-card-time>

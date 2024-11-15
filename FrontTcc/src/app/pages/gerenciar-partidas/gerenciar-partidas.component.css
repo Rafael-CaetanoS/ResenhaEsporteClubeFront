@@ -90,12 +90,13 @@ nav{
 .inscrito{
     display: flex;
     justify-content: space-between;
-    margin: 0 50px;
+    margin: 10px 50px;
 }
 
 .inscrito p, span{
     font-size: 1.4rem;
 }
+
 
 
 

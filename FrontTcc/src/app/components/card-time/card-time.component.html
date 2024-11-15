@@ -5,12 +5,6 @@
     </div>
 
     <div class="jogadores">
-        <p class="jogador">rafael</p>
-        <p class="jogador">rafael</p>
-        <p class="jogador">rafael</p>
-        <p class="jogador">rafael</p>
-        <p class="jogador">rafael</p>
-        <p class="jogador">rafael</p>
+        <p *ngFor="let jogador of times" class="jogador">{{ jogador.atleta.nomeAtleta }}</p>
     </div>
-
 </div>
