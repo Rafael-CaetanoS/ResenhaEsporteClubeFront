@@ -6,10 +6,11 @@
         <div class="cards" *ngIf="partidas != null">
                 <app-card-vizualizar-partida
                     *ngFor="let partida of partidas" 
+                    idPartida="{{partida.idPartida}}"
                     titulo="{{partida.titulo}}" 
-                    data="{{partida?.data}}" 
-                    horario="{{partida?.horaInicio}}" 
-                    local="{{partida?.nomeLocal}}"
+                    data="{{partida.data}}" 
+                    horario="{{partida.horaInicio}}" 
+                    local="{{partida.nomeLocal}}"
                     idEsporte="{{partida.esporte.idEsporte}}"
                     nomeEsporte="{{partida.esporte.nomeEsporte}}"
                 ></app-card-vizualizar-partida>

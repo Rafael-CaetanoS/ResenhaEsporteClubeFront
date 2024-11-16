@@ -12,6 +12,8 @@ import { CarouselComponent } from '../carousel/carousel.component';
 })
 export class CardVizualizarPartidaComponent {
 @Input()
+idPartida:string =""
+@Input()
 titulo:string =""
 @Input()
 data:string=""

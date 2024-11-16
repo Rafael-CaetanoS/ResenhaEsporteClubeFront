@@ -3,61 +3,51 @@
     <div class="content">
         <h1 class="titulo">VIZUALIZAR PARTIDA</h1>
         <hr>
-        <div class="cards">
-            <div class="card">
-                <div class="card1">
-                <div class="partida-header">
-                    <h1 class="titulo1">{{titulo}}</h1>
-                </div>
-            
-                <!-- Carrossel de Imagens Horizontal -->
-                <div class="carousel-container">
-                    <app-carousel></app-carousel>
-                </div>
-                <hr>
-                <!-- Informações da partida -->
-                <div class="partida-info">
-                    <div class="info-item">
-                        <span class="text">DATA</span>
-                        <span class="text">{{ data | date: 'dd/MM/yyyy' }}</span>
+        <div class="card">
+            <h2 class="nomePartida">{{partida.titulo}}</h2>
+            <div class="carousel-container">
+                <app-carousel></app-carousel>
+                <hr id="divisoria">
+                
+                <div class="dados">
+                    <div class="dado">
+                        <p>DATA</p>
+                        <p>{{partida.data | date: 'dd/MM/yyyy' }}</p>
                     </div>
-                    <div class="info-item">
-                        <span class="text">LOCAL</span>
-                        <span class="text">{{local}}</span>
+
+                    <div class="dado">
+                        <p>Local</p>
+                        <p>{{partida.nomeLocal}}</p>
                     </div>
-                    <div class="info-item">
-                        <span class="text">ESPORTE</span>
-                        <span class="text">{{nomeEsporte}}</span>
+
+                    <div class="dado">
+                        <p>ESPORTE</p>
+                        <p>{{partida.esporte.nomeEsporte}}</p>
                     </div>
                 </div>
-                    <div class="table-container">
-                    <h2>TIME COM MAIS VITÓRIAS :</h2>
-                    <div class="table-title">TIME 3</div>
-                    <div class="table-content">
-                        <p>9 - Rafael Caetano</p>
-                        <p>10 - Rafael Caetano</p>
-                        <p>11 - Rafael Caetano</p>
-                        <p>12 - Rafael Caetano</p>
-                        <p>13 - Rafael Caetano</p>
-                    </div>
-                    </div>
-                    <div class="table-container1">
-                        <h2>TIME COM MAIS VITÓRIAS :</h2>
-                        <div class="table-title1">TIME 3</div>
-                        <div class="table-content1">
-                            <p>9 - Rafael Caetano</p>
-                            <p>10 - Rafael Caetano</p>
-                            <p>11 - Rafael Caetano</p>
-                            <p>12 - Rafael Caetano</p>
-                            <p>13 - Rafael Caetano</p>
+
+                <div class="estatisticas">
+                    <div class="info">
+                        <h3 class="titulo-info">inscritos</h3>
+                        <div class="inscritos">
+                            <p class="inscrito" *ngFor="let inscricao of inscricoes; let i = index">{{ i + 1 }} - {{ inscricao.atleta.nomeAtleta | uppercase }}<p>
                         </div>
-                        </div>
-                    <div class="btn-container">
-                        <button class="ver-partida" [routerLink]="['/DetalhesPartida']">Cancelar inscrição</button>
-                        <button class="ver-partida" [routerLink]="['/Vizualizarpartida']">Voltar</button>
+                    </div>
+                    
+                    <div class="info vencedor" *ngIf="times.length != 0">
+                        <h3 class="titulo-info">time com mais vitorias</h3>
+                    </div>
+
+                    <div class="info classificacao" *ngIf="times.length != 0">
+                        <h3 class="titulo-info">classificaco</h3>
                     </div>
                 </div>
+
+                <div class="botoes">
+                    <a class="botao" [routerLink]="['/Vizualizarpartida']">voltar</a>
+                    <button class="botao">Cancelar Inscricao</button>
                 </div>
             </div>
-            
+         </div> 
     </div>
+</div>

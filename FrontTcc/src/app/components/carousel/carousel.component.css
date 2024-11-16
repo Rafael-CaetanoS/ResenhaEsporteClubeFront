@@ -1,3 +1,7 @@
+.carousel{
+    display: flex;
+}
+
 .carousel-container {
     position: relative;
     width: 100%;
@@ -51,27 +55,11 @@
     align-items: center;
     justify-content: space-between;
     width: 7%;
-    position: absolute;
-    top: 30%;
-    transform: translateY(-50%);
     padding: 0 15px;
-}
-.carousel-controls1 {
-    display: flex;
-    width: 7%;
-    position: absolute;
-    top: 30%;
-    transform: translateY(-50%);
-    padding: 1px -6px;
-    align-content: center;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-    right: 35px;
 }
 
 .control {
     color: #fff;
-    background-color: #e65100;
     padding: 5px 15px;
     border-radius: 5px;
     cursor: pointer;

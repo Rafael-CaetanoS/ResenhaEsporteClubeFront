@@ -49,7 +49,7 @@ incrementar() {
 }
 
 decrementar() {
-  if(this.jogadoresPorTime == 0){
+  if(this.jogadoresPorTime == 1){
     this.jogadoresPorTime;
   }
   else{

@@ -32,7 +32,6 @@ export class CriarPartidaComponent implements OnInit {
       idEsporte: ['', Validators.required],
       endereco: ['', Validators.required],
       nomeLocal: ['', Validators.required],
-      faixaEtaria: ['', Validators.required]
     });
   }
 

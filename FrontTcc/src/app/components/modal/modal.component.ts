@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { InscricaoService } from '../../services/inscricao.service';
 import { inscricaoResponse } from '../../types/inscricao-response.Type';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-modal',
@@ -27,19 +28,26 @@ export class ModalComponent implements OnInit{
 
   @Input() idPartida:string='';
 
+  @Input() qtdeAtletas:string = '';
+
   @Output() closeModal = new EventEmitter<void>(); 
 
   idAtleta: string | null = null;
 
   imagem:string ='';
 
+  qtde:number = 0;
 
-constructor(private service: InscricaoService){
+
+
+
+constructor(private service: InscricaoService, private router: Router){
 
 }
 
 ngOnInit(): void {
   this.setarImagem();
+  this.qtdeInscritos();
 }
 
   inscrever(){
@@ -61,6 +69,7 @@ ngOnInit(): void {
       next: (response) => {
         console.log('Cadastro realizado com sucesso:', response);
         alert('Cadastro realizado com sucesso!');
+        this.router.navigate([`/DetalhesPartida`, this.idPartida]);
       },
       error: (error) => {
         console.error('Erro ao cadastrar:', error);
@@ -87,5 +96,16 @@ ngOnInit(): void {
     else{
        this.imagem = "volei.jpg"
     }
+  }
+
+  qtdeInscritos(){
+    this.service.getInscritosPartidas(this.idPartida).subscribe({
+      next: (inscritos) => {
+        this.qtde = inscritos.length;
+      },
+      error: (err) => {
+        console.error('Erro ao obter os inscritos:', err); 
+      }
+    });
   }
 }

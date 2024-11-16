@@ -10,15 +10,11 @@
             <input type="search" id="pesquisa" placeholder="Buscar" (input)="onSearch($event)">
 
             <p>ESPORTE:</p>
-            <select name="esporte" id="esporte" class="filtro" >
-                <option value="" disabled selected>Selecione um esporte</option>
-                <option *ngFor="let esporte of esporte" value="{{esporte.idEsporte}}">{{esporte.nomeEsporte}}</option>
-            </select> 
-
-            <p>KM:</p>
-            <select name="" id="" class="filtro">
-                <option value="" disabled>Escolha uma opção</option>
+            <select name="esporte" id="esporte" class="filtro" [(ngModel)]="esporteSelecionado" (change)="filtrarPorEsporte()">
+              <option value="" selected>Todos</option>
+              <option *ngFor="let esporte of esporte" [value]="esporte.idEsporte">{{esporte.nomeEsporte}}</option>
             </select>
+
         </div> 
         
         
@@ -33,6 +29,7 @@
               idPartida="{{partida.idPartida}}"
               nomeEsporte="{{partida.esporte.nomeEsporte}}"
               (abrirModal)="abrirModal(partida)">
+        
             </app-card-buscar-partida>
             
             <app-modal *ngIf="mostrarModal"
@@ -44,6 +41,7 @@
               organizador="{{partidaSelecionada?.atleta?.nomeAtleta}}"
               idEsporte="{{partidaSelecionada?.esporte?.idEsporte}}"
               idPartida="{{partidaSelecionada?.idPartida}}"
+              qtdeAtletas="{{partidaSelecionada?.qtdeAtletas}}"
               (closeModal)="fecharModal()">
             </app-modal>
           </div>

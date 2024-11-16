@@ -4,7 +4,7 @@ import { InscricaoService } from '../../services/inscricao.service';
 import { PartidasService } from '../../services/partidas.service';
 import { CommonModule } from '@angular/common';
 import { PartidaResponse } from '../../types/partida-response.type';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CardTimeComponent } from "../../components/card-time/card-time.component";
 import { CronometroComponent } from "../../components/cronometro/cronometro.component";
 import { PlacarComponent } from "../../components/placar/placar.component";
@@ -24,10 +24,13 @@ export class GerenciarPartidasComponent implements OnInit {
   inscricoes: inscricaoResponse[] = [];
   idUrl: string = "";
 
+  mostrarModal = false;
+
   constructor(
     private serviceInscricao: InscricaoService,
     private servicePartida: PartidasService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -57,4 +60,22 @@ export class GerenciarPartidasComponent implements OnInit {
     this.activeTab = tab;
   }
 
+  abrirModal() {
+    this.mostrarModal = true;
+  }
+
+  fecharModal() {
+    this.mostrarModal = false;
+  }
+
+  cancelarPartida(){
+    this.route.paramMap.subscribe(value => {
+        this.servicePartida.cancelarPartida(this.idUrl).subscribe({
+          next: (response) => {
+            this.router.navigate([`/MinhasPartidas`]);
+          },
+          error: err => console.error('Erro ao buscar partida:', err)
+        });
+    })
+  }
 }

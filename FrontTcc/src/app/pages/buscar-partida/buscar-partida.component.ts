@@ -7,12 +7,13 @@ import { CommonModule } from '@angular/common';
 import { EsportesService } from '../../services/esportes.service';
 import { EsporteResponse } from '../../types/esportes-response.type';
 import { ModalComponent } from '../../components/modal/modal.component';
+import { FormsModule } from '@angular/forms';
 
 
 @Component({
   selector: 'app-buscar-partida',
   standalone: true,
-  imports: [SidebarComponent, CardBuscarPartidaComponent, CommonModule, ModalComponent],
+  imports: [SidebarComponent, CardBuscarPartidaComponent, CommonModule, ModalComponent, FormsModule],
   templateUrl: './buscar-partida.component.html',
   styleUrls: ['./buscar-partida.component.css']
 })
@@ -21,6 +22,7 @@ export class BuscarPartidaComponent implements OnInit {
   esporte: EsporteResponse [] =[]; 
   partidasFiltradas: PartidaResponse[] = [];
   partidasParaExibir: PartidaResponse[] = [];
+  esporteSelecionado: string | null = ""; 
 
   mostrarModal = false;
   partidaSelecionada: PartidaResponse | null = null;
@@ -75,13 +77,34 @@ export class BuscarPartidaComponent implements OnInit {
   }
 
   onSearch(event: Event): void {
+
     const query = (event.target as HTMLInputElement).value.toLowerCase().trim();
     this.partidasFiltradas = this.partidas.filter((partida) =>
       partida.titulo.toLowerCase().trim().includes(query) 
     );
+    if (this.esporteSelecionado) {
+      this.partidasFiltradas = this.partidasFiltradas.filter(
+        (partida) => partida.esporte.idEsporte == this.esporteSelecionado
+      );
+    }
 
     this.partidasParaExibir = query ? this.partidasFiltradas.filter((partida) =>new Date(partida.data) >= this.dataAtual) : this.partidas.filter((partida) =>new Date(partida.data) >= this.dataAtual);
   }
+
+  filtrarPorEsporte(): void {
+    if (this.esporteSelecionado) {
+      this.partidasFiltradas = this.partidas.filter(
+        (partida) => partida.esporte.idEsporte == this.esporteSelecionado,
+      );
+    } else {
+      this.partidasFiltradas = [...this.partidas];
+    }
+
+    this.partidasParaExibir = this.partidasFiltradas.filter(
+      (partida) => new Date(partida.data) >= this.dataAtual
+    );
+  }
+
 
   abrirModal(partida: PartidaResponse) {
     this.partidaSelecionada = partida;

@@ -63,4 +63,13 @@ export class PartidasService {
     // Pode retornar um Observable vazio caso esteja fora do ambiente do navegador.
     return new Observable<PartidaResponse>();
   }
+
+  cancelarPartida(idPartida: string): Observable<any> {
+
+    if (typeof window !== 'undefined') {
+      this.token = sessionStorage.getItem('auth-token');
+    }
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
+    return this.http.put<any>(`${this.apiUrl}/cancelar/${idPartida}`, {}, { headers });
+  }
 }

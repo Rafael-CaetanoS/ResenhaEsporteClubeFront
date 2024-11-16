@@ -46,6 +46,6 @@ export const routes: Routes = [
     },
     
     {
-        path:'DetalhesPartida', component : DetalhesPartidaComponent
+        path:'DetalhesPartida/:id', component : DetalhesPartidaComponent
     }
 ];

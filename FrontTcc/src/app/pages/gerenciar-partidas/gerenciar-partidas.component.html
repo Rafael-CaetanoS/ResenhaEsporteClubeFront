@@ -23,10 +23,20 @@
                 </div>
 
                 <div class="botoes">
-                <a  class="botao">Editar Partida</a>
-                <button type="submit" class="botao">Cancelar Partida</button>
+                <a class="botao">Editar Partida </a>
+                <button class="botao" (click)="abrirModal()">Cancelar Partida</button>
                 </div>
-            </div>
+
+                <div class="modal" *ngIf="mostrarModal">
+                    <div class="modal-dados">
+                        <p>Deseja cancelar a partida?</p>
+                        <div class="buttons-cancelar">
+                            <button class="button-cancelar" (click)="fecharModal()">Fechar</button>
+                            <button class="button-cancelar" (click)="cancelarPartida()">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
 
             <div class="inscritos">
                 <h2>Inscritos</h2>
@@ -35,6 +45,7 @@
                     <span>X</span>
                 </div>
             </div>
+            
         </div> 
 
         <div class="times"  *ngIf="activeTab === 'times'">
