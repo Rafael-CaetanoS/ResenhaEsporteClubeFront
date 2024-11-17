@@ -6,43 +6,43 @@
         <form [formGroup]="formCadastro">
             <label for="nome">Nome</label>
             <input type="text" id="nomeAtleta" placeholder="Nome" formControlName="nomeAtleta">
-            <span *ngIf="formCadastro.get('Nome')?.errors?.['required'] && formCadastro.get('Nome')?.touched">
+            <span *ngIf="formCadastro.get('nomeAtleta')?.errors?.['required'] && formCadastro.get('nomeAtleta')?.touched">
                 Campo Obrigatorio
             </span>
 
             <label for="apelido">Apelido</label>
             <input type="text" id="apelido" placeholder="Apelido" formControlName="apelido">
-            <span *ngIf="formCadastro.get('Apelido')?.errors?.['required'] && formCadastro.get('Apelido')?.touched">
+            <span *ngIf="formCadastro.get('apelido')?.errors?.['required'] && formCadastro.get('apelido')?.touched">
             Campo Obrigatorio
             </span>
 
             <label for="data">Data de nascimento</label>
             <input type="date" id="dataNascimento" placeholder="Data de Nascimento" formControlName="dataNascimento">
-            <span *ngIf="formCadastro.get('Data')?.errors?.['required'] && formCadastro.get('Data')?.touched">
+            <span *ngIf="formCadastro.get('dataNascimento')?.errors?.['required'] && formCadastro.get('dataNascimento')?.touched">
                 Campo Obrigatorio
             </span>
 
             <label for="email">E-mail</label>
             <input type="email" id="email" placeholder="E-mail" formControlName="email">
-            <span *ngIf="formCadastro.get('Email')?.errors?.['required'] && formCadastro.get('Email')?.touched">
+            <span *ngIf="formCadastro.get('email')?.errors?.['required'] && formCadastro.get('email')?.touched">
                 Campo Obrigatorio
             </span>
 
             <label for="telefone">Telefone</label>
             <input type="text" id="telefone" placeholder="Telefone" formControlName="telefone">
-            <span *ngIf="formCadastro.get('Telefone')?.errors?.['required'] && formCadastro.get('Telefone')?.touched">
+            <span *ngIf="formCadastro.get('telefone')?.errors?.['required'] && formCadastro.get('telefone')?.touched">
                 Campo Obrigatorio
             </span>
 
             <label for="senha">Senha</label>
             <input type="password" id="senha" placeholder="Senha" formControlName="senha">
-            <span *ngIf="formCadastro.get('Senha')?.errors?.['required'] && formCadastro.get('Senha')?.touched">
+            <span *ngIf="formCadastro.get('senha')?.errors?.['required'] && formCadastro.get('senha')?.touched">
                 Campo Obrigatorio
             </span>
 
             <label for="confirmaSenha">Confirmar Senha</label>
             <input type="password" id="confirmaSenha" placeholder="Confirmar Senha" formControlName="confirmaSenha">
-            <span *ngIf="formCadastro.get('ConfirmaSenha')?.errors?.['required'] && formCadastro.get('ConfirmaSenha')?.touched">
+            <span *ngIf="formCadastro.get('confirmaSenha')?.errors?.['required'] && formCadastro.get('confirmaSenha')?.touched">
                 Campo Obrigatorio
             </span>
             <span *ngIf="formCadastro.hasError('senhasNaoConferem') && formCadastro.get('ConfirmaSenha')?.touched">

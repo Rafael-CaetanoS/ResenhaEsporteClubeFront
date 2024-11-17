@@ -8,6 +8,7 @@ import { InicioComponent } from './pages/inicio/inicio.component';
 import { LoginComponent } from './pages/login/login.component';
 import { MinhaPartidasComponent } from './pages/minhas-partidas/minhas-partidas.component';
 import { VizualizarPartidasComponent } from './pages/vizualizar-partidas/vizualizar-partidas.component';
+import { NavbarprincipalComponent } from './components/navbarprincipal/navbarprincipal.component';
 
 export const routes: Routes = [
     {path: '', 
@@ -47,5 +48,9 @@ export const routes: Routes = [
     
     {
         path:'DetalhesPartida/:id', component : DetalhesPartidaComponent
+    },
+    {
+        path:'teste', component: NavbarprincipalComponent
     }
+    
 ];

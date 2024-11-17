@@ -7,11 +7,12 @@ import { PartidaResponse } from '../../types/partida-response.type';
 import { PartidasService } from '../../services/partidas.service';
 import { InscricaoService } from '../../services/inscricao.service';
 import { inscricaoResponse } from '../../types/inscricao-response.Type';
+import { NavbarprincipalComponent } from "../../components/navbarprincipal/navbarprincipal.component";
 
 @Component({
   selector: 'app-detalhes-partida',
   standalone: true,
-  imports: [SidebarComponent,RouterLink,CarouselComponent,CommonModule],
+  imports: [SidebarComponent, RouterLink, CarouselComponent, CommonModule, NavbarprincipalComponent],
   templateUrl: './detalhes-partida.component.html',
   styleUrl: './detalhes-partida.component.css'
 })

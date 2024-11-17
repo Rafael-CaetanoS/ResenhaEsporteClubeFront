@@ -28,3 +28,58 @@
     display: flex;
     justify-content: space-around;
 }
+
+@media only screen and (max-width: 768px) {
+    .bem-vindo{
+        margin: 9vh 0em 5vh;
+        width: 100%;
+    }
+
+    .titulo1{
+        font-size: 8vw;
+        text-align: center;
+        color: var(--secundaria);
+        font-weight: bold;
+    }
+
+    .pergunta{
+        margin-bottom: 10vh;
+    }
+
+    .titulo2{
+        font-size: 7vw;
+        text-align: center;
+        color: var(--secundaria);
+        font-weight: bold;
+    }
+
+    .cards{
+        flex-wrap: wrap;
+        width: 103%;
+    }
+    
+    
+}
+
+@media only screen and (max-width: 480px) {
+    .mensagem{
+        width: 105%;
+    }
+    
+    .bem-vindo{
+        margin: 9vh 0em 5vh;
+        width: 100%;
+    }
+    
+    .cards{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .pergunta{
+        margin-bottom: 10vw;
+    }
+}
+

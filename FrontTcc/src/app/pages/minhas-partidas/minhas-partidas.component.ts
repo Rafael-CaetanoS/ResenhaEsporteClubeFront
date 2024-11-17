@@ -5,11 +5,12 @@ import { CommonModule } from '@angular/common';
 import { PartidaResponse } from '../../types/partida-response.type';
 import { CardBuscarPartidaComponent } from "../../components/card-buscar-partida/card-buscar-partida.component";
 import { PartidasService } from '../../services/partidas.service';
+import { NavbarprincipalComponent } from "../../components/navbarprincipal/navbarprincipal.component";
 
 @Component({
   selector: 'app-minha-partidas',
   standalone: true,
-  imports: [SidebarComponent, CommonModule, CardBuscarPartidaComponent],
+  imports: [SidebarComponent, CommonModule, CardBuscarPartidaComponent, NavbarprincipalComponent],
   templateUrl: './minhas-partidas.component.html',
   styleUrl: './minhas-partidas.component.css'
 })

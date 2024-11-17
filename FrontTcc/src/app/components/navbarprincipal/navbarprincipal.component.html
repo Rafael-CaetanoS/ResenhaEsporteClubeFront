@@ -1,0 +1,18 @@
+<nav class="navbar">
+    <div class="navbar-container">
+      <div class="logo">Logo</div>
+      <div class="menu-toggle" (click)="isMenuOpen = !isMenuOpen">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+      <ul class="navbar-links" [ngClass]="{'active': isMenuOpen}">
+        <li><a [routerLink]="['/Inicio']">Inicio</a></li>
+        <li><a [routerLink]="['/Criarpartida']">Criar Partidas</a></li>
+        <li><a [routerLink]="['/Buscarpartida']">Buscar Partidas</a></li>
+        <li><a [routerLink]="['/MinhasPartidas']">Gerenciar Partidas</a></li>
+        <li><a [routerLink]="['/Vizualizarpartida']">Vizualizar Partidas</a></li>
+      </ul>
+    </div>
+  </nav>
+  

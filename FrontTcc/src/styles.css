@@ -64,6 +64,29 @@ app-sidebar{
     width:20vw;
 }
 
+app-navbarprincipal{
+    display: none;
+}
+
 .content{
     width: 75vw;
+}
+
+@media only screen and (max-width: 1024px) {
+    app-sidebar{
+        display: none;
+    }
+    .container-sidebar{
+        display: flex;
+        flex-direction: column; 
+        gap: 1vw;
+    }
+    .content{
+        width:100%;
+    }
+
+    app-navbarprincipal{
+        display: block;
+    }
+
 }

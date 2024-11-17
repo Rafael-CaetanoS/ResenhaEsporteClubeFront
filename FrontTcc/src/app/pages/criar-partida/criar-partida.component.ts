@@ -7,11 +7,12 @@ import { EsportesService } from '../../services/esportes.service';
 import { EsporteResponse } from '../../types/esportes-response.type';
 import { PartidasService } from '../../services/partidas.service';
 import { PartidaResponse } from '../../types/partida-response.type';
+import { NavbarprincipalComponent } from '../../components/navbarprincipal/navbarprincipal.component';
 
 @Component({
   selector: 'app-criar-partida',
   standalone: true,
-  imports: [SidebarComponent, RouterLink, FormsModule, ReactiveFormsModule, CommonModule],
+  imports: [SidebarComponent, RouterLink, FormsModule, ReactiveFormsModule, CommonModule, NavbarprincipalComponent],
   templateUrl: './criar-partida.component.html',
   styleUrls: ['./criar-partida.component.css']
 })

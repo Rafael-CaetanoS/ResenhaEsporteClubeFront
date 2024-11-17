@@ -5,11 +5,12 @@ import { SidebarComponent } from '../../components/sidebar/sidebar.component';
 import { PartidasService } from '../../services/partidas.service';
 import { PartidaResponse } from '../../types/partida-response.type';
 import { CommonModule } from '@angular/common';
+import { NavbarprincipalComponent } from "../../components/navbarprincipal/navbarprincipal.component";
 
 @Component({
   selector: 'app-vizualizar-partidas',
   standalone: true,
-  imports: [SidebarComponent,CardVizualizarPartidaComponent, CommonModule],
+  imports: [SidebarComponent, CardVizualizarPartidaComponent, CommonModule, NavbarprincipalComponent],
   templateUrl: './vizualizar-partidas.component.html',
   styleUrl: './vizualizar-partidas.component.css'
 })

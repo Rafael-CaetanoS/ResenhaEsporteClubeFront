@@ -9,7 +9,6 @@
 .formulario{
     background-color: var(--secundaria);
     width: 75vw;
-    height:30rem;
     margin: 1rem auto;
     align-items: center;
     text-align: center;
@@ -43,7 +42,7 @@ form{
     flex-direction: column;
 }
 
-.formulario input, label, select{
+.formulario input, label, select ,textarea{
     width: 20vw;
     padding: 1vh;
 }
@@ -51,17 +50,24 @@ form{
 .formulario label{
     color: var(--branco);
 }
-.formulario input, select {
+.formulario input, select, textarea {
     margin-bottom: 10px;
     border-radius: 5px;
     border: 1px solid var(--detalhes);
+}
+
+textarea{
+    width: 21vw;
+    padding: 0px 0;
 }
 .botoes{
     width: 100%;
     display: flex;
     justify-content: end;
     gap: 1rem;
+    margin-top: 20px;
     margin-right: 6vw;
+    margin-bottom: 20px;
 }
 
 .botao{
@@ -82,4 +88,82 @@ form{
     margin-top: 2rem;
     margin-left: 3rem;
     font-size: 1.3rem;
+}
+
+@media only screen and (max-width: 1024px) {
+    .formulario{
+        width: 80vw;
+    }
+    .content{
+        width: 104% !important;
+    }
+
+}
+
+@media only screen and (max-width: 768px) {
+    .formulario{
+        width: 90vw;
+    }
+    .content{
+        width: 104% !important;
+    }
+
+}
+
+@media only screen and (max-width: 480px) {
+
+    .texto{
+        color: var(--secundaria);
+        font-size: 1.6rem;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        text-align: start;
+
+    }
+
+    .formulario{
+        width: 100vw;
+        margin: 1rem auto;
+        align-items: center;
+        text-align: center;
+    }
+    .content{
+        width: 104% !important;
+    }
+
+    .formulario input{
+        width: 20vw;
+        padding: 1vw 5vw;
+    }
+
+    .row{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    .formulario label{
+        text-align: start;
+        font-size: 0.7rem;
+        color: var(--branco);
+    }
+
+    select{
+        width: 30vw;
+    }
+
+    textarea{
+        width: 30vw;
+        padding: 0px 0;
+    }
+
+    .botao{
+        padding: 0.5rem;
+    }
+
+    #camposObrigatorios{
+        padding-bottom: 10vw;
+    }
+    
 }

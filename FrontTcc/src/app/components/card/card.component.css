@@ -6,6 +6,7 @@
     width: 20vw;
     height: 35vh;
     border-radius: 4%;
+    box-shadow: 12px 10px 20px -13px rgba(0,0,0,0.75);
 }
 
 a{
@@ -23,4 +24,50 @@ a{
     font-size: 1.4rem;
     margin: 1rem 0;
     font-weight: bold;
+}
+
+@media only screen and (max-width: 1024px) {
+    .card{
+        width: 30vw;
+        height: 35vh;
+    }
+
+    .imagem img{
+        width: 15vw;
+    }
+    .titulo{
+        font-size: 1rem;
+    }
+}
+
+
+@media only screen and (max-width: 768px) {
+    .card{
+        width: 30vw;
+        height: 35vh;
+    }
+
+    .imagem img{
+        width: 15vw;
+    }
+    .titulo{
+        font-size: 1rem;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .card{
+        width: 50vw;
+        height: 35vh;
+        margin-bottom: 30px;
+    }
+
+    .imagem img{
+        width: 30vw;
+    }
+
+    .titulo{
+        font-size: 1.2rem;
+    }
+
 }

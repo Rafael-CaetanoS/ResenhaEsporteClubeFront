@@ -10,11 +10,12 @@ import { CronometroComponent } from "../../components/cronometro/cronometro.comp
 import { PlacarComponent } from "../../components/placar/placar.component";
 import { inscricaoResponse } from '../../types/inscricao-response.Type';
 import { SorteioComponent } from "../../components/sorteio/sorteio.component";
+import { NavbarprincipalComponent } from "../../components/navbarprincipal/navbarprincipal.component";
 
 @Component({
   selector: 'app-gerenciar-partidas',
   standalone: true,
-  imports: [SidebarComponent, CommonModule, CardTimeComponent, CronometroComponent, PlacarComponent, SorteioComponent],
+  imports: [SidebarComponent, CommonModule, CardTimeComponent, CronometroComponent, PlacarComponent, SorteioComponent, NavbarprincipalComponent],
   templateUrl: './gerenciar-partidas.component.html',
   styleUrls: ['./gerenciar-partidas.component.css', './partidas.css']
 })

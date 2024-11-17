@@ -23,7 +23,7 @@
     flex-direction: column;
     justify-content: center;
     margin: 100px auto;
-    width: 25%;
+    width: 25vw;
 
 }
 
@@ -94,3 +94,76 @@ hr{
     color: var(--branco);
     text-decoration: none;
 }
+
+@media only screen and (max-width: 1440px) {
+    .imagens{
+        width: 50%;
+       }
+
+    .imagem{
+        height: 95vh;
+        width: 70%;
+    }
+
+    #futebol{
+        width: 40%;
+        height: 95vh;
+        position: absolute;
+        margin-left: 19vw;
+    }
+    
+    .formulario{
+        width: 25vw;
+        margin: 6vw auto;
+    }
+}
+
+
+@media only screen and (max-width: 1024px) {
+    .imagens{
+        width: 50%;
+       }
+
+    .imagem{
+        height: 93.6vh;
+        width: 70%;
+    }
+
+    #futebol{
+        width: 40%;
+        height: 93.6vh;
+        position: absolute;
+        margin-left: 19vw;
+    }
+    
+    .formulario{
+        width: 30vw;
+        margin: 10vw auto;
+    }
+}
+
+
+
+@media only screen and (max-width: 768px) {
+    .imagens{
+        display: none;
+       }
+    
+    .formulario{
+        width: 50vw;
+        margin-top: 20vh;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+   .imagens{
+    display: none;
+   }
+
+   .formulario{
+    width: 70vw;
+    margin-top: 40vw;
+   }
+}
+
+

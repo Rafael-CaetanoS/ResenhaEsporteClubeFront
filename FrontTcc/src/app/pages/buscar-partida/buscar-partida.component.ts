@@ -8,12 +8,13 @@ import { EsportesService } from '../../services/esportes.service';
 import { EsporteResponse } from '../../types/esportes-response.type';
 import { ModalComponent } from '../../components/modal/modal.component';
 import { FormsModule } from '@angular/forms';
+import { NavbarprincipalComponent } from "../../components/navbarprincipal/navbarprincipal.component";
 
 
 @Component({
   selector: 'app-buscar-partida',
   standalone: true,
-  imports: [SidebarComponent, CardBuscarPartidaComponent, CommonModule, ModalComponent, FormsModule],
+  imports: [SidebarComponent, CardBuscarPartidaComponent, CommonModule, ModalComponent, FormsModule, NavbarprincipalComponent],
   templateUrl: './buscar-partida.component.html',
   styleUrls: ['./buscar-partida.component.css']
 })

@@ -1,0 +1,75 @@
+/* navbar.component.css */
+
+/* Estilos gerais */
+.navbar {
+    background-color: var(--secundaria);
+    padding: 10px;
+    width: 100vw;
+  }
+  
+  .navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .navbar-links {
+    list-style-type: none;
+    display: flex;
+    padding: 0;
+  }
+  
+  .navbar-links li {
+    margin: 0 10px;
+  }
+  
+  .navbar-links li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+  }
+  
+  /* Menu Hamburguer */
+  .menu-toggle {
+    display: none;
+    cursor: pointer;
+  }
+  
+  .menu-toggle .bar {
+    display: block;
+    width: 25px;
+    height: 4px;
+    margin: 5px 20px;
+    background-color: white;
+  }
+  
+  /* Responsividade: Navbar com menu hambúrguer em telas menores */
+  @media only screen and (max-width: 1024px) {
+    .navbar-links {
+      display: none;
+      flex-direction: column;
+      background-color: var(--secundaria);
+      position: absolute;
+      top: 50px;
+      right: 0;
+      width: 100%;
+      padding: 10px;
+    }
+  
+    .navbar-links.active {
+      display: flex;
+      gap: 6px;
+    }
+  
+    .menu-toggle {
+      display: block; /* Exibe o botão de menu hambúrguer */
+
+    }
+  }
+  

@@ -29,9 +29,9 @@ export class CadastrarAtletaComponent {
   }
 
   senhasIguaisValidator(formGroup: FormGroup) {
-    const senha = formGroup.get('Senha')?.value;
-    const confirmaSenha = formGroup.get('ConfirmaSenha')?.value;
-
+    const senha = formGroup.get('senha')?.value;
+    const confirmaSenha = formGroup.get('confirmaSenha')?.value;
+  
     return senha === confirmaSenha ? null : { senhasNaoConferem: true };
   }
 
@@ -40,6 +40,7 @@ export class CadastrarAtletaComponent {
       this.formCadastro.markAllAsTouched();
       return;
     }
+    
 
     this.service.cadastrarAtleta(this.formCadastro.value).subscribe({
       next: (response) => {
