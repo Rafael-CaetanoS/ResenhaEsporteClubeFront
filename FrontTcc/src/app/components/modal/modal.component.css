@@ -86,3 +86,106 @@ img{
     background-color: rgba(0, 0, 0, 0.5); 
     z-index: 1000;
 }
+@media only screen and (max-width: 480px) {
+
+    .modal{
+        margin: 19px 15px;
+        background-color: var(--principal);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 95vw;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    .topo{
+        margin-top: 10px;
+        text-align: center;
+    }
+    
+    .titulo{
+        font-size: 40px;
+        font-weight: bold;
+        color: var(--detalhes);
+        margin-bottom: 10px;
+    }
+    
+    .descricao{
+        font-size: 25px;
+        color: var(--secundaria);
+        margin-bottom: 20px;
+    }
+    
+    img{
+        width: 50vw;
+        height: 20vh;
+        border-radius: 15px;
+    }
+    .centro{
+        display: flex;
+        justify-content: space-evenly;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .dados{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 10px;
+    }
+    
+    .dados p{
+        font-size: 18px;
+    }
+    
+    .baixo{
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+        gap: 1.5rem;
+        align-items: center;
+        margin-bottom:5px ;
+        font-size: 20px;
+        color: var(--secundaria);
+    }
+    .dados-org{
+        display: flex;
+        gap: 9px;
+        margin-left: 10px;
+    }
+    .botao{
+        cursor: pointer;
+        text-decoration: none;
+        color: #ffff;
+        background-color: var(--detalhes);
+        padding: 9px 9px;
+        margin-left: 10px;
+        border-radius: 5px;
+        border: none;
+        width: 50%;
+        text-align: center;
+    }
+    .container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(0, 0, 0, 0.5); 
+        z-index: 1000;
+    }
+    .button{
+        display: flex;
+        margin-right: 10px;
+        width: 50%;
+    }
+    .p{
+        text-align: center;
+    }
+
+}
+
+
+

@@ -16,3 +16,27 @@ hr{
     flex-wrap: wrap;
     gap: 2rem;
 }
+
+@media only screen and (max-width: 480px) {
+    .titulo{
+        font-size: 2.5rem;
+        color: var(--secundaria);
+        margin-top: 1rem;
+        text-align: center;
+    }
+    
+    hr{
+        border-color:var(--secundaria);
+        width: 98%;
+        margin-bottom: 20px;
+        margin-left: 2%;
+    }
+    
+    .cards{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 3rem;
+        margin-left: 8%;
+        flex-direction: column;
+    }
+}

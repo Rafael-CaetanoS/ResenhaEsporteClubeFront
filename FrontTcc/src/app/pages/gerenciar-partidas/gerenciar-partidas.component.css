@@ -142,8 +142,154 @@ nav{
     background-color: var(--detalhes);
     padding: 10px 2vw;
 }
+@media only screen and (max-width: 480px) {
 
-
-
-
-
+    .titulo{
+        font-size: 3rem;
+        color: var(--secundaria);
+        margin-top: 1rem;
+        text-align: center;
+    }
+    
+    .nav{
+        margin-top: 20px;
+        padding: 10px 0px;
+        background-color: var(--secundaria);
+        width: 105%;
+    }
+    nav{
+        display: flex;
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .link{
+        cursor: pointer;
+        color: var(--branco);
+        padding: 0px 30px;
+        list-style-type: none;
+    }
+    
+    .link:hover{
+        color: var(--detalhes);
+    }
+    
+    .ativo{
+        color: var(--detalhes);
+    }
+    
+    .editar{
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .dados{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 44vh;
+        margin-top: 1vh;
+    }
+    
+    .informacoes{
+        margin: 1rem 3em;
+        margin-left: 6.5rem;
+    }
+    
+    .info{
+        font-size: 1.8rem;
+        margin-bottom:1rem ;
+    }
+    
+    .botoes{
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        margin-top: 0vh;
+    }
+    
+    
+    .botoes button{
+        border: none;
+        cursor: pointer;
+    }
+    
+    .botao{
+        text-decoration: none;
+        color: #ffff;
+        background-color: var(--detalhes);
+        padding: 10px 6vw;
+        border-radius: 5px;
+    }
+    
+    .inscritos{
+        width: 90%;
+        background-color: var(--secundaria);
+        color: var(--branco);
+        margin-top: 10px;
+        margin-left: 22px;
+    }
+    .inscritos h2{
+        margin-top: 2rem;
+        margin-bottom: 20px;
+        font-size: 2rem;
+        text-align: center;
+        color: var(--detalhes);
+    }
+    
+    .inscrito{
+        display: flex;
+        justify-content: space-between;
+        margin: 21px 50px;
+    }
+    
+    .inscrito p, span{
+        font-size: 1.4rem;
+    }
+    
+    .modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+    }
+    
+    .modal-dados{
+        width: 50%;
+        height: 20%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        background-color: var(--principal);
+        border-radius: 20px
+    
+    }
+    
+    .modal-dados p{
+        color: var(--secundaria);
+        font-size: 1.2rem;
+        margin-top: 1.4rem;
+    }
+    
+    .buttons-cancelar{
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+    }
+    
+    .button-cancelar{
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        color: var(--branco);
+        background-color: var(--detalhes);
+        padding: 10px 2vw;
+}
+}
