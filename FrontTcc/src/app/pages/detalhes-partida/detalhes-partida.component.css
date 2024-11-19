@@ -156,12 +156,14 @@ hr{
     .estatisticas{
         margin-top: 15px;
         display: flex;
-        width: 100%;
+        width: 85%;
         height: 70vw;
-        justify-content: space-around
+        justify-content: space-around;
+        flex-direction: column;
+        margin-left: 30px;
     }
     .info{
-        width: 80%;
+        width:100%;
         background-color: rgb(105, 105, 105);
         border-radius: 15px;
     }
@@ -183,6 +185,7 @@ hr{
     .inscrito{
         font-size: 1.2em;
         margin-left: 20px;
+        margin-bottom: 10px;
     }
     
     .botoes{
