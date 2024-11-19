@@ -55,3 +55,63 @@ span{
     padding: 10px;
     border-radius: 5px;
 }
+@media only screen and (max-width: 480px) {
+    .card{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background-color: var(--secundaria);
+        width: 90%;
+        height: 45vh;
+        border-radius: 10px;
+    }
+    
+    
+    span{
+        color: greenyellow;
+        margin: 1vh;
+    }
+    
+    .topo{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 4vh;
+    }
+    
+    
+    .titulo{
+        font-size: 2rem;
+        color: var(--branco);
+    }
+    
+    .baixo{
+        display: flex;
+        flex-direction: column;
+        color: var(--branco);
+        margin-left: 10px;
+    }
+    
+    .baixo p {
+        margin-bottom: 5px;
+        font-size: 1.5rem;
+    }
+    
+    
+    .button{
+        margin: 10px;
+        text-align: center;
+    }
+    
+    .button-modal{
+        border: none;
+        cursor: pointer;
+        width: 80%;
+        text-decoration: none;
+        color: #ffff;
+        background-color: var(--detalhes);
+        padding: 10px;
+        border-radius: 5px;
+    }
+}
