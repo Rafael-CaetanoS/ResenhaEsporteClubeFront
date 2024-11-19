@@ -50,7 +50,7 @@
         </div> 
 
         <div class="times"  *ngIf="activeTab === 'times'">
-            <app-sorteio [inscricoes]="inscricoes"></app-sorteio>
+            <app-sorteio [inscricoes]="inscricoes" [idPartida]="idUrl"></app-sorteio>
         </div>
 
         <div class="partidas" *ngIf="activeTab === 'partidas'"> 

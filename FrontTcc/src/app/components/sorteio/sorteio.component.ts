@@ -3,6 +3,8 @@ import { Component, Input, NgModule, OnInit } from '@angular/core';
 import { inscricaoResponse } from '../../types/inscricao-response.Type';
 import { FormsModule } from '@angular/forms';
 import { CardTimeComponent } from "../card-time/card-time.component";
+import { timeResponse } from '../../types/time-response.type';
+import { GerenciarService } from '../../services/gerenciar.service';
 
 @Component({
   selector: 'app-sorteio',
@@ -14,12 +16,31 @@ import { CardTimeComponent } from "../card-time/card-time.component";
 export class SorteioComponent implements OnInit {
 @Input()
 inscricoes: inscricaoResponse[] = [];
+@Input()
+idPartida: string ="";
+
+constructor(private service: GerenciarService){
+
+}
+
 jogadoresPorTime: number = 5;
-timesGerados: inscricaoResponse[][] = [];
-qtdejogadores = 0
+timesGerados: timeResponse[] = [];
+qtdejogadores = 0;
+timesCadastrados: timeResponse[]=[]
 
 ngOnInit(): void {
   this.qtdejogadores = this.inscricoes.length
+
+  this.service.getTimesPartidas(this.idPartida).subscribe({
+    next: (res) => {
+      this.timesCadastrados = res;
+      console.log(this.timesCadastrados)
+    },
+    error: (error) => {
+      console.error( error);
+    },
+  });
+
 }
 
 embaralharArray<T>(array: T[]): T[] {
@@ -30,14 +51,30 @@ embaralharArray<T>(array: T[]): T[] {
   return array;
 }
 
-sortear(): inscricaoResponse[][] {
+sortear(): timeResponse[] {
 
   this.timesGerados= []
   const atletasEmbaralhados = this.embaralharArray(this.inscricoes);
 
   for (let i = 0; i < atletasEmbaralhados.length; i += this.jogadoresPorTime) {
     const time = atletasEmbaralhados.slice(i, i + this.jogadoresPorTime);
-    this.timesGerados.push(time);
+    const mapearTime: timeResponse = {
+      nomeTime: `Time - ${i +1} `,
+      partida:{
+        idPartida: this.idPartida
+      },
+
+      jogadores: time.map(atleta => ({
+        inscricao: {
+            idInscricao: atleta.atleta.idAtleta,
+            atleta:{
+              nomeAtleta: atleta.atleta.nomeAtleta
+            }
+        }
+    }))
+    }
+    
+    this.timesGerados.push(mapearTime);
   }
   console.log(this.timesGerados);
   return this.timesGerados;
@@ -56,4 +93,17 @@ decrementar() {
     this.jogadoresPorTime--;
   }
 }
+
+salvar() {
+  this.service.salvarPartidas(this.timesGerados).subscribe({
+    next: (res) => {
+      console.log('Times cadastrados com sucesso:', res);
+      alert('Times cadastrados com sucesso!');
+    },
+    error: (error) => {
+      console.error('Erro ao cadastrar os times:', error);
+      alert('Erro ao cadastrar os times. Verifique os dados e tente novamente.');
+    },
+  });
+} 
 }

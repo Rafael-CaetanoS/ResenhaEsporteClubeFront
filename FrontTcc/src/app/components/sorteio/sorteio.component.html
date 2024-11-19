@@ -1,6 +1,7 @@
 <div class="sorteio">
-  <h2>Sortear times</h2>
-  <div class="filtros">
+  <h2 class="titulo">
+    Quantidade de jogadores inscritos: {{qtdejogadores}} </h2>
+  <div class="filtros" *ngIf="timesCadastrados ===null ">
 
     <div class="qtde button-sorteio">
       <button (click)="decrementar()">-</button>
@@ -9,23 +10,27 @@
     </div>
 
     <div>
-      <button class="button-sorteio" (click)="sortear()" >Sortear</button>
+      <button class=" button-sorteio" (click)="sortear()" >Sortear</button>
     </div>
 
     <div>
-      <button class="button-sorteio" >Concluir</button>
+      <button class="button-sorteio" (click)="salvar()">Concluir</button>
     </div>
   </div>
 
-  <div *ngIf="timesGerados.length === 0" style="text-align: center; font-weight: bold; font-size: 1.5rem; margin-top: 1rem; color: red; display: flex; flex-direction: column; gap:20px">
-    <span>Quantidade de jogadores inscritos {{qtdejogadores}} </span>
-    <span>Não tem times cadastrados</span>
+  <div *ngIf=" timesCadastrados === null or timesGerados.length === 0">
+    <h3 class="mensagem">Não há times cadastrados</h3>
   </div>
 
+  <div class="times" *ngIf=" timesCadastrados === null">
+    <app-card-time *ngFor="let time of timesGerados" [times]="[time]"></app-card-time>
+  </div>
 
-  <div class="times">
-    <div *ngFor="let time of timesGerados">
-      <app-card-time [times]="time"></app-card-time>
+  
+  <div *ngIf=" timesCadastrados != null" style="display: flex; flex-direction: column;">
+    <h3 class="mensagem">Times Cadastrados</h3>
+    <div class="times">
+      <app-card-time *ngFor="let time of timesCadastrados" [times]="[time]"></app-card-time>
     </div>
   </div>
   

@@ -1,10 +1,9 @@
-
-<div class="card">
+<div class="card" *ngFor="let time of times">
     <div class="titulo">
-        <h2 class="time">TIME 1</h2>
+        <h2 class="time">{{time.nomeTime}}</h2>
     </div>
 
-    <div class="jogadores">
-        <p *ngFor="let jogador of times" class="jogador">{{ jogador.atleta.nomeAtleta }}</p>
+    <div class="jogadores" >
+        <p  class="jogador" *ngFor="let atleta of time.jogadores" >{{atleta.inscricao.atleta.nomeAtleta}}</p>        
     </div>
 </div>
