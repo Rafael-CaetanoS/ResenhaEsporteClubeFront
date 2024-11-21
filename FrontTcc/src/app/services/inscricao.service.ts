@@ -32,4 +32,13 @@ export class InscricaoService {
     return new Observable<inscricaoResponse[]>();
   }
 
+  cancelarInscricao(idInscricao: string): Observable<any> {
+
+    if (typeof window !== 'undefined') {
+      this.token = sessionStorage.getItem('auth-token');
+    }
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
+    return this.http.put<any>(`${this.apiUrl}/cancelar/${idInscricao}`, {}, { headers });
+  }
+
 }

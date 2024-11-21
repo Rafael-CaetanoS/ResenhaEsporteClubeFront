@@ -36,6 +36,7 @@ export class MinhaPartidasComponent implements OnInit {
           qtdeAtletas: item.qtdeAtletas,
           endereco: item.endereco,
           nomeLocal: item.nomeLocal,
+          cidade: item.cidade,
           atleta: {
             idAtleta: item.atleta.idAtleta,
             nomeAtleta: item.atleta.nomeAtleta,

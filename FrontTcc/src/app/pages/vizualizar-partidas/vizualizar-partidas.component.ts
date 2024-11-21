@@ -35,6 +35,7 @@ constructor(private servicePartida: PartidasService){
           qtdeAtletas: item.qtdeAtletas,
           endereco: item.endereco,
           nomeLocal: item.nomeLocal,
+          cidade: item.cidade,
           atleta: {
             idAtleta: item.atleta.idAtleta,
             nomeAtleta: item.atleta.nomeAtleta,

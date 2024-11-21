@@ -1,4 +1,5 @@
 export type inscricaoResponse = {
+    idInscricao: string;
     partida: {
         idPartida: string
         },

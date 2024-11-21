@@ -11,11 +11,12 @@ import { PlacarComponent } from "../../components/placar/placar.component";
 import { inscricaoResponse } from '../../types/inscricao-response.Type';
 import { SorteioComponent } from "../../components/sorteio/sorteio.component";
 import { NavbarprincipalComponent } from "../../components/navbarprincipal/navbarprincipal.component";
+import { PartidasComponent } from "../../components/partidas/partidas.component";
 
 @Component({
   selector: 'app-gerenciar-partidas',
   standalone: true,
-  imports: [SidebarComponent, CommonModule, CardTimeComponent, CronometroComponent, PlacarComponent, SorteioComponent, NavbarprincipalComponent],
+  imports: [SidebarComponent, CommonModule, SorteioComponent, NavbarprincipalComponent, PartidasComponent],
   templateUrl: './gerenciar-partidas.component.html',
   styleUrls: ['./gerenciar-partidas.component.css', './partidas.css']
 })
@@ -70,13 +71,11 @@ export class GerenciarPartidasComponent implements OnInit {
   }
 
   cancelarPartida(){
-    this.route.paramMap.subscribe(value => {
         this.servicePartida.cancelarPartida(this.idUrl).subscribe({
           next: (response) => {
             this.router.navigate([`/MinhasPartidas`]);
           },
           error: err => console.error('Erro ao buscar partida:', err)
         });
-    })
   }
 }

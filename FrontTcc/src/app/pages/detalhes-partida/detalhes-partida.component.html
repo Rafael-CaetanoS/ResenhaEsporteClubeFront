@@ -46,8 +46,20 @@
 
                 <div class="botoes">
                     <a class="botao" [routerLink]="['/Vizualizarpartida']">voltar</a>
-                    <button class="botao">Cancelar Inscricao</button>
+                    <button class="botao" (click)="abrirModal()">Cancelar inscrição</button>
                 </div>
+
+                
+                <div class="modal" *ngIf="mostrarModal">
+                    <div class="modal-dados">
+                        <p>Deseja cancelar inscrição?</p>
+                        <div class="buttons-cancelar">
+                            <button class="button-cancelar" (click)="fecharModal()">Fechar</button>
+                            <button class="button-cancelar" (click)="cancelarinscricao()">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+
             </div>
          </div> 
     </div>

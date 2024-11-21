@@ -99,6 +99,53 @@ hr{
     border-radius: 5px;
     padding: 10px;
 }
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.modal-dados{
+    width: 50%;
+    height: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-color: var(--principal);
+    border-radius: 20px
+
+}
+
+.modal-dados p{
+    color: var(--secundaria);
+    font-size: 1.2rem;
+    margin-top: 1.4rem;
+}
+
+.buttons-cancelar{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.button-cancelar{
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    color: var(--branco);
+    background-color: var(--detalhes);
+    padding: 10px 2vw;
+}
+
 @media only screen and (max-width: 480px) {
 
     .titulo{
