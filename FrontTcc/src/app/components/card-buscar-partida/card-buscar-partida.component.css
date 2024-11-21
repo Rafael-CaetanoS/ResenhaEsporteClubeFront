@@ -4,7 +4,6 @@
     justify-content: space-between;
     background-color: var(--secundaria);
     width: 17vw;
-    height: 45vh;
     border-radius: 10px;
 }
 
@@ -62,9 +61,9 @@ span{
         flex-direction: column;
         justify-content: space-between;
         background-color: var(--secundaria);
-        width: 90%;
-        height: 45vh;
+        width: 100%;
         border-radius: 10px;
+        margin-bottom: 10px;
     }
     
     
