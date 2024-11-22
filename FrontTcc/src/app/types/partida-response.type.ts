@@ -9,6 +9,7 @@ export type PartidaResponse = {
         qtdeAtletas: string,
         endereco:string,
         nomeLocal:string,
+        cidade:string,
         atleta: {
             idAtleta: string,
             nomeAtleta:string
@@ -16,5 +17,8 @@ export type PartidaResponse = {
         esporte:{
             idEsporte:string,
             nomeEsporte:string
+        }
+        statusPartida:{
+            idStatusPartida:string
         }
 }

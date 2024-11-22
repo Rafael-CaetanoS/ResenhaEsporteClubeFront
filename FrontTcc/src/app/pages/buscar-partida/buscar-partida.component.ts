@@ -24,6 +24,7 @@ export class BuscarPartidaComponent implements OnInit {
   partidasFiltradas: PartidaResponse[] = [];
   partidasParaExibir: PartidaResponse[] = [];
   esporteSelecionado: string | null = ""; 
+  cidadeSelecionada: string | null = ""; 
 
   mostrarModal = false;
   partidaSelecionada: PartidaResponse | null = null;
@@ -62,6 +63,7 @@ export class BuscarPartidaComponent implements OnInit {
           qtdeAtletas: item.qtdeAtletas,
           endereco: item.endereco,
           nomeLocal: item.nomeLocal,
+          cidade: item.cidade,
           atleta: {
             idAtleta: item.atleta.idAtleta,
             nomeAtleta: item.atleta.nomeAtleta,
@@ -70,6 +72,9 @@ export class BuscarPartidaComponent implements OnInit {
             idEsporte: item.esporte.idEsporte,
             nomeEsporte: item.esporte.nomeEsporte,
           },
+          statusPartida:{
+            idStatusPartida: item.statusPartida.idStatusPartida
+          }
         }));
         console.log(this.partidas);
       },
@@ -87,6 +92,17 @@ export class BuscarPartidaComponent implements OnInit {
       this.partidasFiltradas = this.partidasFiltradas.filter(
         (partida) => partida.esporte.idEsporte == this.esporteSelecionado
       );
+    
+    if(this.cidadeSelecionada){
+      this.partidasFiltradas = this.partidasFiltradas.filter(
+        (partida) => partida.cidade == this.cidadeSelecionada
+      );
+    }
+    
+    this.partidasParaExibir = this.partidasFiltradas.filter(
+      (partida) => new Date(partida.data) >= this.dataAtual
+    );
+
     }
 
     this.partidasParaExibir = query ? this.partidasFiltradas.filter((partida) =>new Date(partida.data) >= this.dataAtual) : this.partidas.filter((partida) =>new Date(partida.data) >= this.dataAtual);
@@ -100,11 +116,36 @@ export class BuscarPartidaComponent implements OnInit {
     } else {
       this.partidasFiltradas = [...this.partidas];
     }
+    if(this.cidadeSelecionada){
+      this.partidasFiltradas = this.partidasFiltradas.filter(
+        (partida) => partida.cidade == this.cidadeSelecionada
+      );
+    }
 
     this.partidasParaExibir = this.partidasFiltradas.filter(
       (partida) => new Date(partida.data) >= this.dataAtual
     );
   }
+
+  filtrarPorCidade(): void {
+    if (this.cidadeSelecionada) {
+      this.partidasFiltradas = this.partidas.filter(
+        (partida) => partida.cidade === this.cidadeSelecionada,
+      );
+    } else {
+      this.partidasFiltradas = [...this.partidas];
+    }
+
+    if (this.esporteSelecionado) {
+      this.partidasFiltradas = this.partidasFiltradas.filter(
+        (partida) => partida.esporte.idEsporte == this.esporteSelecionado
+      );
+    }
+    this.partidasParaExibir = this.partidasFiltradas.filter(
+      (partida) => new Date(partida.data) >= this.dataAtual
+    );
+  }
+
 
 
   abrirModal(partida: PartidaResponse) {

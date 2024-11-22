@@ -16,7 +16,8 @@
             local="{{partida?.nomeLocal}}"
             idEsporte="{{partida.esporte.idEsporte}}"
             idPartida="{{partida.idPartida}}"
-            nomeEsporte="{{partida.esporte.nomeEsporte}}">
+            nomeEsporte="{{partida.esporte.nomeEsporte}}"
+            cidade="{{partida.cidade}}">
           </app-card-buscar-partida>
           </div>
           <div *ngIf="partidas == null ||  partidas.length === 0 ">

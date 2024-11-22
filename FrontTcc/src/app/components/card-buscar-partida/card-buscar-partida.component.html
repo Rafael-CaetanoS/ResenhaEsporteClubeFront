@@ -1,6 +1,6 @@
 <div class="container">
     <div class="card">
-        <span>20 km</span>
+       
         <div class="topo">
             <img src="../../../assets/images/{{imagem}}" alt="{{nomeEsporte}}">
             <h1 class="titulo">{{titulo}}</h1>
@@ -10,6 +10,7 @@
             <p>Data: {{ data | date: 'dd/MM/yyyy' }}</p>
             <p>Horário: {{horario}}</p>
             <p>Local: {{local}}</p>
+            <p>Cidade: {{cidade | uppercase}}</p>
 
         </div>
 

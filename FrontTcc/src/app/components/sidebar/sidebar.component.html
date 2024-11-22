@@ -31,7 +31,12 @@
         </div>
 
         <div class="opcoes">
-           <img src="../../../assets/images/engicon.svg" alt="">
-        </div>
+            <img id="eng" src="../../../assets/images/engicon.svg" alt="opções" (click)="toggleMenu()">
+            
+            <ul class="navbar-links" [ngClass]="{'active': isMenuOpen}">
+               <li><a [routerLink]="['/Inicio']">Editar Perfil</a></li>
+               <li (click)="sair()"><a >Sair</a></li>
+            </ul>
+         </div>
     </div>
 </div>

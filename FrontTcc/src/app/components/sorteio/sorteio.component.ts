@@ -66,7 +66,7 @@ sortear(): timeResponse[] {
 
       jogadores: time.map(atleta => ({
         inscricao: {
-            idInscricao: atleta.atleta.idAtleta,
+            idInscricao: atleta.idInscricao,
             atleta:{
               nomeAtleta: atleta.atleta.nomeAtleta
             }

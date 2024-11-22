@@ -33,6 +33,7 @@ export class CriarPartidaComponent implements OnInit {
       idEsporte: ['', Validators.required],
       endereco: ['', Validators.required],
       nomeLocal: ['', Validators.required],
+      cidade:['', Validators.required]
     });
   }
 
@@ -70,6 +71,7 @@ export class CriarPartidaComponent implements OnInit {
         qtdeAtletas: this.formPartida.value.qtdeAtletas,
         endereco: this.formPartida.value.endereco,
         nomeLocal: this.formPartida.value.nomeLocal,
+        cidade: this.formPartida.value.cidade,
         atleta: { 
           idAtleta: this.idAtleta ? this.idAtleta : '',  
           nomeAtleta: ''  
@@ -77,7 +79,10 @@ export class CriarPartidaComponent implements OnInit {
         esporte: {
           idEsporte: this.formPartida.value.idEsporte,
           nomeEsporte: '' 
-        }
+        },
+          statusPartida:{
+            idStatusPartida: "1"
+          }
       };
     
       console.log(partidaData)

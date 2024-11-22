@@ -19,6 +19,7 @@ urlAtual: string = '';
 @Input() idEsporte:string ="";
 @Input() idPartida:string = ""
 @Input() nomeEsporte:string ="";
+@Input() cidade:string = "";
 
 @Output() selecionarPartida = new EventEmitter<void>();
 @Output() abrirModal = new EventEmitter<void>();

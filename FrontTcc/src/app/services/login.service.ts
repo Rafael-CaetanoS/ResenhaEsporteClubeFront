@@ -21,4 +21,10 @@ export class LoginService {
       })
     );
   }
+
+  sair(): void {
+    sessionStorage.removeItem("auth-token");
+    sessionStorage.removeItem("name");
+    sessionStorage.removeItem("idAtleta");
+  }
 }

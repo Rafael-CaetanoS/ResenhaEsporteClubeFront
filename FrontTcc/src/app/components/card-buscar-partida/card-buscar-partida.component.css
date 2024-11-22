@@ -13,11 +13,12 @@ span{
 }
 
 .topo{
+    margin-top: 30px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-bottom: 13vh;
+    margin-bottom: 10vh;
 }
 
 
