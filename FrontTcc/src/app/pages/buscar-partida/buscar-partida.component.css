@@ -49,6 +49,64 @@ h3{
     font-size: 2em;
     color: var(--detalhes);
 }
+@media only screen and (max-width: 768px) {
+    .titulo{
+        font-size: 2rem;
+        color: var(--secundaria);
+        margin-top: 1rem;
+        text-align: center;
+    }
+    
+    hr{
+        border-color:var(--secundaria);
+        width: 100%; 
+        margin-bottom: 20px;
+        margin-left: 0px;
+    }
+    
+    .filtros{
+        display: flex;
+        margin-bottom: 20px;
+        align-items: center;
+        margin-left: 10px;
+    }
+    
+    .filtros p {
+        color: var(--secundaria);
+        margin-left: 3vw;
+        margin-right: 1rem ;
+    }
+    
+    #pesquisa{
+        width: 30vw;
+        margin-left: 0rem;
+        border-radius: 20px;
+        border: none;
+        padding: 7px;
+    }
+    
+    .filtro{
+        border-radius: 10px;
+        border: none;
+        padding: 7px;
+    }
+    
+    .cards{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        width: 85%;
+        margin-left: 4rem;
+        flex-direction: column;
+    }
+    
+    h3{
+        margin-top: 2em;
+        text-align: center;
+        font-size: 2em;
+        color: var(--detalhes);
+    }
+}
 
 @media only screen and (max-width: 480px) {
     .titulo{
