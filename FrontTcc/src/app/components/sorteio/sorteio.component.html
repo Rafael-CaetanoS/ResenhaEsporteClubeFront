@@ -20,10 +20,12 @@
 
   <div *ngIf=" timesCadastrados === null or timesGerados.length === 0">
     <h3 class="mensagem">Não há times cadastrados</h3>
+    <span *ngIf="aviso" class="mensagem">Número de times insuficientes</span>
   </div>
 
   <div class="times" *ngIf=" timesCadastrados === null">
     <app-card-time *ngFor="let time of timesGerados" [times]="[time]"></app-card-time>
+
   </div>
 
   

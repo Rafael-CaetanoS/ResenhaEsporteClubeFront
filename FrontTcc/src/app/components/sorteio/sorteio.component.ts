@@ -19,6 +19,8 @@ inscricoes: inscricaoResponse[] = [];
 @Input()
 idPartida: string ="";
 
+aviso: boolean = false;
+
 constructor(private service: GerenciarService){
 
 }
@@ -95,6 +97,12 @@ decrementar() {
 }
 
 salvar() {
+  this.aviso =false
+  if(this.timesGerados.length < 2){
+    this.aviso = true;
+    return
+  }
+
   this.service.salvarPartidas(this.timesGerados).subscribe({
     next: (res) => {
       console.log('Times cadastrados com sucesso:', res);

@@ -62,7 +62,16 @@ export class EditarComponent implements OnInit{
               descricao: partida.descricao,
               horaInicio: partida.horaInicio,
               horaFim: partida.horaFim,
-              data: partida.data,
+              data: partida.data
+              ? (() => {
+                  const data = new Date(partida.data);
+                  const localData = new Date(data.getTime() - data.getTimezoneOffset() * 60000); // Ajusta o fuso horário
+                  const ano = localData.getFullYear();
+                  const mes = String(localData.getMonth() + 1).padStart(2, '0');
+                  const dia = String(localData.getDate()).padStart(2, '0');
+                  return `${ano}-${mes}-${dia}`;
+                })()
+              : '',
               faixaEtaria: partida.faixaEtaria,
               qtdeAtletas: partida.qtdeAtletas,
               endereco: partida.endereco,
@@ -88,9 +97,13 @@ export class EditarComponent implements OnInit{
         idPartida: this.partida.idPartida, 
         titulo: this.formPartida.value.titulo,
         descricao: this.formPartida.value.descricao,
-        horaInicio: this.formPartida.value.horaInicio,
+        horaInicio: this.formPartida.value.horaInicio ,
         horaFim: this.formPartida.value.horaFim,
-        data: this.formPartida.value.data,
+        data: (() => {
+          const dataAtual = new Date(this.formPartida.value.data); 
+          dataAtual.setDate(dataAtual.getDate() + 1);
+          return dataAtual; 
+        })(),
         faixaEtaria: this.formPartida.value.faixaEtaria,
         qtdeAtletas: this.formPartida.value.qtdeAtletas,
         endereco: this.formPartida.value.endereco,
