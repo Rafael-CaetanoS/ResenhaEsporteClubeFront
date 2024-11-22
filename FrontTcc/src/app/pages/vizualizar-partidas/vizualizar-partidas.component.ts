@@ -44,6 +44,9 @@ constructor(private servicePartida: PartidasService){
             idEsporte: item.esporte.idEsporte,
             nomeEsporte: item.esporte.nomeEsporte,
           },
+          statusPartida:{
+            idStatusPartida: "1"
+          }
         }));
         console.log(this.partidas);
       },

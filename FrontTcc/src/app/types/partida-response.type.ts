@@ -18,4 +18,7 @@ export type PartidaResponse = {
             idEsporte:string,
             nomeEsporte:string
         }
+        statusPartida:{
+            idStatusPartida:string
+        }
 }

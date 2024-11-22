@@ -1,20 +1,35 @@
+import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit, Pipe, PipeTransform } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { LoginService } from '../../services/login.service';
 
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, CommonModule],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.css'
 })
 export class SidebarComponent implements OnInit {
-  
+  isMenuOpen: boolean = false;  
   nomeAtleta: string | null = null;
+
+  constructor(private service:LoginService, private router: Router){
+
+  }
+
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen; 
+  }
 
   ngOnInit(): void {
     if (typeof window !== 'undefined') {
       this.nomeAtleta = sessionStorage.getItem('name');
     }
+  }
+
+  sair(){
+    this.service.sair();
+    this.router.navigate(['']);
   }
 }

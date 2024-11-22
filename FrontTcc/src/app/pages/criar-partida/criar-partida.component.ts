@@ -79,7 +79,10 @@ export class CriarPartidaComponent implements OnInit {
         esporte: {
           idEsporte: this.formPartida.value.idEsporte,
           nomeEsporte: '' 
-        }
+        },
+          statusPartida:{
+            idStatusPartida: "1"
+          }
       };
     
       console.log(partidaData)

@@ -20,13 +20,15 @@
                     <p class="info">Horário Inicío:{{partida.horaInicio}}</p>
                     <p class="info">Horário fim:{{partida.horaFim}}</p>
                     <p class="info">Local: {{partida.nomeLocal}}</p>
+                    <p class="info">Cidade: {{partida.cidade}}</p>
                     <p class="info">Esporte:{{partida.esporte.nomeEsporte}}</p>
                 </div>
 
                 <div class="botoes">
-                <a class="botao">Editar Partida </a>
-                <button class="botao" (click)="abrirModal()">Cancelar Partida</button>
+                    <a class="botao" [routerLink]="['/GerenciarPartidas/Editar',partida.idPartida]">Editar Partida </a>
+                    <button class="botao" (click)="abrirModal()">Cancelar Partida</button>
                 </div>
+
 
                 <div class="modal" *ngIf="mostrarModal">
                     <div class="modal-dados">

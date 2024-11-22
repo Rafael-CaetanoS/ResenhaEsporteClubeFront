@@ -46,7 +46,7 @@
 
                 <div class="botoes">
                     <a class="botao" [routerLink]="['/Vizualizarpartida']">voltar</a>
-                    <button class="botao" (click)="abrirModal()">Cancelar inscrição</button>
+                    <button class="botao" (click)="abrirModal()" *ngIf="sumirBotao()">Cancelar inscrição</button>
                 </div>
 
                 

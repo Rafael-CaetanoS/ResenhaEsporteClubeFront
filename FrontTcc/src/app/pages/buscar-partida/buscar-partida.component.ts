@@ -72,6 +72,9 @@ export class BuscarPartidaComponent implements OnInit {
             idEsporte: item.esporte.idEsporte,
             nomeEsporte: item.esporte.nomeEsporte,
           },
+          statusPartida:{
+            idStatusPartida: item.statusPartida.idStatusPartida
+          }
         }));
         console.log(this.partidas);
       },

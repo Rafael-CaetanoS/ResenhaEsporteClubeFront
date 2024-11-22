@@ -9,6 +9,8 @@ import { LoginComponent } from './pages/login/login.component';
 import { MinhaPartidasComponent } from './pages/minhas-partidas/minhas-partidas.component';
 import { VizualizarPartidasComponent } from './pages/vizualizar-partidas/vizualizar-partidas.component';
 import { NavbarprincipalComponent } from './components/navbarprincipal/navbarprincipal.component';
+import path from 'path';
+import { EditarComponent } from './components/editar/editar.component';
 
 export const routes: Routes = [
     {path: '', 
@@ -43,14 +45,14 @@ export const routes: Routes = [
     },
 
     {
+        path:"GerenciarPartidas/Editar/:id", component:EditarComponent
+    },
+
+    {
         path:'MinhasPartidas', component : MinhaPartidasComponent
     },
     
     {
         path:'DetalhesPartida/:id', component : DetalhesPartidaComponent
     },
-    {
-        path:'teste', component: NavbarprincipalComponent
-    }
-    
 ];

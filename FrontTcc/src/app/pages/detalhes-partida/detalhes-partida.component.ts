@@ -64,6 +64,16 @@ constructor(private servicePartida: PartidasService, private serviceInscritos: I
     this.mostrarModal = false;
   }
 
+  sumirBotao(){
+    if (typeof window !== 'undefined') {
+      this.idAtleta = sessionStorage.getItem('idAtleta');
+        if(this.idAtleta == this.partida.atleta.idAtleta){
+          return false;
+        }    
+    }
+    return true;
+  }
+
   cancelarinscricao(){
     if (typeof window !== 'undefined') {
       this.idAtleta = sessionStorage.getItem('idAtleta');
