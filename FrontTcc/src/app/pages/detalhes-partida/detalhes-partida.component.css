@@ -146,6 +146,114 @@ hr{
     padding: 10px 2vw;
 }
 
+@media only screen and (max-width: 768px) {
+
+    .titulo{
+    font-size: 2rem;
+    color: var(--secundaria);
+    margin-top: 1rem;
+    text-align: center;
+    }
+    
+    hr{
+        border-color:var(--secundaria);
+        width: 98%;
+        margin-bottom: 20px;
+    }
+    .card {
+        background-color: var(--secundaria);
+        width: 90%;
+        padding: 0vw;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        margin-left: 45px;
+    }
+    
+    .nomePartida{
+        font-size: 2rem;
+        color: var(--detalhes);
+        font-weight: 100;
+        padding: 20px;
+    }
+    
+    .carousel-container {
+        position: relative;
+        width: 100%;
+        margin-bottom: 20px;
+        overflow: hidden;
+    }
+    
+    #divisoria{
+        margin-top: 20px;
+        border-color:var(--branco);
+        width: 98%;
+    }
+    
+    .dados{
+        display: flex;
+        justify-content: space-around;
+        text-align: center;
+    }
+    
+    .dado p {
+        font-size: 1.2rem;
+        color: var(--branco);
+    }
+    
+    .estatisticas{
+        margin-top: 15px;
+        display: flex;
+        width: 85%;
+        height: 70vw;
+        justify-content: space-around;
+        flex-direction: column;
+        margin-left: 53px;
+    }
+    .info{
+        width:100%;
+        background-color: rgb(105, 105, 105);
+        border-radius: 15px;
+    }
+    .titulo-info{
+        text-align: center;
+        margin-top: 20px;
+        font-size: 1.2em;
+        text-transform: uppercase;
+    }
+    
+    .inscritos{
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap; 
+        max-height: 14vw;
+    }
+    
+    .inscrito{
+        font-size: 1.2em;
+        margin-left: 20px;
+        margin-bottom: 10px;
+    }
+    
+    .botoes{
+        display: flex;
+        justify-content: end;
+        gap: 8px;
+        margin-top: 1em;
+        margin-right: 2rem;
+        margin-bottom: 20px;
+    }
+    
+    .botao{
+        cursor: pointer;
+        text-decoration: none;
+        border: none;
+        background-color: var(--detalhes);
+        color: var(--branco);
+        border-radius: 5px;
+        padding: 10px;
+}
+}
 @media only screen and (max-width: 480px) {
 
     .titulo{

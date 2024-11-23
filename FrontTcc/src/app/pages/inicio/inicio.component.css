@@ -36,7 +36,7 @@
     }
 
     .titulo1{
-        font-size: 8vw;
+        font-size: 7vw;
         text-align: center;
         color: var(--secundaria);
         font-weight: bold;
@@ -47,7 +47,7 @@
     }
 
     .titulo2{
-        font-size: 7vw;
+        font-size: 6vw;
         text-align: center;
         color: var(--secundaria);
         font-weight: bold;
@@ -81,5 +81,18 @@
     .pergunta{
         margin-bottom: 10vw;
     }
-}
 
+    .titulo1{
+        font-size: 8vw;
+        text-align: center;
+        color: var(--secundaria);
+        font-weight: bold;
+    }
+
+    .titulo2{
+        font-size: 7vw;
+        text-align: center;
+        color: var(--secundaria);
+        font-weight: bold;
+    }
+}

@@ -124,20 +124,21 @@ h3{
     }
     
     .filtros{
-        display: flex;
-        margin-bottom: 20px;
-        align-items: center;
-        margin-left: 10px;
+        display: flex ;
+                margin-bottom: 20px;
+                align-items: stretch;
+                margin-left: 10px;
+                flex-direction: column;
+                gap: 7px;
     }
     
     .filtros p {
         color: var(--secundaria);
-        margin-left: 3vw;
-        margin-right: 1rem ;
+        margin-left: 0vw;
     }
     
     #pesquisa{
-        width: 30vw;
+        width: 98vw;
         margin-left: 0rem;
         border-radius: 20px;
         border: none;

@@ -5,14 +5,15 @@
 }
 
 .titulo{
-text-align: start;
-font-weight: bold;
-font-size: 1.5rem;
-margin-top: 1rem;
-color: var(--detalhes);
-display: flex; 
-flex-direction: column;
-gap:20px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    color: var(--detalhes);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 20px;
 }
 
 

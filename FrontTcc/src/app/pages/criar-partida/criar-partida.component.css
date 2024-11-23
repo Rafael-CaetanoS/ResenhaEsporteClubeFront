@@ -107,6 +107,14 @@ textarea{
     .content{
         width: 104% !important;
     }
+    .texto{
+        color: var(--secundaria);
+        font-size: 1.7rem;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        margin-left: 3rem;
+        text-align: center;
+    }
 
 }
 
@@ -115,10 +123,9 @@ textarea{
     .texto{
         color: var(--secundaria);
         font-size: 1.6rem;
-        margin-top: 2rem;
-        margin-bottom: 2rem;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
         text-align: start;
-
     }
 
     .formulario{

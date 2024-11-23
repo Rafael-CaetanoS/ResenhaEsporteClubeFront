@@ -25,38 +25,6 @@ hr{
     width: 100%;
     max-width: 600px;
 }
-@media only screen and (max-width: 480px) {
-
-    .titulo{
-        font-size: 2rem;
-        color: var(--secundaria);
-        margin-top: 1rem;
-        text-align: center;;
-    }
-    
-    hr{
-        border-color:var(--secundaria);
-        width: 102%;
-        margin-bottom: 20px;
-        margin-left: 0px;
-    }
-    .cards{
-        display: flex;
-        gap: 0rem;
-        width: 82%;
-        flex-direction: column;
-        margin-left: 35px;
-    }
-    .card {
-        background-color: #bdbdbd;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        margin: 20px auto;
-        width: 100%;
-        max-width: 600px;
-    }
-}
 @media only screen and (max-width: 768px) {
 
     .titulo{
@@ -78,6 +46,38 @@ hr{
         width: 82%;
         flex-direction: column;
         margin-left: 70px;
+    }
+    .card {
+        background-color: #bdbdbd;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        margin: 20px auto;
+        width: 100%;
+        max-width: 600px;
+    }
+}
+@media only screen and (max-width: 480px) {
+
+    .titulo{
+        font-size: 2rem;
+        color: var(--secundaria);
+        margin-top: 1rem;
+        text-align: center;;
+    }
+    
+    hr{
+        border-color:var(--secundaria);
+        width: 102%;
+        margin-bottom: 20px;
+        margin-left: 0px;
+    }
+    .cards{
+        display: flex;
+        gap: 0rem;
+        width: 82%;
+        flex-direction: column;
+        margin-left: 35px;
     }
     .card {
         background-color: #bdbdbd;
