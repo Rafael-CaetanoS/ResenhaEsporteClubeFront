@@ -1,9 +1,9 @@
-// LoginComponent.ts
-import { Component } from '@angular/core';
-import { NavbarComponent } from '../../components/navbar/navbar.component';
-import { Router, RouterLink } from '@angular/router';
-import { FormControl, FormGroup, FormBuilder, FormsModule, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router, RouterLink } from '@angular/router';
+import Swal from 'sweetalert2'; // Importação do SweetAlert2
+import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { LoginService } from '../../services/login.service';
 
 @Component({
@@ -11,7 +11,7 @@ import { LoginService } from '../../services/login.service';
   standalone: true,
   imports: [NavbarComponent, RouterLink, FormsModule, CommonModule, ReactiveFormsModule],
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'] 
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
   loginForm!: FormGroup;
@@ -30,17 +30,35 @@ export class LoginComponent {
 
         const nomeAtleta = response.name;
 
-        // localStorage.setItem('nomeAtleta', nomeAtleta);
+        // Salvar nome ou informações do usuário no localStorage, se necessário
+        localStorage.setItem('nomeAtleta', nomeAtleta);
+        localStorage.setItem('idAtleta', response.idAtleta);
 
-        this.router.navigate(['/Inicio']);
+        // Exibe notificação de sucesso
+        Swal.fire({
+          icon: 'success',
+          title: 'Login bem-sucedido!',
+          text: `Bem-vindo, ${nomeAtleta}!`,
+          confirmButtonText: 'OK'
+        }).then(() => {
+          this.router.navigate(['/Inicio']); // Redireciona para a página inicial
+        });
       },
       error: (error) => {
         console.error('Erro ao fazer login:', error);
+
+        // Exibe notificação de erro
+        Swal.fire({
+          icon: 'error',
+          title: 'Erro no login',
+          text: 'E-mail ou senha inválidos. Tente novamente.',
+          confirmButtonText: 'OK'
+        });
       }
     });
   }
 
-  /*logout(){
+  /*logout() {
     localStorage.removeItem('nomeAtleta');
     localStorage.removeItem('idAtleta');
     this.router.navigate(['/login']); // Redireciona para a página de login

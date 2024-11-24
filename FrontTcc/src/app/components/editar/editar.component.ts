@@ -1,14 +1,14 @@
-import { Component, Input, input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { EsporteResponse } from '../../types/esportes-response.type';
+import { CommonModule } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import Swal from 'sweetalert2';
 import { EsportesService } from '../../services/esportes.service';
 import { PartidasService } from '../../services/partidas.service';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { EsporteResponse } from '../../types/esportes-response.type';
 import { PartidaResponse } from '../../types/partida-response.type';
-import { SidebarComponent } from "../sidebar/sidebar.component";
 import { NavbarprincipalComponent } from "../navbarprincipal/navbarprincipal.component";
-import { CommonModule } from '@angular/common';
-
+import { SidebarComponent } from "../sidebar/sidebar.component";
 
 @Component({
   selector: 'app-editar',
@@ -17,14 +17,18 @@ import { CommonModule } from '@angular/common';
   templateUrl: './editar.component.html',
   styleUrl: './editar.component.css'
 })
-export class EditarComponent implements OnInit{
-  partida! : PartidaResponse
-  formPartida!: FormGroup
+export class EditarComponent implements OnInit {
+  partida!: PartidaResponse;
+  formPartida!: FormGroup;
   esporte: EsporteResponse[] = [];
 
-  constructor(private formBuilder: FormBuilder, private serviceEsporte: EsportesService, private servicePartida: PartidasService, private router: Router, private route: ActivatedRoute,) {
-
-  }
+  constructor(
+    private formBuilder: FormBuilder,
+    private serviceEsporte: EsportesService,
+    private servicePartida: PartidasService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
     this.formPartida = this.formBuilder.group({
@@ -50,7 +54,7 @@ export class EditarComponent implements OnInit{
       },
       error: (err) => console.error('Erro ao buscar esportes:', err),
     });
-  
+
     this.route.paramMap.subscribe((value) => {
       const id = value.get('id');
       if (id) {
@@ -63,15 +67,15 @@ export class EditarComponent implements OnInit{
               horaInicio: partida.horaInicio,
               horaFim: partida.horaFim,
               data: partida.data
-              ? (() => {
-                  const data = new Date(partida.data);
-                  const localData = new Date(data.getTime() - data.getTimezoneOffset() * 60000); // Ajusta o fuso horário
-                  const ano = localData.getFullYear();
-                  const mes = String(localData.getMonth() + 1).padStart(2, '0');
-                  const dia = String(localData.getDate()).padStart(2, '0');
-                  return `${ano}-${mes}-${dia}`;
-                })()
-              : '',
+                ? (() => {
+                    const data = new Date(partida.data);
+                    const localData = new Date(data.getTime() - data.getTimezoneOffset() * 60000); // Ajusta o fuso horário
+                    const ano = localData.getFullYear();
+                    const mes = String(localData.getMonth() + 1).padStart(2, '0');
+                    const dia = String(localData.getDate()).padStart(2, '0');
+                    return `${ano}-${mes}-${dia}`;
+                  })()
+                : '',
               faixaEtaria: partida.faixaEtaria,
               qtdeAtletas: partida.qtdeAtletas,
               endereco: partida.endereco,
@@ -85,54 +89,58 @@ export class EditarComponent implements OnInit{
       }
     });
   }
-    atualizar() {
-  
-      // if (this.formPartida.invalid) {
-      //   this.formPartida.markAllAsTouched();
-      //   return;
-      // }
-      this.formPartida.value.data = new Date(this.formPartida.value.data).toISOString();
-      
-      const partidaData: PartidaResponse = {
-        idPartida: this.partida.idPartida, 
-        titulo: this.formPartida.value.titulo,
-        descricao: this.formPartida.value.descricao,
-        horaInicio: this.formPartida.value.horaInicio ,
-        horaFim: this.formPartida.value.horaFim,
-        data: (() => {
-          const dataAtual = new Date(this.formPartida.value.data); 
-          dataAtual.setDate(dataAtual.getDate() + 1);
-          return dataAtual; 
-        })(),
-        faixaEtaria: this.formPartida.value.faixaEtaria,
-        qtdeAtletas: this.formPartida.value.qtdeAtletas,
-        endereco: this.formPartida.value.endereco,
-        nomeLocal: this.formPartida.value.nomeLocal,
-        cidade: this.formPartida.value.cidade,
-        atleta: { 
-          idAtleta: this.partida.atleta.idAtleta,  
-          nomeAtleta: ''  
-        },
-        esporte: {
-          idEsporte: this.formPartida.value.idEsporte,
-          nomeEsporte: '' 
-        },
-        statusPartida:{
-          idStatusPartida: this.partida.statusPartida.idStatusPartida
-        }
-      };
-      console.log(partidaData)
-      this.servicePartida.atualizarPartida(partidaData).subscribe({
 
-        next: (response) => {
-          console.log('Cadastro realizado com sucesso:', response);
-          alert('Cadastro realizado com sucesso!');
+  atualizar() {
+    this.formPartida.value.data = new Date(this.formPartida.value.data).toISOString();
+
+    const partidaData: PartidaResponse = {
+      idPartida: this.partida.idPartida,
+      titulo: this.formPartida.value.titulo,
+      descricao: this.formPartida.value.descricao,
+      horaInicio: this.formPartida.value.horaInicio,
+      horaFim: this.formPartida.value.horaFim,
+      data: (() => {
+        const dataAtual = new Date(this.formPartida.value.data);
+        dataAtual.setDate(dataAtual.getDate() + 1);
+        return dataAtual;
+      })(),
+      faixaEtaria: this.formPartida.value.faixaEtaria,
+      qtdeAtletas: this.formPartida.value.qtdeAtletas,
+      endereco: this.formPartida.value.endereco,
+      nomeLocal: this.formPartida.value.nomeLocal,
+      cidade: this.formPartida.value.cidade,
+      atleta: {
+        idAtleta: this.partida.atleta.idAtleta,
+        nomeAtleta: ''
+      },
+      esporte: {
+        idEsporte: this.formPartida.value.idEsporte,
+        nomeEsporte: ''
+      },
+      statusPartida: {
+        idStatusPartida: this.partida.statusPartida.idStatusPartida
+      }
+    };
+
+    this.servicePartida.atualizarPartida(partidaData).subscribe({
+      next: (response) => {
+        Swal.fire({
+          title: 'Sucesso!',
+          text: 'Cadastro realizado com sucesso!',
+          icon: 'success',
+          confirmButtonText: 'OK'
+        }).then(() => {
           this.router.navigate([`/GerenciarPartidas/${response.idPartida}`]);
-        },
-        error: (error) => {
-          console.error('Erro ao cadastrar:', error);
-          alert('Erro ao cadastrar. Tente novamente mais tarde.');
-        }
-      });
-    }
+        });
+      },
+      error: (error) => {
+        Swal.fire({
+          title: 'Erro!',
+          text: 'Erro ao cadastrar. Tente novamente mais tarde.',
+          icon: 'error',
+          confirmButtonText: 'OK'
+        });
+      }
+    });
+  }
 }

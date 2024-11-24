@@ -1,13 +1,14 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { SidebarComponent } from "../../components/sidebar/sidebar.component";
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import { CommonModule } from '@angular/common';
-import { EsportesService } from '../../services/esportes.service';
-import { EsporteResponse } from '../../types/esportes-response.type';
-import { PartidasService } from '../../services/partidas.service';
-import { PartidaResponse } from '../../types/partida-response.type';
+import Swal from 'sweetalert2'; // Importação do SweetAlert2
 import { NavbarprincipalComponent } from '../../components/navbarprincipal/navbarprincipal.component';
+import { SidebarComponent } from "../../components/sidebar/sidebar.component";
+import { EsportesService } from '../../services/esportes.service';
+import { PartidasService } from '../../services/partidas.service';
+import { EsporteResponse } from '../../types/esportes-response.type';
+import { PartidaResponse } from '../../types/partida-response.type';
 
 @Component({
   selector: 'app-criar-partida',
@@ -33,14 +34,14 @@ export class CriarPartidaComponent implements OnInit {
       idEsporte: ['', Validators.required],
       endereco: ['', Validators.required],
       nomeLocal: ['', Validators.required],
-      cidade:['', Validators.required]
+      cidade: ['', Validators.required]
     });
   }
 
   ngOnInit(): void {
     if (typeof window !== 'undefined') {
       this.idAtleta = sessionStorage.getItem('idAtleta');
-      console.log(this.idAtleta)
+      console.log(this.idAtleta);
     }
     this.serviceEsporte.getEsportes().subscribe({
       next: (res) => {
@@ -52,56 +53,59 @@ export class CriarPartidaComponent implements OnInit {
     });
   }
 
-    postar() {
-  
-      // if (this.formPartida.invalid) {
-      //   this.formPartida.markAllAsTouched();
-      //   return;
-      // }
-    
-      
-      const partidaData: PartidaResponse = {
-        idPartida: '', 
-        titulo: this.formPartida.value.titulo,
-        descricao: this.formPartida.value.descricao,
-        horaInicio: this.formPartida.value.horaInicio,
-        horaFim: this.formPartida.value.horaFim,
-        data: (() => {
-          const dataAtual = new Date(this.formPartida.value.data); // Converte a string para Date
-          dataAtual.setDate(dataAtual.getDate() + 1); // Incrementa 1 dia
-          return dataAtual; // Retorna como Date
-        })(),
-        faixaEtaria: this.formPartida.value.faixaEtaria,
-        qtdeAtletas: this.formPartida.value.qtdeAtletas,
-        endereco: this.formPartida.value.endereco,
-        nomeLocal: this.formPartida.value.nomeLocal,
-        cidade: this.formPartida.value.cidade,
-        atleta: { 
-          idAtleta: this.idAtleta ? this.idAtleta : '',  
-          nomeAtleta: ''  
-        },
-        esporte: {
-          idEsporte: this.formPartida.value.idEsporte,
-          nomeEsporte: '' 
-        },
-          statusPartida:{
-            idStatusPartida: "1"
-          }
-      };
-    
-      console.log(partidaData)
+  postar() {
+    const partidaData: PartidaResponse = {
+      idPartida: '',
+      titulo: this.formPartida.value.titulo,
+      descricao: this.formPartida.value.descricao,
+      horaInicio: this.formPartida.value.horaInicio,
+      horaFim: this.formPartida.value.horaFim,
+      data: (() => {
+        const dataAtual = new Date(this.formPartida.value.data);
+        dataAtual.setDate(dataAtual.getDate() + 1);
+        return dataAtual;
+      })(),
+      faixaEtaria: this.formPartida.value.faixaEtaria,
+      qtdeAtletas: this.formPartida.value.qtdeAtletas,
+      endereco: this.formPartida.value.endereco,
+      nomeLocal: this.formPartida.value.nomeLocal,
+      cidade: this.formPartida.value.cidade,
+      atleta: {
+        idAtleta: this.idAtleta ? this.idAtleta : '',
+        nomeAtleta: ''
+      },
+      esporte: {
+        idEsporte: this.formPartida.value.idEsporte,
+        nomeEsporte: ''
+      },
+      statusPartida: {
+        idStatusPartida: "1"
+      }
+    };
 
-      this.servicePartida.postPartidas(partidaData).subscribe({
-        next: (response) => {
-          console.log('Cadastro realizado com sucesso:', response);
-          alert('Cadastro realizado com sucesso!');
+    console.log(partidaData);
+
+    this.servicePartida.postPartidas(partidaData).subscribe({
+      next: (response) => {
+        console.log('Cadastro realizado com sucesso:', response);
+        Swal.fire({
+          icon: 'success',
+          title: 'Cadastro realizado!',
+          text: 'Sua partida foi cadastrada com sucesso.',
+          confirmButtonText: 'OK'
+        }).then(() => {
           this.router.navigate([`/GerenciarPartidas/${response.idPartida}`]);
-        },
-        error: (error) => {
-          console.error('Erro ao cadastrar:', error);
-          alert('Erro ao cadastrar. Tente novamente mais tarde.');
-        }
-      });
-    }
+        });
+      },
+      error: (error) => {
+        console.error('Erro ao cadastrar:', error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Erro ao cadastrar',
+          text: 'Não foi possível realizar o cadastro. Tente novamente mais tarde.',
+          confirmButtonText: 'OK'
+        });
+      }
+    });
   }
-
+}
