@@ -1,0 +1,12 @@
+.placar {
+    display: flex;
+    justify-content: center;
+}
+
+.times-partidas{
+    margin-top: 2rem ;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
