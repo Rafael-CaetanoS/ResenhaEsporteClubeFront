@@ -1,30 +1,41 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CronometroComponent } from "../cronometro/cronometro.component";
 import { PlacarComponent } from "../placar/placar.component";
 import { CardTimeComponent } from "../card-time/card-time.component";
 import { timeResponse } from '../../types/time-response.type';
+import { CommonModule } from '@angular/common';
+import { GerenciarService } from '../../services/gerenciar.service';
 
 @Component({
   selector: 'app-partidas',
   standalone: true,
-  imports: [CronometroComponent, PlacarComponent, CardTimeComponent],
+  imports: [CronometroComponent, PlacarComponent, CardTimeComponent, CommonModule],
   templateUrl: './partidas.component.html',
   styleUrl: './partidas.component.css'
 })
-export class PartidasComponent {
+export class PartidasComponent implements OnInit {
   times: timeResponse[] = []; // Fila de times carregada do banco
   currentGame: { time1: timeResponse; time2: timeResponse } | null = null;
+  @Input()
+  idPartida: string ="";
 
-  constructor() {
+  constructor(private service: GerenciarService) {
     this.initializeGame(); // Carregar os times iniciais
   }
 
+  ngOnInit(): void {
+    this.service.getTimesPartidas(this.idPartida).subscribe({
+      next: (res) => {
+        this.times = res;
+        console.log(this.times)
+      },
+      error: (error) => {
+        console.error( error);
+      },
+    });
+  }
+  
   initializeGame(): void {
-    // Aqui simula o carregamento dos times do banco
-    this.times = [
-
-    ];
-
     // Configura o primeiro jogo
     this.setupNextGame();
   }

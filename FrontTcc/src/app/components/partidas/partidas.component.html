@@ -8,7 +8,6 @@
   </div>
 
   <div class="times-partidas">
-      <app-card-time></app-card-time>
-      <app-card-time></app-card-time>
+      <app-card-time *ngFor="let time of times" [times]="[time]"></app-card-time>
   </div>
 </div>
