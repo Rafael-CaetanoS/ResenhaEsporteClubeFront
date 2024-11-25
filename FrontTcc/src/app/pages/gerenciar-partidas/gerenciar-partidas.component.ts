@@ -20,7 +20,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./gerenciar-partidas.component.css', './partidas.css']
 })
 export class GerenciarPartidasComponent implements OnInit {
-  activeTab: string = 'editar';
+  activeTab: string = 'partidas';
   partida!: PartidaResponse;
   inscricoes: inscricaoResponse[] = [];
   idUrl: string = "";

@@ -1,71 +1,89 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CronometroComponent } from "../cronometro/cronometro.component";
-import { PlacarComponent } from "../placar/placar.component";
-import { CardTimeComponent } from "../card-time/card-time.component";
 import { timeResponse } from '../../types/time-response.type';
 import { CommonModule } from '@angular/common';
 import { GerenciarService } from '../../services/gerenciar.service';
 
+
 @Component({
   selector: 'app-partidas',
   standalone: true,
-  imports: [CronometroComponent, PlacarComponent, CardTimeComponent, CommonModule],
+  imports: [CronometroComponent, CommonModule],
   templateUrl: './partidas.component.html',
   styleUrl: './partidas.component.css'
 })
 export class PartidasComponent implements OnInit {
-  times: timeResponse[] = []; // Fila de times carregada do banco
-  currentGame: { time1: timeResponse; time2: timeResponse } | null = null;
+  times: timeResponse[] = [];
+
+  time1!: any;
+  time2!: any;
+  pontuacaoTime1: number = 0; 
+  pontuacaoTime2: number = 0; 
+  
   @Input()
-  idPartida: string ="";
-
-  constructor(private service: GerenciarService) {
-    this.initializeGame(); // Carregar os times iniciais
-  }
-
+  idPartida: string = "";
+  
+  constructor(private service: GerenciarService) {}
+  
   ngOnInit(): void {
     this.service.getTimesPartidas(this.idPartida).subscribe({
       next: (res) => {
         this.times = res;
-        console.log(this.times)
+        console.log(this.times);
+
+        if (this.times.length >= 2){
+          this.inicializarTimes();
+        }
+
       },
       error: (error) => {
-        console.error( error);
+        console.error(error);
       },
     });
-  }
-  
-  initializeGame(): void {
-    // Configura o primeiro jogo
-    this.setupNextGame();
+
   }
 
-  setupNextGame(): void {
-    if (this.times.length >= 2) {
-      // Seleciona os dois primeiros times da fila
-      const time1 = this.times[0];
-      const time2 = this.times[1];
-      this.currentGame = { time1, time2 };
-    } else {
-      this.currentGame = null; // Não há times suficientes para continuar
+  inicializarTimes() {
+      this.time1 = this.times.shift(); 
+      this.time2 = this.times.shift(); 
+  }
+
+
+  incrementarPlacar(time: number) {
+    if (time === 1) {
+      this.pontuacaoTime1++;
+    } else if (time === 2) {
+      this.pontuacaoTime2++;
     }
   }
 
-  handleGameOver(winner: timeResponse): void {
-    // Move o vencedor para o início da fila
-    const loser = this.currentGame?.time1 === winner ? this.currentGame?.time2 : this.currentGame?.time1;
+  decrementarPlacar(time: number) {
+    if (time === 1 && this.pontuacaoTime1 > 0) {
+      this.pontuacaoTime1--;
+    } else if (time === 2 && this.pontuacaoTime2 > 0) {
+      this.pontuacaoTime2--;
+    }
+  }
 
-    if (loser) {
-      // Retira os dois primeiros times da fila
-      this.times.shift(); // Remove o time1
-      this.times.shift(); // Remove o time2
+  finalizarPartida() {
 
-      // Coloca o vencedor de volta ao início e o perdedor no final
-      this.times.unshift(winner);
-      this.times.push(loser);
+    if (this.pontuacaoTime1 > this.pontuacaoTime2) {
+      this.times.push(this.time2); 
+      this.times.unshift(this.time1)
+    } else if (this.pontuacaoTime2 > this.pontuacaoTime1) {
+      this.times.push(this.time1!);
+      this.times.unshift(this.time2)
+    } 
+    else{
+      this.times.push(this.time2!);
+      this.times.push(this.time1!);
     }
 
-    // Configura o próximo jogo
-    this.setupNextGame();
+   this.inicializarTimes()
+
+    this.pontuacaoTime1 = 0;
+    this.pontuacaoTime2 = 0;
   }
+
+
 }
