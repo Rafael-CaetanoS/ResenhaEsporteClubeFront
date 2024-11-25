@@ -27,7 +27,11 @@
                     </div>
                 </div>
 
-                <div class="estatisticas">
+                <div *ngIf="partida.statusPartida.idStatusPartida == '2'">
+                    <p style="font-size: 2rem; text-align: center; color: var(--detalhes); margin-top: 2rem;">PARTIDA CANCELADA</p>
+                </div>
+
+                <div class="estatisticas" *ngIf="partida.statusPartida.idStatusPartida != '2'">
                     <div class="info">
                         <h3 class="titulo-info">inscritos</h3>
                         <div class="inscritos">

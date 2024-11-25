@@ -9,6 +9,7 @@ import { inscricaoResponse } from '../../types/inscricao-response.Type';
 import { SorteioComponent } from "../../components/sorteio/sorteio.component";
 import { NavbarprincipalComponent } from "../../components/navbarprincipal/navbarprincipal.component";
 import { PartidasComponent } from "../../components/partidas/partidas.component";
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -71,7 +72,16 @@ export class GerenciarPartidasComponent implements OnInit {
   cancelarPartida(){
         this.servicePartida.cancelarPartida(this.idUrl).subscribe({
           next: (response) => {
-            this.router.navigate([`/MinhasPartidas`]);
+            Swal.fire({
+              icon: 'success',
+              title: 'Partida cancelada!',
+              text: 'Sua partida foi cancelada com sucesso.',
+              confirmButtonText: 'OK'
+            }).then(() => {
+              this.router.navigate([`/MinhasPartidas`]);
+            });
+
+
           },
           error: err => console.error('Erro ao buscar partida:', err)
         });

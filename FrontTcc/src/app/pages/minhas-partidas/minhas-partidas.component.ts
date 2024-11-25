@@ -32,7 +32,6 @@ export class MinhaPartidasComponent implements OnInit {
           horaInicio: item.horaInicio,
           horaFim: item.horaFim,
           data: item.data,
-          faixaEtaria: item.faixaEtaria,
           qtdeAtletas: item.qtdeAtletas,
           endereco: item.endereco,
           nomeLocal: item.nomeLocal,

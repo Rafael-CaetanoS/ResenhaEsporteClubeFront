@@ -90,6 +90,11 @@ textarea{
     font-size: 1.3rem;
 }
 
+span{
+    color:red;
+    font-size: 16px;
+}
+
 @media only screen and (max-width: 1024px) {
     .formulario{
         width: 80vw;
@@ -166,4 +171,5 @@ textarea{
         padding-bottom: 10vw;
     }
     
+
 }

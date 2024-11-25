@@ -24,6 +24,12 @@ export class LoginComponent {
   }
 
   logar() {
+    if (this.loginForm.invalid) {
+      this.loginForm.markAllAsTouched();
+      return;
+    }
+
+
     this.service.login(this.loginForm.value.email, this.loginForm.value.senha).subscribe({
       next: (response) => {
         console.log('Login bem-sucedido', response);
@@ -33,16 +39,7 @@ export class LoginComponent {
         // Salvar nome ou informações do usuário no localStorage, se necessário
         localStorage.setItem('nomeAtleta', nomeAtleta);
         localStorage.setItem('idAtleta', response.idAtleta);
-
-        // Exibe notificação de sucesso
-        Swal.fire({
-          icon: 'success',
-          title: 'Login bem-sucedido!',
-          text: `Bem-vindo, ${nomeAtleta}!`,
-          confirmButtonText: 'OK'
-        }).then(() => {
-          this.router.navigate(['/Inicio']); // Redireciona para a página inicial
-        });
+        this.router.navigate(['/Inicio']); // Redireciona para a página inicial
       },
       error: (error) => {
         console.error('Erro ao fazer login:', error);

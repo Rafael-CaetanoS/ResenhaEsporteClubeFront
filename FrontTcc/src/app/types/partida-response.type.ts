@@ -5,7 +5,6 @@ export type PartidaResponse = {
         horaInicio: string,
         horaFim: string,
         data: Date,
-        faixaEtaria: string,
         qtdeAtletas: string,
         endereco:string,
         nomeLocal:string,

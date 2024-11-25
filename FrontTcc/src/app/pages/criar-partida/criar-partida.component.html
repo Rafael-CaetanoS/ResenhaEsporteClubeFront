@@ -11,12 +11,12 @@
             <form [formGroup]="formPartida">
                 <div class="row">
                     <div class="col">
-                        <label for="">Nome da Partida</label>
+                        <label>Nome da Partida<span *ngIf="formPartida.get('titulo')?.errors?.['required'] && formPartida.get('titulo')?.touched">*</span></label>
                         <input type="text" formControlName="titulo">
                     </div>
 
                     <div class="col">
-                        <label>Esporte</label>
+                        <label>Esporte <span *ngIf="formPartida.get('idEsporte')?.errors?.['required'] && formPartida.get('idEsporte')?.touched">*</span></label>
                         <select formControlName="idEsporte">
                             <option value="" disabled selected>Selecione um esporte</option>
                             <option *ngFor="let esporte of esporte" [value]="esporte.idEsporte">{{esporte.nomeEsporte}}</option>
@@ -24,47 +24,53 @@
                     </div>
 
                     <div class="col">
-                        <label for="">Quantidade de atletas</label>
-                        <input type="text" formControlName="qtdeAtletas">
+                        <label>Quantidade de atletas<span *ngIf="formPartida.get('qtdeAtletas')?.errors?.['required'] && formPartida.get('qtdeAtletas')?.touched">*</span></label>
+                        <input type="number" formControlName="qtdeAtletas">
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col">
-                        <label for="">Data</label>
+                        <label>Data<span *ngIf="formPartida.get('data')?.errors?.['required'] && formPartida.get('data')?.touched">*</span></label>
                         <input type="date" formControlName="data">
+                        <span *ngIf="formPartida.hasError('dataInvalida') && formPartida.get('data')?.touched">
+                            Data invalida
+                         </span>
                     </div>
                     
                     <div class="col">
-                        <label for="">Horário de Início</label>
-                        <input type="text" formControlName="horaInicio">
+                        <label>Horário de Início<span *ngIf="formPartida.get('horaInicio')?.errors?.['required'] && formPartida.get('horaInicio')?.touched">*</span></label>
+                        <input type="time" formControlName="horaInicio">
                     </div>
 
                     <div class="col">
-                        <label for="">Horário de Término</label>
-                        <input type="text" formControlName="horaFim">
+                        <label>Horário de Término<span *ngIf="formPartida.get('horaFim')?.errors?.['required'] && formPartida.get('horaFim')?.touched">*</span></label>
+                        <input type="time" formControlName="horaFim">
+                        <span *ngIf="formPartida.hasError('horarioInvalido') && formPartida.get('horaFim')?.touched">
+                           Horário de termino invalido
+                        </span>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col">
-                        <label for="">Nome do Local</label>
+                        <label>Nome do Local<span *ngIf="formPartida.get('nomeLocal')?.errors?.['required'] && formPartida.get('nomeLocal')?.touched">*</span></label>
                         <input type="text" formControlName="nomeLocal">
                     </div>
                     
                     <div class="col">
-                        <label for="">Endereço</label>
+                        <label>Endereço<span *ngIf="formPartida.get('endereco')?.errors?.['required'] && formPartida.get('endereco')?.touched">*</span></label>
                         <input type="text" formControlName="endereco">
                     </div>
                     <div class="col">
-                        <label for="">Descrição</label>
+                        <label for="">Descrição<span *ngIf="formPartida.get('descricao')?.errors?.['required'] && formPartida.get('descricao')?.touched">*</span></label>
                         <textarea formControlName="descricao"></textarea>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col">
-                        <label for="regioes">Selecione uma Região Administrativa:</label>
+                        <label for="regioes">Selecione uma Região Administrativa:<span *ngIf="formPartida.get('cidade')?.errors?.['required'] && formPartida.get('cidade')?.touched">*</span></label>
                         <select id="regioes" name="regioes " formControlName="cidade">
                             <option value="" disabled selected>Escolha uma opção</option>
                             <option value="aguas-claras">Águas Claras</option>

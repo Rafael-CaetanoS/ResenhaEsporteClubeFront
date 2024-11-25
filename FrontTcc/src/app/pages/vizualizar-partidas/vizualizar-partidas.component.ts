@@ -31,7 +31,6 @@ constructor(private servicePartida: PartidasService){
           horaInicio: item.horaInicio,
           horaFim: item.horaFim,
           data: item.data,
-          faixaEtaria: item.faixaEtaria,
           qtdeAtletas: item.qtdeAtletas,
           endereco: item.endereco,
           nomeLocal: item.nomeLocal,

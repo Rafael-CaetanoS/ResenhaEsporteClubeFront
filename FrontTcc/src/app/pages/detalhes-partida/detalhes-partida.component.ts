@@ -8,6 +8,7 @@ import { PartidasService } from '../../services/partidas.service';
 import { InscricaoService } from '../../services/inscricao.service';
 import { inscricaoResponse } from '../../types/inscricao-response.Type';
 import { NavbarprincipalComponent } from "../../components/navbarprincipal/navbarprincipal.component";
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -67,7 +68,7 @@ constructor(private servicePartida: PartidasService, private serviceInscritos: I
   sumirBotao(){
     if (typeof window !== 'undefined') {
       this.idAtleta = sessionStorage.getItem('idAtleta');
-        if(this.idAtleta == this.partida.atleta.idAtleta){
+        if( this.partida.statusPartida.idStatusPartida =="2" ||  this.idAtleta == this.partida.atleta.idAtleta){
           return false;
         }    
     }
@@ -84,7 +85,14 @@ constructor(private servicePartida: PartidasService, private serviceInscritos: I
         let idInscricao = inscricao.idInscricao;
         this.serviceInscritos.cancelarInscricao(idInscricao).subscribe({
           next: (response) => {
-            this.router.navigate([`/Vizualizarpartida`]);
+            Swal.fire({
+              icon: 'success',
+              title: 'Inscrição cancelada!',
+              text: 'Inscrição cancelada, aperte "ok" para continuar',
+              confirmButtonText: 'OK'
+            }).then(() => {
+              this.router.navigate([`/Vizualizarpartida`]);
+            })
           },
           error: err => console.error('Erro ao buscar partida:', err)
           

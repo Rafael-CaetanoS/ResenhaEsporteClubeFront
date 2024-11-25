@@ -30,12 +30,14 @@ export class CriarPartidaComponent implements OnInit {
       horaInicio: ['', Validators.required],
       horaFim: ['', Validators.required],
       qtdeAtletas: ['', Validators.required],
-      idAtleta: ['', Validators.required],
       idEsporte: ['', Validators.required],
       endereco: ['', Validators.required],
       nomeLocal: ['', Validators.required],
-      cidade: ['', Validators.required]
-    });
+      cidade: ['', Validators.required],
+    },
+    {  validator: [this.horarioValidador.bind(this)]}
+
+  );
   }
 
   ngOnInit(): void {
@@ -53,7 +55,17 @@ export class CriarPartidaComponent implements OnInit {
     });
   }
 
+ horarioValidador(formGroup: FormGroup) {
+    const horaInicio = formGroup.get('horaInicio')?.value;
+    const horaFim = formGroup.get('horaFim')?.value;
+    return horaInicio <= horaFim ? null : { horarioInvalido: true };
+  }
+
   postar() {
+    if (this.formPartida.invalid) {
+      this.formPartida.markAllAsTouched();
+      return;
+    }
     const partidaData: PartidaResponse = {
       idPartida: '',
       titulo: this.formPartida.value.titulo,
@@ -65,7 +77,6 @@ export class CriarPartidaComponent implements OnInit {
         dataAtual.setDate(dataAtual.getDate() + 1);
         return dataAtual;
       })(),
-      faixaEtaria: this.formPartida.value.faixaEtaria,
       qtdeAtletas: this.formPartida.value.qtdeAtletas,
       endereco: this.formPartida.value.endereco,
       nomeLocal: this.formPartida.value.nomeLocal,

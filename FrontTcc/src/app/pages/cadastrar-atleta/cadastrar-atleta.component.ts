@@ -44,11 +44,6 @@ export class CadastrarAtletaComponent {
   postar() {
     if (this.formCadastro.invalid) {
       this.formCadastro.markAllAsTouched();
-      Swal.fire({
-        icon: 'warning',
-        title: 'Formulário inválido!',
-        text: 'Por favor, preencha todos os campos obrigatórios.',
-      });
       return;
     }
 

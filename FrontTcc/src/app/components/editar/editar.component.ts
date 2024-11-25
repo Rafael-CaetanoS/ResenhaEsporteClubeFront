@@ -37,14 +37,14 @@ export class EditarComponent implements OnInit {
       horaInicio: ['', Validators.required],
       horaFim: ['', Validators.required],
       data: ['', Validators.required],
-      faixaEtaria: ['', Validators.required],
       qtdeAtletas: ['', Validators.required],
       endereco: ['', Validators.required],
       nomeLocal: ['', Validators.required],
       cidade: ['', Validators.required],
       idEsporte: ['', Validators.required],
-    });
-
+    },
+    { validator: this.horarioValidador }
+  );
     this.serviceEsporte.getEsportes().subscribe({
       next: (res) => {
         this.esporte = res.map((item) => ({
@@ -55,7 +55,7 @@ export class EditarComponent implements OnInit {
       error: (err) => console.error('Erro ao buscar esportes:', err),
     });
 
-    this.route.paramMap.subscribe((value) => {
+    this.route.paramMap.subscribe((value) => {      
       const id = value.get('id');
       if (id) {
         this.servicePartida.getPartidaById(id).subscribe({
@@ -76,7 +76,6 @@ export class EditarComponent implements OnInit {
                     return `${ano}-${mes}-${dia}`;
                   })()
                 : '',
-              faixaEtaria: partida.faixaEtaria,
               qtdeAtletas: partida.qtdeAtletas,
               endereco: partida.endereco,
               nomeLocal: partida.nomeLocal,
@@ -90,7 +89,18 @@ export class EditarComponent implements OnInit {
     });
   }
 
+  horarioValidador(formGroup: FormGroup) {
+    const horaInicio = formGroup.get('horaInicio')?.value;
+    const horaFim = formGroup.get('horaFim')?.value;
+    return horaInicio <= horaFim ? null : { horarioInvalido: true };
+  }
+
+
   atualizar() {
+    if (this.formPartida.invalid) {
+      this.formPartida.markAllAsTouched();
+      return;
+    }
     this.formPartida.value.data = new Date(this.formPartida.value.data).toISOString();
 
     const partidaData: PartidaResponse = {
@@ -104,7 +114,6 @@ export class EditarComponent implements OnInit {
         dataAtual.setDate(dataAtual.getDate() + 1);
         return dataAtual;
       })(),
-      faixaEtaria: this.formPartida.value.faixaEtaria,
       qtdeAtletas: this.formPartida.value.qtdeAtletas,
       endereco: this.formPartida.value.endereco,
       nomeLocal: this.formPartida.value.nomeLocal,

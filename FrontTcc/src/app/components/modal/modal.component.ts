@@ -3,6 +3,7 @@ import { InscricaoService } from '../../services/inscricao.service';
 import { inscricaoResponse } from '../../types/inscricao-response.Type';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-modal',
@@ -68,9 +69,15 @@ ngOnInit(): void {
   
     this.service.postInscricao(inscricaoData).subscribe({
       next: (response) => {
-        console.log('Cadastro realizado com sucesso:', response);
-        alert('Cadastro realizado com sucesso!');
-        this.router.navigate([`/DetalhesPartida`, this.idPartida]);
+        Swal.fire({
+          icon: 'success',
+          title: 'Inscrição realizada!',
+          text: 'Você está inscrito na partida',
+          confirmButtonText: 'OK'
+        }).then(() => {
+          this.router.navigate([`/DetalhesPartida`, this.idPartida]);
+        })
+        
       },
       error: (error) => {
         console.error('Erro ao cadastrar:', error);
