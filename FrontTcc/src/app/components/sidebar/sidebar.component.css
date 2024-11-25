@@ -22,7 +22,7 @@
     align-items: center;
 } 
 
-#nome{
+#apelido{
     font-size: 2rem;
     color: var(--branco);
     text-transform: uppercase;

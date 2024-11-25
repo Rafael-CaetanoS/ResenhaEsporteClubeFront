@@ -12,7 +12,7 @@ import { LoginService } from '../../services/login.service';
 })
 export class SidebarComponent implements OnInit {
   isMenuOpen: boolean = false;  
-  nomeAtleta: string | null = null;
+  apelido: string | null = null;
 
   constructor(private service:LoginService, private router: Router){
 
@@ -24,7 +24,8 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit(): void {
     if (typeof window !== 'undefined') {
-      this.nomeAtleta = sessionStorage.getItem('name');
+      this.apelido = sessionStorage.getItem('apelido');
+      console.log(this.apelido);
     }
   }
 

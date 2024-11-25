@@ -18,6 +18,7 @@ export class LoginService {
         sessionStorage.setItem("auth-token", value.token);
         sessionStorage.setItem("name", value.name);
         sessionStorage.setItem("idAtleta", value.idAtleta);
+        sessionStorage.setItem("apelido", value.apelido);
       })
     );
   }
