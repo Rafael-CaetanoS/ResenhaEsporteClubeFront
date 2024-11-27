@@ -38,12 +38,12 @@ nav{
     display: flex;
     flex-direction: column;
     width: 60%;
-    height: 60vh;
-    margin-top: 10vh;
+
+    margin-top: 7vh;
 }
 
 .informacoes{
-    margin: 1rem 5em;
+    margin: 10px 5em;
 }
 
 .info{
@@ -55,7 +55,6 @@ nav{
     display: flex;
     justify-content: center;
     gap: 40px;
-    margin-top: 16vh;
 }
 
 

@@ -62,6 +62,7 @@ sortear(): timeResponse[] {
     const time = atletasEmbaralhados.slice(i, i + this.jogadoresPorTime);
     const mapearTime: timeResponse = {
       nomeTime: `Time - ${i +1} `,
+      totalPontos: '0',
       partida:{
         idPartida: this.idPartida
       },
@@ -103,7 +104,7 @@ salvar() {
     return
   }
 
-  this.service.salvarPartidas(this.timesGerados).subscribe({
+  this.service.salvarTimes(this.timesGerados).subscribe({
     next: (res) => {
       console.log('Times cadastrados com sucesso:', res);
       alert('Times cadastrados com sucesso!');

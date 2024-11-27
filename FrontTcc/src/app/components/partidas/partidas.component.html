@@ -1,4 +1,4 @@
-<div>
+<div *ngIf="time1 && time2">
   <div class="cronometro">
     <app-cronometro></app-cronometro>
   </div>
@@ -46,5 +46,9 @@
   </div>
 
     <button class="proxima" (click)="finalizarPartida()">Concluir Partida</button>
+    <button class="finalizar-tudo" (click)="finalizarTodasAsPartidas()" >Finalizar Todas as Partidas</button>
+</div>
 
+<div *ngIf="!time1 && !time2">
+  <h3 class="mensagem">Não há times cadastrados</h3>
 </div>

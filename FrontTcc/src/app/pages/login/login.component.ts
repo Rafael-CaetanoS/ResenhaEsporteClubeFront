@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import Swal from 'sweetalert2'; // Importação do SweetAlert2
@@ -13,7 +13,7 @@ import { LoginService } from '../../services/login.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit{
   loginForm!: FormGroup;
 
   constructor(private formBuilder: FormBuilder, private service: LoginService, private router: Router) {
@@ -21,6 +21,12 @@ export class LoginComponent {
       email: ['', [Validators.required, Validators.email]],
       senha: ['', Validators.required]
     });
+  }
+
+  ngOnInit(): void {
+    if(this.service.autenticar()){
+      this.router.navigate(['/Inicio']); 
+    }
   }
 
   logar() {

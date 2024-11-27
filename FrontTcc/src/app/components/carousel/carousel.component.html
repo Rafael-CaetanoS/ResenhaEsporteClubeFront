@@ -8,7 +8,10 @@
                 class="slide"
                 *ngFor="let slide of visibleSlides; let i = index"
                 [class.active]="i === 2">
-                <img [src]="slide" alt="Imagem do Carrossel" />
+                <!-- Exibe a inicial do nome do atleta dentro de um círculo -->
+                <div class="circle">
+                    {{ getInitial(slide.atleta.nomeAtleta) }}
+                </div>
             </div>
         </div>
     </div>
@@ -16,4 +19,3 @@
         <p (click)="nextSlide()" class="control">></p>
     </div>
 </div>
-

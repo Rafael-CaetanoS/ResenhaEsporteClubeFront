@@ -1,5 +1,6 @@
 export type timeResponse = {
     nomeTime: string,
+    totalPontos: string,
     partida: {
         idPartida: string
     }

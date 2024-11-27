@@ -81,4 +81,13 @@ export class PartidasService {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
     return this.http.put<PartidaResponse>(`${this.apiUrl}`, partidaData, { headers });
   }
+
+  finalizarPartida(idPartida: string): Observable<any> {
+
+    if (typeof window !== 'undefined') {
+      this.token = sessionStorage.getItem('auth-token');
+    }
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
+    return this.http.put<any>(`${this.apiUrl}/finalizar/${idPartida}`, {}, { headers });
+  }
 }

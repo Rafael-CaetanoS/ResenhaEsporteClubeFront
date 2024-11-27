@@ -15,13 +15,14 @@
         <div class="editar" *ngIf="activeTab === 'editar'">
             <div class="dados">
                 <div class="informacoes">
-                    <p class="info">Titulo: {{partida.titulo}}</p>
-                    <p class="info">Data:{{ partida.data| date: 'dd/MM/yyyy' }}</p>
-                    <p class="info">Horário Inicío:{{partida.horaInicio}}</p>
-                    <p class="info">Horário fim:{{partida.horaFim}}</p>
-                    <p class="info">Local: {{partida.nomeLocal}}</p>
-                    <p class="info">Cidade: {{partida.cidade}}</p>
-                    <p class="info">Esporte:{{partida.esporte.nomeEsporte}}</p>
+                    <p class="info">Titulo: {{partida.titulo | uppercase}}</p>
+                    <p class="info">Data: {{ partida.data| date: 'dd/MM/yyyy' }}</p>
+                    <p class="info">Horário Inicío: {{partida.horaInicio | uppercase}}</p>
+                    <p class="info">Horário Fim: {{partida.horaFim | uppercase}}</p>
+                    <p class="info">Local: {{partida.nomeLocal | uppercase}}</p>
+                    <p class="info">RA: {{partida.cidade | uppercase}}</p>
+                    <p class="info">Endereço: {{partida.endereco | uppercase}}</p>
+                    <p class="info">Esporte: {{partida.esporte.nomeEsporte | uppercase}}</p>
                 </div>
 
                 <div class="botoes">

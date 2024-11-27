@@ -48,6 +48,10 @@
     margin: 5px 20px;
     background-color: white;
   }
+
+  img{
+    width: 30%;
+  }
   
   /* Responsividade: Navbar com menu hambúrguer em telas menores */
   @media only screen and (max-width: 1024px) {

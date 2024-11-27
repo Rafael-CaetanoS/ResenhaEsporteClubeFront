@@ -10,7 +10,7 @@
         <div class="links">
             <div class="corpo">
                 <img src="../../../assets/images/inicioicon.svg" alt="" class="icon">
-                <li ><a [routerLink]="['/Inicio']" class="link">Inicio</a></li>
+                <li ><a [routerLink]="['/Inicio']" class="link">Início</a></li>
             </div>
             <div class="corpo">
                 <img src="../../../assets/images/criaricon.svg" alt=""  class="icon">
@@ -26,17 +26,22 @@
             </div>
             <div class="corpo">
                 <img src="../../../assets/images/vizualizaricon.svg" alt=""  class="icon">
-                <li ><a [routerLink]="['/Vizualizarpartida']" class="link">Vizualizar Partidas</a></li>
+                <li ><a [routerLink]="['/Historico']" class="link">Visualizar Histórico</a></li>
             </div>
         </div>
 
         <div class="opcoes">
+
+            <img src="../../../assets/images/LOGO.png" alt="logo" id="logo">
+
             <img id="eng" src="../../../assets/images/engicon.svg" alt="opções" (click)="toggleMenu()">
             
             <ul class="navbar-links" [ngClass]="{'active': isMenuOpen}">
                <li><a [routerLink]="['/Inicio']">Editar Perfil</a></li>
                <li (click)="sair()"><a >Sair</a></li>
             </ul>
+
+   
          </div>
     </div>
 </div>

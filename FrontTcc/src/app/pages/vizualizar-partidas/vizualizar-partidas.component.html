@@ -2,13 +2,13 @@
     <app-sidebar></app-sidebar>
     <app-navbarprincipal></app-navbarprincipal>
     <div class="content">
-        <h1 class="titulo">HISTORICO DE PARTIDAS</h1>
+        <h1 class="titulo">HISTÓRICO DE PARTIDAS</h1>
         <hr>
         <div class="cards" *ngIf="partidas != null">
                 <app-card-vizualizar-partida
                     *ngFor="let partida of partidas" 
                     idPartida="{{partida.idPartida}}"
-                    titulo="{{partida.titulo}}" 
+                    titulo="{{partida.titulo | uppercase}}" 
                     data="{{partida.data}}" 
                     horario="{{partida.horaInicio}}" 
                     local="{{partida.nomeLocal}}"

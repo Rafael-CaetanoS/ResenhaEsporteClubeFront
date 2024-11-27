@@ -12,7 +12,7 @@ export class GerenciarService {
 
   constructor(private http: HttpClient) { }
 
-  salvarPartidas(times: timeResponse[]): Observable<timeResponse[]> {
+  salvarTimes(times: timeResponse[]): Observable<timeResponse[]> {
     if (typeof window !== 'undefined') {
       this.token = sessionStorage.getItem('auth-token');
     }
@@ -26,6 +26,15 @@ export class GerenciarService {
     }
     const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
     return this.http.get<timeResponse[]>(`${this.apiUrl}/gerenciar/${idPartida}`, { headers });
+  }
+
+  atualizarTimes(times: timeResponse[]): Observable<timeResponse[]> {
+    if (typeof window !== 'undefined') {
+      this.token = sessionStorage.getItem('auth-token');
+    }
+    
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
+    return this.http.put<timeResponse[]>(`${this.apiUrl}/gerenciar`, times, { headers });
   }
 
 }

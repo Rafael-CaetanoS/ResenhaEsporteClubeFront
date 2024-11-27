@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { inscricaoResponse } from '../../types/inscricao-response.Type';
 
 @Component({
   selector: 'app-carousel',
@@ -9,39 +10,41 @@ import { Component } from '@angular/core';
   styleUrls: ['./carousel.component.css']
 })
 export class CarouselComponent {
-  slides: string[] = [
-    '../../../assets/images/bolaBas.png',
-    '../../../assets/images/bolaFut.png',
-    '../../../assets/images/perfil.png',
-    '../../../assets/images/bolaFutVol.png',
-    '../../../assets/images/bolaVol.png'
-  ];
+  @Input() inscritos: inscricaoResponse[] = []; // Recebe a lista de inscritos via @Input
   currentIndex: number = 0;
 
+  ngOnInit(): void {
+    // Se precisar, inicialize ou manipule a lista de inscritos aqui
+  }
+
   // Método para exibir cinco slides em loop infinito
-  get visibleSlides(): string[] {
-    const totalSlides = this.slides.length;
-    const prevIndex1 = (this.currentIndex - 2 + totalSlides) % totalSlides;
-    const prevIndex2 = (this.currentIndex - 1 + totalSlides) % totalSlides;
-    const nextIndex1 = (this.currentIndex + 1) % totalSlides;
-    const nextIndex2 = (this.currentIndex + 2) % totalSlides;
-    
-    return [
-      this.slides[prevIndex1],
-      this.slides[prevIndex2],
-      this.slides[this.currentIndex],
-      this.slides[nextIndex1],
-      this.slides[nextIndex2]
+  get visibleSlides(): inscricaoResponse[] {
+    const totalSlides = this.inscritos.length;
+    if (totalSlides === 0) return [];
+
+    const indices = [
+      (this.currentIndex - 2 + totalSlides) % totalSlides,
+      (this.currentIndex - 1 + totalSlides) % totalSlides,
+      this.currentIndex,
+      (this.currentIndex + 1) % totalSlides,
+      (this.currentIndex + 2) % totalSlides
     ];
+
+    return indices.map(index => this.inscritos[index]);
   }
 
   // Navega para o slide anterior
   prevSlide(): void {
-    this.currentIndex = (this.currentIndex > 0) ? this.currentIndex - 1 : this.slides.length - 1;
+    this.currentIndex = (this.currentIndex > 0) ? this.currentIndex - 1 : this.inscritos.length - 1;
   }
 
   // Navega para o próximo slide
   nextSlide(): void {
-    this.currentIndex = (this.currentIndex < this.slides.length - 1) ? this.currentIndex + 1 : 0;
+    this.currentIndex = (this.currentIndex < this.inscritos.length - 1) ? this.currentIndex + 1 : 0;
+  }
+
+  // Retorna a primeira letra do nome do atleta
+  getInitial(nome: string): string {
+    return nome ? nome.charAt(0).toUpperCase() : '';
   }
 }

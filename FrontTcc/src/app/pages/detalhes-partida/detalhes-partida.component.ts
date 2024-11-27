@@ -9,6 +9,9 @@ import { InscricaoService } from '../../services/inscricao.service';
 import { inscricaoResponse } from '../../types/inscricao-response.Type';
 import { NavbarprincipalComponent } from "../../components/navbarprincipal/navbarprincipal.component";
 import Swal from 'sweetalert2';
+import { GerenciarService } from '../../services/gerenciar.service';
+import { response } from 'express';
+import { timeResponse } from '../../types/time-response.type';
 
 
 @Component({
@@ -23,12 +26,12 @@ export class DetalhesPartidaComponent implements OnInit {
 partida!: PartidaResponse;
 inscricoes: inscricaoResponse[] = [];
 idUrl: string ="";
-times: any [] =[];
+times: timeResponse [] =[];
 idAtleta: string | null = null;
 mostrarModal = false;
 
 constructor(private servicePartida: PartidasService, private serviceInscritos: InscricaoService, private route: ActivatedRoute,     
-  private router: Router){
+  private router: Router, private serviceTime: GerenciarService){
 
 }
 
@@ -55,6 +58,8 @@ constructor(private servicePartida: PartidasService, private serviceInscritos: I
       error: err => console.error('Não há inscrições', err)
     });
 
+    this.retornaTimes();
+    const timeComMaisPontos = this.getTimeComMaisPontos();
   }
 
   abrirModal() {
@@ -102,5 +107,26 @@ constructor(private servicePartida: PartidasService, private serviceInscritos: I
         console.log("parou aqui")
       }
     }
+  }
+
+  retornaTimes() {
+    this.serviceTime.getTimesPartidas(this.idUrl).subscribe({
+      next: (response) => {
+        this.times = response.sort((a, b) => Number(b.totalPontos) - Number(a.totalPontos));
+      },
+      error: (erro) => {
+        console.error("Erro ao buscar os times:", erro);
+      }
+    });
+  }
+  getTimeComMaisPontos(): timeResponse | undefined {
+    if (!this.times || this.times.length === 0) {
+      console.warn('A lista de times está vazia ou indefinida.');
+      return undefined;
+    }
+  
+    return this.times.reduce((maiorTime, timeAtual) => {
+      return Number(timeAtual.totalPontos) > Number(maiorTime.totalPontos) ? timeAtual : maiorTime;
+    });
   }
 }

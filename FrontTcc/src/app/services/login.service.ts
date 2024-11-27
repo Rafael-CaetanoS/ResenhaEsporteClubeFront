@@ -23,6 +23,14 @@ export class LoginService {
     );
   }
 
+  autenticar():boolean{
+    return !!sessionStorage.getItem("auth-token");
+  }
+
+  retornaIdUsuario(): string | null{
+    return sessionStorage.getItem("idAtleta")
+  }
+
   sair(): void {
     sessionStorage.removeItem("auth-token");
     sessionStorage.removeItem("name");

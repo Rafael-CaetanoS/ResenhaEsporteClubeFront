@@ -61,6 +61,7 @@ button{
 
 .proxima{
     margin-top: 20px;
+    margin-inline-end: 10px;
     border: none;
     border-radius: 10px;
     background-color: var(--detalhes);
@@ -70,6 +71,21 @@ button{
 }
 
 .proxima:hover{
+    padding: 17px;
+    color: var(--secundaria);
+}
+
+.finalizar-tudo{
+    margin-top: 20px;
+    border: none;
+    border-radius: 10px;
+    background-color: var(--detalhes);
+    padding: 15px;
+    color: var(--branco);
+    transition: 0.7s;
+}
+
+.finalizar-tudo:hover{
     padding: 17px;
     color: var(--secundaria);
 }

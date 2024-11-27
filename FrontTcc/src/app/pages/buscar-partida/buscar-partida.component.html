@@ -16,7 +16,7 @@
               <option *ngFor="let esporte of esporte" [value]="esporte.idEsporte">{{esporte.nomeEsporte}}</option>
             </select>
 
-            <p>CIDADE:</p>
+            <p>RA:</p>
             <select id="regioes" name="regioes " class="filtro" [(ngModel)]="cidadeSelecionada" (change)="filtrarPorCidade()">
                 <option value="" selected>Todos</option>
                 <option value="aguas-claras">Águas Claras</option>

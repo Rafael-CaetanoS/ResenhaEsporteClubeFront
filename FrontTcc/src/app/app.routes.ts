@@ -8,9 +8,10 @@ import { InicioComponent } from './pages/inicio/inicio.component';
 import { LoginComponent } from './pages/login/login.component';
 import { MinhaPartidasComponent } from './pages/minhas-partidas/minhas-partidas.component';
 import { VizualizarPartidasComponent } from './pages/vizualizar-partidas/vizualizar-partidas.component';
-import { NavbarprincipalComponent } from './components/navbarprincipal/navbarprincipal.component';
-import path from 'path';
 import { EditarComponent } from './components/editar/editar.component';
+import { authGuard } from './guards/auth.guard';
+import { gerenciarGuard } from './guards/gerenciar.guard';
+import { inscritoGuard } from './guards/inscrito.guard';
 
 export const routes: Routes = [
     {path: '', 
@@ -18,41 +19,38 @@ export const routes: Routes = [
     },
 
     {
-        path:'Inicio', component : InicioComponent
+        path:'Inicio', component : InicioComponent, canActivate: [authGuard]
     },
 
     {
-        path:'Cadastraratleta', component : CadastrarAtletaComponent
+        path:'Cadastraratleta', component : CadastrarAtletaComponent 
     },
 
     {
-        path:'Login', component : LoginComponent
+        path:'Criarpartida', component : CriarPartidaComponent, canActivate: [authGuard]
+    },
+    {
+        path:'Buscarpartida', component : BuscarPartidaComponent, canActivate: [authGuard]
     },
 
     {
-        path:'Criarpartida', component : CriarPartidaComponent
-    },
-    {
-        path:'Buscarpartida', component : BuscarPartidaComponent
-    },
-
-    {
-        path:'Vizualizarpartida', component : VizualizarPartidasComponent
+        path:'Historico', component : VizualizarPartidasComponent, canActivate: [authGuard]
     },
     
     {
-        path:'GerenciarPartidas/:id', component : GerenciarPartidasComponent
+        path:'GerenciarPartidas/:id', component : GerenciarPartidasComponent, canActivate: [authGuard, gerenciarGuard]
     },
 
     {
-        path:"GerenciarPartidas/Editar/:id", component:EditarComponent
+        path:"GerenciarPartidas/Editar/:id", component:EditarComponent, canActivate: [authGuard, gerenciarGuard]
     },
 
     {
-        path:'MinhasPartidas', component : MinhaPartidasComponent
+        path:'MinhasPartidas', component : MinhaPartidasComponent, canActivate: [authGuard]
     },
     
     {
-        path:'DetalhesPartida/:id', component : DetalhesPartidaComponent
+        path:'DetalhesPartida/:id', component : DetalhesPartidaComponent, canActivate: [authGuard, inscritoGuard]
     },
+    { path: '**', redirectTo: '' }
 ];

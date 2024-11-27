@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import Swal from 'sweetalert2'; // Importação do SweetAlert2
+import Swal from 'sweetalert2'; 
 import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { CadastrarAtletaService } from '../../services/cadastrar-atleta.service';
 
@@ -57,7 +57,7 @@ export class CadastrarAtletaComponent {
           text: 'Seu cadastro foi concluído com sucesso.',
           confirmButtonText: 'OK',
         }).then(() => {
-          this.router.navigate(['/login']); // Redireciona para a tela de login
+          this.router.navigate(['']); 
         });
       },
       error: (error) => {

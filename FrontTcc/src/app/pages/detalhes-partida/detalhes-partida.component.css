@@ -57,7 +57,7 @@ hr{
 }
 .info{
     width: 25%;
-    background-color:rgb(105, 105, 105);
+    background-color:var(--detalhes);
     border-radius: 15px;
 
 }
@@ -65,6 +65,7 @@ hr{
     text-align: center;
     margin-top: 20px;
     font-size: 1.2em;
+    color: var(--branco);
     text-transform: uppercase;
 }
 
@@ -144,6 +145,65 @@ hr{
     color: var(--branco);
     background-color: var(--detalhes);
     padding: 10px 2vw;
+}
+
+.classi-esta{
+    display: flex;
+    margin-top: 10px;
+    justify-content: space-evenly;
+}
+
+h4{
+    font-weight: bold;
+    color: var(--secundaria);
+}
+
+.times-clas{
+    display: flex;
+    
+}
+
+.nome{
+    width: 60%;
+    margin-left: 10px;
+    margin-top: 5px;
+    text-align: center;
+}
+
+.nome p {
+    font-weight: bold;
+    color: var(--branco);
+}
+
+.pontos{
+    width: 40%;
+    margin-top: 5px;
+    margin-left: 30px;
+}
+
+.pontos p{
+    font-weight: bold;
+    color: var(--branco);
+}
+
+.inscrito{
+    color: var(--branco);
+}
+
+.vencedor{
+    text-align: center;
+}
+
+#titulo-time{
+    margin-top: 10px;
+}
+#jogador{
+    margin-top: 2px;
+    font-size: 1.2rem;
+}
+
+.detalhes{
+    margin-bottom: 5px;
 }
 
 @media only screen and (max-width: 768px) {

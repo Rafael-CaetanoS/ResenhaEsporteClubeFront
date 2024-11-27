@@ -2,12 +2,12 @@
     <app-sidebar></app-sidebar>
     <app-navbarprincipal></app-navbarprincipal>
     <div class="content">
-        <h1 class="titulo">VIZUALIZAR PARTIDA</h1>
+        <h1 class="titulo">VISUALIZAR PARTIDA</h1>
         <hr>
         <div class="card">
-            <h2 class="nomePartida">{{partida.titulo}}</h2>
+            <h2 class="nomePartida">{{partida.titulo | uppercase }}</h2>
             <div class="carousel-container">
-                <app-carousel></app-carousel>
+                <app-carousel [inscritos]="inscricoes"></app-carousel>
                 <hr id="divisoria">
                 
                 <div class="dados">
@@ -32,24 +32,57 @@
                 </div>
 
                 <div class="estatisticas" *ngIf="partida.statusPartida.idStatusPartida != '2'">
+                    
+                    <div class="info vencedor" *ngIf="partida.statusPartida.idStatusPartida == '3'">
+                        <h3 class="titulo-info">Time vencedor:</h3>
+                        <div *ngIf="getTimeComMaisPontos() as time" class="vencedor">
+                            <h4 id="titulo-time">{{ time.nomeTime | uppercase }}</h4>
+                            <p *ngFor="let jogadores of time.jogadores" id="jogador">{{jogadores.inscricao.atleta.nomeAtleta}}</p>
+                        </div>
+                    </div>
+    
+                    <div class="info classificacao" *ngIf="partida.statusPartida.idStatusPartida == '3'">
+                        <h3 class="titulo-info">classificação</h3>
+                        <div class="classi-esta">
+                            <h4>TIMES</h4>       
+                            <h4>PONTOS</h4>
+                        </div>
+                       
+                        <div *ngFor="let time of times" class="times-clas">
+
+                            <div class="nome">
+                    
+                                <p>{{time.nomeTime}}</p>
+                            </div>
+
+                            <div class="pontos">
+  
+                                <p>{{time.totalPontos}}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="info" *ngIf="partida.statusPartida.idStatusPartida != '3'">
+                        <h3 class="titulo-info">Detalhes</h3>
+                        <div class="inscritos">
+                            <p class="inscrito detalhes">Endereço: {{partida.endereco}}</p>
+                            <p class="inscrito detalhes" >Hora Início: {{partida.horaInicio}}</p>
+                            <p class="inscrito detalhes">Hora Fim: {{partida.horaFim}}</p>
+                            <p class="inscrito detalhes">RA: {{partida.cidade | uppercase}} </p>
+                            <p class=" inscrito detalhes">Organizador: {{partida.atleta.nomeAtleta | uppercase}}</p>
+                        </div>
+                    </div>
+                    
                     <div class="info">
                         <h3 class="titulo-info">inscritos</h3>
                         <div class="inscritos">
                             <p class="inscrito" *ngFor="let inscricao of inscricoes; let i = index">{{ i + 1 }} - {{ inscricao.atleta.nomeAtleta | uppercase }}<p>
                         </div>
                     </div>
-                    
-                    <div class="info vencedor" *ngIf="times.length != 0">
-                        <h3 class="titulo-info">time com mais vitorias</h3>
-                    </div>
-
-                    <div class="info classificacao" *ngIf="times.length != 0">
-                        <h3 class="titulo-info">classificaco</h3>
-                    </div>
                 </div>
 
                 <div class="botoes">
-                    <a class="botao" [routerLink]="['/Vizualizarpartida']">voltar</a>
+                    <a class="botao" [routerLink]="['/Historico']">Voltar</a>
                     <button class="botao" (click)="abrirModal()" *ngIf="sumirBotao()">Cancelar inscrição</button>
                 </div>
 
