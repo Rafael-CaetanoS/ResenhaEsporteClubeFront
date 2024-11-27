@@ -8,7 +8,7 @@
 }
 
 .imagem{
-    height: 94vh;
+    height: 100vh;
 }
 
 #futebol{
@@ -32,7 +32,7 @@
     color: var(--branco);
     font-size: 30px;
     text-align: center;
-    margin: 60px 0px 0px;
+    margin: 10px 0px 0px;
 }
 
 hr{
@@ -93,6 +93,15 @@ hr{
 .link{
     color: var(--branco);
     text-decoration: none;
+}
+.logo{
+    margin-top: 20px;
+    align-items: center;
+    text-align: center;
+}
+
+#logo{
+    width: 9vw;
 }
 
 @media only screen and (max-width: 1440px) {
