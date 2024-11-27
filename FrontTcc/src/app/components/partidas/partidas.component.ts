@@ -121,7 +121,7 @@ export class PartidasComponent implements OnInit {
 
         }),
         this.router.navigate(["/DetalhesPartida/", this.idPartida]),
-        localStorage.clear;
+        localStorage.clear();
       },
       error: (error) => {
         console.error('Erro ao salvar pontos totais de todas as partidas', error);
