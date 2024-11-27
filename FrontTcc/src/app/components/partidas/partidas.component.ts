@@ -113,7 +113,7 @@ export class PartidasComponent implements OnInit {
       next: (response) => {
         this.servicePartida.finalizarPartida(this.idPartida).subscribe({
           next: (responste) =>{
-
+            localStorage.clear;
           },
           error: (error)=>{
             console.log("não mudou")
