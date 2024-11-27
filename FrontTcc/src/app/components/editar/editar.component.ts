@@ -135,7 +135,7 @@ export class EditarComponent implements OnInit {
       next: (response) => {
         Swal.fire({
           title: 'Sucesso!',
-          text: 'Cadastro realizado com sucesso!',
+          text: 'Partida atualizada com sucesso!',
           icon: 'success',
           confirmButtonText: 'OK'
         }).then(() => {

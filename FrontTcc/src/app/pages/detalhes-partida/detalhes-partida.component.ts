@@ -93,7 +93,7 @@ constructor(private servicePartida: PartidasService, private serviceInscritos: I
             Swal.fire({
               icon: 'success',
               title: 'Inscrição cancelada!',
-              text: 'Inscrição cancelada, aperte "ok" para continuar',
+              text: 'Aperte "ok" para continuar',
               confirmButtonText: 'OK'
             }).then(() => {
               this.router.navigate([`/Vizualizarpartida`]);
