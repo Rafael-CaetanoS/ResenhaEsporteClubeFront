@@ -73,7 +73,7 @@ constructor(private servicePartida: PartidasService, private serviceInscritos: I
   sumirBotao(){
     if (typeof window !== 'undefined') {
       this.idAtleta = sessionStorage.getItem('idAtleta');
-        if( this.partida.statusPartida.idStatusPartida =="2" ||  this.idAtleta == this.partida.atleta.idAtleta){
+        if( this.partida.statusPartida.idStatusPartida =="2" ||  this.idAtleta == this.partida.atleta.idAtleta || this.partida.statusPartida.idStatusPartida == '3'){
           return false;
         }    
     }
