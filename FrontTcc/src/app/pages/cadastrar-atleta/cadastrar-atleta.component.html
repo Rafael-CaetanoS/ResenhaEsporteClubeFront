@@ -1,8 +1,11 @@
 <app-navbar></app-navbar>
 <div class="container">
     <div class="formulario">
-        <h1>Cadastrar</h1>
+        <h1>Cadastrar Jogador</h1>
         <hr>
+        <div *ngIf="erroCadastro" class="erro-cadastro">
+            {{ erroCadastro }}
+        </div>
         <form [formGroup]="formCadastro">
             <label for="nome">Nome</label>
             <input type="text" id="nomeAtleta" placeholder="Nome" formControlName="nomeAtleta">
@@ -13,19 +16,25 @@
             <label for="apelido">Apelido</label>
             <input type="text" id="apelido" placeholder="Apelido" formControlName="apelido">
             <span *ngIf="formCadastro.get('apelido')?.errors?.['required'] && formCadastro.get('apelido')?.touched">
-            Campo Obrigatorio
+                Campo Obrigatório
+            </span>
+            <span *ngIf="formCadastro.get('dataNascimento')?.errors?.['dataFutura'] && formCadastro.get('dataNascimento')?.touched">
+                A data de nascimento não pode ser no futuro.
             </span>
 
             <label for="data">Data de nascimento</label>
             <input type="date" id="dataNascimento" placeholder="Data de Nascimento" formControlName="dataNascimento">
             <span *ngIf="formCadastro.get('dataNascimento')?.errors?.['required'] && formCadastro.get('dataNascimento')?.touched">
-                Campo Obrigatorio
+                Campo Obrigatório
             </span>
 
             <label for="email">E-mail</label>
             <input type="email" id="email" placeholder="E-mail" formControlName="email">
             <span *ngIf="formCadastro.get('email')?.errors?.['required'] && formCadastro.get('email')?.touched">
-                Campo Obrigatorio
+                Campo Obrigatório
+            </span>
+            <span *ngIf="formCadastro.get('email')?.errors?.['email'] && formCadastro.get('email')?.touched">
+                E-mail inválido
             </span>
 
             <label for="telefone">Telefone</label>
@@ -37,13 +46,13 @@
             <label for="senha">Senha</label>
             <input type="password" id="senha" placeholder="Senha" formControlName="senha">
             <span *ngIf="formCadastro.get('senha')?.errors?.['required'] && formCadastro.get('senha')?.touched">
-                Campo Obrigatorio
+                Campo Obrigatório
             </span>
 
             <label for="confirmaSenha">Confirmar Senha</label>
             <input type="password" id="confirmaSenha" placeholder="Confirmar Senha" formControlName="confirmaSenha">
             <span *ngIf="formCadastro.get('confirmaSenha')?.errors?.['required'] && formCadastro.get('confirmaSenha')?.touched">
-                Campo Obrigatorio
+                Campo Obrigatório
             </span>
             <span *ngIf="formCadastro.hasError('senhasNaoConferem') && formCadastro.get('ConfirmaSenha')?.touched">
                 As senhas não conferem.
