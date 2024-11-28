@@ -30,7 +30,7 @@
 .formulario h1{
     text-transform: uppercase;
     color: var(--branco);
-    font-size: 30px;
+    font-size: 20px;
     text-align: center;
     margin: 10px 0px 0px;
 }
@@ -38,7 +38,7 @@
 hr{
     border-color:var(--detalhes);
     width: 80%; 
-    margin-bottom: 40px;
+    margin-bottom: 15px;
    }
 
 .formulario form{
@@ -101,7 +101,7 @@ hr{
 }
 
 #logo{
-    width: 9vw;
+    width: 15vw;
 }
 
 @media only screen and (max-width: 1440px) {
@@ -171,8 +171,21 @@ hr{
 
    .formulario{
     width: 70vw;
-    margin-top: 40vw;
+    margin-top: 4vw;
    }
+   .logo{
+    width: 100%;
+    }
+    #logo{
+        width: 90%;
+        margin-left: 21px;
+    }
+    .formulario h1{
+        text-transform: uppercase;
+        color: var(--branco);
+        font-size: 20px;
+        text-align: center;
+    }
 }
 
 
