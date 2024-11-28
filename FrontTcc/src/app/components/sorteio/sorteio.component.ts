@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, NgModule, OnInit } from '@angular/core';
-import { inscricaoResponse } from '../../types/inscricao-response.Type';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { CardTimeComponent } from "../card-time/card-time.component";
-import { timeResponse } from '../../types/time-response.type';
+import Swal from 'sweetalert2';
 import { GerenciarService } from '../../services/gerenciar.service';
+import { inscricaoResponse } from '../../types/inscricao-response.Type';
+import { timeResponse } from '../../types/time-response.type';
+import { CardTimeComponent } from "../card-time/card-time.component";
 
 @Component({
   selector: 'app-sorteio',
@@ -14,105 +15,108 @@ import { GerenciarService } from '../../services/gerenciar.service';
   styleUrl: './sorteio.component.css'
 })
 export class SorteioComponent implements OnInit {
-@Input()
-inscricoes: inscricaoResponse[] = [];
-@Input()
-idPartida: string ="";
+  @Input() inscricoes: inscricaoResponse[] = [];
+  @Input() idPartida: string = "";
 
-aviso: boolean = false;
+  aviso: boolean = false;
 
-constructor(private service: GerenciarService){
+  constructor(private service: GerenciarService) {}
 
-}
+  jogadoresPorTime: number = 5;
+  timesGerados: timeResponse[] = [];
+  qtdejogadores = 0;
+  timesCadastrados: timeResponse[] = [];
 
-jogadoresPorTime: number = 5;
-timesGerados: timeResponse[] = [];
-qtdejogadores = 0;
-timesCadastrados: timeResponse[]=[]
+  ngOnInit(): void {
+    this.qtdejogadores = this.inscricoes.length;
 
-ngOnInit(): void {
-  this.qtdejogadores = this.inscricoes.length
-
-  this.service.getTimesPartidas(this.idPartida).subscribe({
-    next: (res) => {
-      this.timesCadastrados = res;
-      console.log(this.timesCadastrados)
-    },
-    error: (error) => {
-      console.error( error);
-    },
-  });
-
-}
-
-embaralharArray<T>(array: T[]): T[] {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
-  }
-  return array;
-}
-
-sortear(): timeResponse[] {
-
-  this.timesGerados= []
-  const atletasEmbaralhados = this.embaralharArray(this.inscricoes);
-
-  for (let i = 0; i < atletasEmbaralhados.length; i += this.jogadoresPorTime) {
-    const time = atletasEmbaralhados.slice(i, i + this.jogadoresPorTime);
-    const mapearTime: timeResponse = {
-      nomeTime: `Time - ${i +1} `,
-      totalPontos: '0',
-      partida:{
-        idPartida: this.idPartida
+    this.service.getTimesPartidas(this.idPartida).subscribe({
+      next: (res) => {
+        this.timesCadastrados = res;
+        console.log(this.timesCadastrados);
       },
+      error: (error) => {
+        console.error(error);
+      },
+    });
+  }
 
-      jogadores: time.map(atleta => ({
-        inscricao: {
+  embaralharArray<T>(array: T[]): T[] {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  }
+
+  sortear(): timeResponse[] {
+    this.timesGerados = [];
+    const atletasEmbaralhados = this.embaralharArray(this.inscricoes);
+
+    for (let i = 0; i < atletasEmbaralhados.length; i += this.jogadoresPorTime) {
+      const time = atletasEmbaralhados.slice(i, i + this.jogadoresPorTime);
+      const mapearTime: timeResponse = {
+        nomeTime: `Time - ${i + 1} `,
+        totalPontos: '0',
+        partida: {
+          idPartida: this.idPartida
+        },
+        jogadores: time.map(atleta => ({
+          inscricao: {
             idInscricao: atleta.idInscricao,
-            atleta:{
+            atleta: {
               nomeAtleta: atleta.atleta.nomeAtleta
             }
-        }
-    }))
+          }
+        }))
+      };
+
+      this.timesGerados.push(mapearTime);
     }
-    
-    this.timesGerados.push(mapearTime);
+    console.log(this.timesGerados);
+    return this.timesGerados;
   }
-  console.log(this.timesGerados);
-  return this.timesGerados;
-}
 
-incrementar() {
+  incrementar() {
     this.jogadoresPorTime++;
-
-}
-
-decrementar() {
-  if(this.jogadoresPorTime == 1){
-    this.jogadoresPorTime;
-  }
-  else{
-    this.jogadoresPorTime--;
-  }
-}
-
-salvar() {
-  this.aviso =false
-  if(this.timesGerados.length < 2){
-    this.aviso = true;
-    return
   }
 
-  this.service.salvarTimes(this.timesGerados).subscribe({
-    next: (res) => {
-      console.log('Times cadastrados com sucesso:', res);
-      alert('Times cadastrados com sucesso!');
-    },
-    error: (error) => {
-      console.error('Erro ao cadastrar os times:', error);
-      alert('Erro ao cadastrar os times. Verifique os dados e tente novamente.');
-    },
-  });
-} 
+  decrementar() {
+    if (this.jogadoresPorTime > 1) {
+      this.jogadoresPorTime--;
+    }
+  }
+
+  salvar() {
+    this.aviso = false;
+    if (this.timesGerados.length < 2) {
+      Swal.fire({
+        title: 'Aviso',
+        text: 'É necessário gerar pelo menos dois times para salvar.',
+        icon: 'warning',
+        confirmButtonText: 'Entendido'
+      });
+      return;
+    }
+
+    this.service.salvarTimes(this.timesGerados).subscribe({
+      next: (res) => {
+        Swal.fire({
+          title: 'Sucesso!',
+          text: 'Times cadastrados com sucesso!',
+          icon: 'success',
+          confirmButtonText: 'OK'
+        });
+      },
+      error: (error) => {
+        Swal.fire({
+          title: 'Erro!',
+          text: 'Erro ao cadastrar os times. Verifique os dados e tente novamente.',
+          icon: 'error',
+          confirmButtonText: 'OK'
+        });
+        console.error('Erro ao cadastrar os times:', error);
+      },
+    });
+  }
 }
