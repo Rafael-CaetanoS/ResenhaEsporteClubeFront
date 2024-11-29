@@ -35,7 +35,7 @@ export class CriarPartidaComponent implements OnInit {
       nomeLocal: ['', Validators.required],
       cidade: ['', Validators.required],
     },
-    {  validator: [this.horarioValidador.bind(this)]}
+    {  validator: [this.horarioValidador.bind(this), this.dataValidador.bind(this)]}
 
   );
   }
@@ -43,7 +43,6 @@ export class CriarPartidaComponent implements OnInit {
   ngOnInit(): void {
     if (typeof window !== 'undefined') {
       this.idAtleta = sessionStorage.getItem('idAtleta');
-      console.log(this.idAtleta);
     }
     this.serviceEsporte.getEsportes().subscribe({
       next: (res) => {
@@ -59,6 +58,16 @@ export class CriarPartidaComponent implements OnInit {
     const horaInicio = formGroup.get('horaInicio')?.value;
     const horaFim = formGroup.get('horaFim')?.value;
     return horaInicio <= horaFim ? null : { horarioInvalido: true };
+  }
+
+  dataValidador(formGroup: FormGroup) {
+    const data = formGroup.get('data')?.value;
+    const dataAtual = new Date();
+    
+    const dataSelecionada = new Date(data);
+    dataSelecionada.setHours(0, 0, 0, 0);
+    dataAtual.setHours(0, 0, 0, 0);
+    return dataSelecionada >= dataAtual ? null : { dataInvalida: true };
   }
 
   postar() {
@@ -94,11 +103,8 @@ export class CriarPartidaComponent implements OnInit {
       }
     };
 
-    console.log(partidaData);
-
     this.servicePartida.postPartidas(partidaData).subscribe({
       next: (response) => {
-        console.log('Cadastro realizado com sucesso:', response);
         Swal.fire({
           icon: 'success',
           title: 'Cadastro realizado!',

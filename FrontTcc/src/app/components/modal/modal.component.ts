@@ -68,7 +68,7 @@ ngOnInit(): void {
     };
   
     this.service.postInscricao(inscricaoData).subscribe({
-      next: (response) => {
+      next: () => {
         Swal.fire({
           icon: 'success',
           title: 'Inscrição realizada!',

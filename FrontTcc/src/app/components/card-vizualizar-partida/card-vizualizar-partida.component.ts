@@ -39,7 +39,6 @@ ngOnInit(): void {
   this.service.getInscritosPartidas(this.idPartida).subscribe({
     next: (response) =>{
       this.incritos = response;
-      console.log("deu bom")
     },
     error: (error) =>{
       console.log(error)

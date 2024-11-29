@@ -21,7 +21,12 @@ import Swal from 'sweetalert2';
 })
 export class GerenciarPartidasComponent implements OnInit {
   activeTab: string = 'editar';
-  partida!: PartidaResponse;
+  partida: PartidaResponse = {
+    esporte: { nomeEsporte: '' },
+    statusPartida: { idStatusPartida: '' },
+    atleta: {idAtleta: ''}
+  } as PartidaResponse;
+  
   inscricoes: inscricaoResponse[] = [];
   idUrl: string = "";
 

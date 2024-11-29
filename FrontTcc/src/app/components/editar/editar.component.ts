@@ -18,7 +18,11 @@ import { SidebarComponent } from "../sidebar/sidebar.component";
   styleUrl: './editar.component.css'
 })
 export class EditarComponent implements OnInit {
-  partida!: PartidaResponse;
+  partida: PartidaResponse = {
+    esporte: { nomeEsporte: '' },
+    statusPartida: { idStatusPartida: '' },
+    atleta: {idAtleta: ''}
+  } as PartidaResponse;
   formPartida!: FormGroup;
   esporte: EsporteResponse[] = [];
 
@@ -43,7 +47,8 @@ export class EditarComponent implements OnInit {
       cidade: ['', Validators.required],
       idEsporte: ['', Validators.required],
     },
-    { validator: this.horarioValidador }
+    {  validator: [this.horarioValidador.bind(this), this.dataValidador.bind(this)]}
+
   );
     this.serviceEsporte.getEsportes().subscribe({
       next: (res) => {
@@ -95,6 +100,17 @@ export class EditarComponent implements OnInit {
     return horaInicio <= horaFim ? null : { horarioInvalido: true };
   }
 
+  dataValidador(formGroup: FormGroup) {
+    const data = formGroup.get('data')?.value;
+    const dataAtual = new Date();
+    
+    const dataSelecionada = new Date(data);
+    dataSelecionada.setHours(0, 0, 0, 0);
+    dataAtual.setHours(0, 0, 0, 0);
+    return dataSelecionada >= dataAtual ? null : { dataInvalida: true };
+  }
+
+
 
   atualizar() {
     if (this.formPartida.invalid) {
@@ -142,7 +158,7 @@ export class EditarComponent implements OnInit {
           this.router.navigate([`/GerenciarPartidas/${response.idPartida}`]);
         });
       },
-      error: (error) => {
+      error: () => {
         Swal.fire({
           title: 'Erro!',
           text: 'Erro ao cadastrar. Tente novamente mais tarde.',

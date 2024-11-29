@@ -33,7 +33,6 @@ export class SorteioComponent implements OnInit {
     this.service.getTimesPartidas(this.idPartida).subscribe({
       next: (res) => {
         this.timesCadastrados = res;
-        console.log(this.timesCadastrados);
       },
       error: (error) => {
         console.error(error);
@@ -73,7 +72,6 @@ export class SorteioComponent implements OnInit {
 
       this.timesGerados.push(mapearTime);
     }
-    console.log(this.timesGerados);
     return this.timesGerados;
   }
 

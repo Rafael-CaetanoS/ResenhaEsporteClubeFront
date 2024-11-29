@@ -37,14 +37,7 @@ export class LoginComponent implements OnInit{
 
 
     this.service.login(this.loginForm.value.email, this.loginForm.value.senha).subscribe({
-      next: (response) => {
-        console.log('Login bem-sucedido', response);
-
-        const nomeAtleta = response.name;
-
-        // Salvar nome ou informações do usuário no localStorage, se necessário
-        localStorage.setItem('nomeAtleta', nomeAtleta);
-        localStorage.setItem('idAtleta', response.idAtleta);
+      next: () => {
         this.router.navigate(['/Inicio']); // Redireciona para a página inicial
       },
       error: (error) => {

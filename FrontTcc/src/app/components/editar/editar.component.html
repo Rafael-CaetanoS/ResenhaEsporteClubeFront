@@ -34,6 +34,9 @@
                     <label for="data">Data<span *ngIf="formPartida.get('data')?.errors?.['required'] && formPartida.get('data')?.touched">*</span></label>
                     <input type="date" id="data" formControlName="data">
                   </div>
+                  <span *ngIf="formPartida.hasError('dataInvalida') && formPartida.get('data')?.touched">
+                    Data inválida
+                 </span>
                   <div class="col">
                     <label for="horaInicio">Horário de Início<span *ngIf="formPartida.get('horaInicio')?.errors?.['required'] && formPartida.get('horaInicio')?.touched">*</span></label>
                     <input type="time" id="horaInicio" formControlName="horaInicio">
@@ -42,7 +45,7 @@
                     <label for="horaFim">Horário de Término<span *ngIf="formPartida.get('horaFim')?.errors?.['required'] && formPartida.get('horaFim')?.touched">*</span></label>
                     <input type="time" id="horaFim" formControlName="horaFim">
                     <span *ngIf="formPartida.hasError('horarioInvalido') && formPartida.get('horaFim')?.touched">
-                      Horário de termino invalido
+                      Horário de termino inválido
                    </span>
                   </div>
                 </div>

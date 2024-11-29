@@ -48,9 +48,8 @@ export class MinhaPartidasComponent implements OnInit {
             idStatusPartida:item.statusPartida.idStatusPartida
           }
         }));
-        console.log(this.partidas);
       },
-      error: (err) => console.log(err),
+      error: () => console.log("Não tem partidas cadastradas"),
     });
   }
 }

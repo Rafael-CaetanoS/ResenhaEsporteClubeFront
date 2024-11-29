@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
   styleUrl: './cronometro.component.css'
 })
 export class CronometroComponent {
-  tempo: number = 0; // Tempo em segundos
+  tempo: number = 0; 
   minutos: string = '00';
   segundos: string = '00';
   intervalo: any;

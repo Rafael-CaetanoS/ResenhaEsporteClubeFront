@@ -47,7 +47,6 @@ constructor(private servicePartida: PartidasService){
             idStatusPartida: "1"
           }
         }));
-        console.log(this.partidas);
       },
       error: (err) => console.log(err),
     });

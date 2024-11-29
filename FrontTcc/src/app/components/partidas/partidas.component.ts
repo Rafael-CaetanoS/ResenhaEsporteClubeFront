@@ -41,7 +41,6 @@ export class PartidasComponent implements OnInit {
     this.service.getTimesPartidas(this.idPartida).subscribe({
       next: (res) => {
         this.times = res;
-        console.log(this.times);
 
         if (this.times.length >= 2){
           this.inicializarTimes();

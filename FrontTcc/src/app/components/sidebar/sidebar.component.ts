@@ -25,7 +25,6 @@ export class SidebarComponent implements OnInit {
   ngOnInit(): void {
     if (typeof window !== 'undefined') {
       this.apelido = sessionStorage.getItem('apelido');
-      console.log(this.apelido);
     }
   }
 

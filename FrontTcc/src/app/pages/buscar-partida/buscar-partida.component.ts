@@ -75,9 +75,8 @@ export class BuscarPartidaComponent implements OnInit {
             idStatusPartida: item.statusPartida.idStatusPartida
           }
         }));
-        console.log(this.partidas);
       },
-      error: (err) => console.log(err),
+      error: (err) => console.log(""),
     });
   }
 

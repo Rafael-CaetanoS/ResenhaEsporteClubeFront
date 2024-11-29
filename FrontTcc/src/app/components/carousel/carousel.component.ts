@@ -10,12 +10,8 @@ import { inscricaoResponse } from '../../types/inscricao-response.Type';
   styleUrls: ['./carousel.component.css']
 })
 export class CarouselComponent {
-  @Input() inscritos: inscricaoResponse[] = []; // Recebe a lista de inscritos via @Input
+  @Input() inscritos: inscricaoResponse[] = []; 
   currentIndex: number = 0;
-
-  ngOnInit(): void {
-    // Se precisar, inicialize ou manipule a lista de inscritos aqui
-  }
 
   // Método para exibir cinco slides em loop infinito
   get visibleSlides(): inscricaoResponse[] {
@@ -33,17 +29,14 @@ export class CarouselComponent {
     return indices.map(index => this.inscritos[index]);
   }
 
-  // Navega para o slide anterior
   prevSlide(): void {
     this.currentIndex = (this.currentIndex > 0) ? this.currentIndex - 1 : this.inscritos.length - 1;
   }
 
-  // Navega para o próximo slide
   nextSlide(): void {
     this.currentIndex = (this.currentIndex < this.inscritos.length - 1) ? this.currentIndex + 1 : 0;
   }
 
-  // Retorna a primeira letra do nome do atleta
   getInitial(nome: string): string {
     return nome ? nome.charAt(0).toUpperCase() : '';
   }
