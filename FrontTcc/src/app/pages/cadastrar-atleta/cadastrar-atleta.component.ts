@@ -26,13 +26,18 @@ export class CadastrarAtletaComponent {
       {
         nomeAtleta: ['', Validators.required],
         apelido: ['', Validators.required],
-        dataNascimento: ['', Validators.required, this.dataPassadaValidator],
+        dataNascimento: ['', Validators.required],
         email: ['', [Validators.required, Validators.email]],
         telefone: ['', Validators.required],
         senha: ['', Validators.required],
         confirmaSenha: ['', Validators.required],
       },
-      { validator: this.senhasIguaisValidator }
+      { validator: 
+        [
+          this.senhasIguaisValidator,
+          this.dataPassadaValidator
+        ]
+      }
     );
   }
 
