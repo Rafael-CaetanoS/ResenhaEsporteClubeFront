@@ -1,20 +1,21 @@
 <nav class="navbar">
-    <div class="navbar-container">
-      <div class="logo">
-        <img src="../../../assets/images/LOGO_MENOR.png" alt="">
-      </div>
-      <div class="menu-toggle" (click)="isMenuOpen = !isMenuOpen">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
-      </div>
-      <ul class="navbar-links" [ngClass]="{'active': isMenuOpen}">
-        <li><a [routerLink]="['/Inicio']">Inicio</a></li>
-        <li><a [routerLink]="['/Criarpartida']">Criar Partidas</a></li>
-        <li><a [routerLink]="['/Buscarpartida']">Buscar Partidas</a></li>
-        <li><a [routerLink]="['/MinhasPartidas']">Gerenciar Partidas</a></li>
-        <li><a [routerLink]="['/Historico']">Vizualizar Partidas</a></li>
-      </ul>
+  <div class="navbar-container">
+    <div class="logo">
+      <img src="../../../assets/images/LOGO_MENOR.png" alt="Logo">
     </div>
-  </nav>
-  
+    <div class="menu-toggle" (click)="toggleMenu()">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+    <ul class="navbar-links" [ngClass]="{'active': isMenuOpen}">
+      <li><a [routerLink]="['/Inicio']">Início</a></li>
+      <li><a [routerLink]="['/Criarpartida']">Criar Partidas</a></li>
+      <li><a [routerLink]="['/Buscarpartida']">Buscar Partidas</a></li>
+      <li><a [routerLink]="['/MinhasPartidas']">Gerenciar Partidas</a></li>
+      <li><a [routerLink]="['/Historico']">Visualizar Histórico</a></li>
+      <li><a [routerLink]="['/Inicio']">Editar Perfil</a></li>
+      <li><a (click)="sair()">Sair</a></li>
+    </ul>
+  </div>
+</nav>
