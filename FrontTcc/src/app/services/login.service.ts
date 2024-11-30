@@ -35,5 +35,6 @@ export class LoginService {
     sessionStorage.removeItem("auth-token");
     sessionStorage.removeItem("name");
     sessionStorage.removeItem("idAtleta");
+    sessionStorage.removeItem("apelido");
   }
 }
