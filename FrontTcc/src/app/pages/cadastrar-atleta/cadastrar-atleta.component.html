@@ -60,7 +60,7 @@
 
             <div class="botoes">
                 <a [routerLink]="['']" class="botao voltar">Cancelar</a>
-                <button type="submit" (click)="postar()" class="botao">Cadastrar</button>
+                <button type="submit" (click)="postar()" class="botao" [disabled]="formCadastro.invalid">Cadastrar</button>
             </div>
         </form>
     </div>
