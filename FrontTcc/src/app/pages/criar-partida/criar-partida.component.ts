@@ -81,11 +81,7 @@ export class CriarPartidaComponent implements OnInit {
       descricao: this.formPartida.value.descricao,
       horaInicio: this.formPartida.value.horaInicio,
       horaFim: this.formPartida.value.horaFim,
-      data: (() => {
-        const dataAtual = new Date(this.formPartida.value.data);
-        dataAtual.setDate(dataAtual.getDate() + 1);
-        return dataAtual;
-      })(),
+      data:this.formPartida.value.data,
       qtdeAtletas: this.formPartida.value.qtdeAtletas,
       endereco: this.formPartida.value.endereco,
       nomeLocal: this.formPartida.value.nomeLocal,

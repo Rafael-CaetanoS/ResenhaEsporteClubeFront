@@ -5,6 +5,7 @@ import { Router, RouterLink } from '@angular/router';
 import Swal from 'sweetalert2'; 
 import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { CadastrarAtletaService } from '../../services/cadastrar-atleta.service';
+import { atletaResponse } from '../../types/atleta-response.type';
 
 @Component({
   selector: 'app-cadastrar-atleta',
@@ -56,7 +57,20 @@ export class CadastrarAtletaComponent {
       return;
     }
 
-    this.service.cadastrarAtleta(this.formCadastro.value).subscribe({
+
+    const atletaData : atletaResponse = {
+      idAtleta: '',
+      apelido: this.formCadastro.value.apelido ,
+      dataNascimento: this.formCadastro.value.dataNascimento,
+      email: this.formCadastro.value.email,
+      imagem: '' ,
+      nomeAtleta: this.formCadastro.value.nomeAtleta,
+      senha: this.formCadastro.value.senha,
+      telefone: this.formCadastro.value.telefone
+    }
+
+
+    this.service.cadastrarAtleta(atletaData).subscribe({
       next: (response) => {
         console.log('Cadastro realizado com sucesso:', response);
 
