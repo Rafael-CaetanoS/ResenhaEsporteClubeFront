@@ -46,7 +46,7 @@
                 <h2>Inscritos</h2>
                 <div class="inscrito" *ngFor="let inscricao of inscricoes; let i = index">
                     <p>{{ i + 1 }} - {{ inscricao.atleta.apelido | uppercase }}</p>
-                    <span>X</span>
+                    <span (dblclick)="expulsar(inscricao)" id="expulsar">X</span>
                 </div>
             </div>
             

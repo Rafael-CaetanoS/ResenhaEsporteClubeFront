@@ -96,8 +96,18 @@ export class GerenciarPartidasComponent implements OnInit {
     });
   }
 
-  expulsar(id:string){
-    this.serviceInscricao.expulsarInscricao(id).subscribe({
+  expulsar(inscricao:inscricaoResponse){
+    if(this.partida.atleta.idAtleta === inscricao.atleta.idAtleta){
+      Swal.fire({
+        icon: 'error',
+        title: 'Erro ao remover jogador',
+        text: 'Não é possível remover o organizador da partida.',
+        confirmButtonText: 'OK'
+      });
+      return;
+    }
+    
+    this.serviceInscricao.expulsarInscricao(inscricao.idInscricao).subscribe({
       next: (response) => {
         Swal.fire({
           icon: 'success',
