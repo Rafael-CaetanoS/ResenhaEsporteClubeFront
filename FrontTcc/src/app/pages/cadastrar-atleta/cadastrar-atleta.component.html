@@ -18,14 +18,14 @@
             <span *ngIf="formCadastro.get('apelido')?.errors?.['required'] && formCadastro.get('apelido')?.touched">
                 Campo Obrigatório
             </span>
-            <span *ngIf="formCadastro.get('dataNascimento')?.errors?.['dataFutura'] && formCadastro.get('dataNascimento')?.touched">
-                A data de nascimento não pode ser no futuro.
-            </span>
-
+           
             <label for="data">Data de nascimento</label>
             <input type="date" id="dataNascimento" placeholder="Data de Nascimento" formControlName="dataNascimento">
             <span *ngIf="formCadastro.get('dataNascimento')?.errors?.['required'] && formCadastro.get('dataNascimento')?.touched">
                 Campo Obrigatório
+            </span>
+            <span *ngIf="formCadastro.get('dataNascimento')?.errors?.['dataFutura'] && formCadastro.get('dataNascimento')?.touched">
+                A data de nascimento não pode ser no futuro.
             </span>
 
             <label for="email">E-mail</label>
@@ -54,7 +54,7 @@
             <span *ngIf="formCadastro.get('confirmaSenha')?.errors?.['required'] && formCadastro.get('confirmaSenha')?.touched">
                 Campo Obrigatório
             </span>
-            <span *ngIf="formCadastro.hasError('senhasNaoConferem') && formCadastro.get('ConfirmaSenha')?.touched">
+            <span *ngIf="formCadastro.hasError('senhasNaoConferem') && formCadastro.get('confirmaSenha')?.touched">
                 As senhas não conferem.
             </span>
 
