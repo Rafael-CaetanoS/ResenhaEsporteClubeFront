@@ -33,10 +33,11 @@
                   <div class="col">
                     <label for="data">Data<span *ngIf="formPartida.get('data')?.errors?.['required'] && formPartida.get('data')?.touched">*</span></label>
                     <input type="date" id="data" formControlName="data">
+                    <span *ngIf="formPartida.hasError('dataInvalida') && formPartida.get('data')?.touched">
+                      Data inválida
+                   </span>
                   </div>
-                  <span *ngIf="formPartida.hasError('dataInvalida') && formPartida.get('data')?.touched">
-                    Data inválida
-                 </span>
+
                   <div class="col">
                     <label for="horaInicio">Horário de Início<span *ngIf="formPartida.get('horaInicio')?.errors?.['required'] && formPartida.get('horaInicio')?.touched">*</span></label>
                     <input type="time" id="horaInicio" formControlName="horaInicio">

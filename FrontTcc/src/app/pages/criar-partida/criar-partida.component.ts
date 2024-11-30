@@ -63,8 +63,8 @@ export class CriarPartidaComponent implements OnInit {
   dataValidador(formGroup: FormGroup) {
     const data = formGroup.get('data')?.value;
     const dataAtual = new Date();
-    
-    const dataSelecionada = new Date(data);
+
+    const dataSelecionada = new Date(data + 'T00:00:00');
     dataSelecionada.setHours(0, 0, 0, 0);
     dataAtual.setHours(0, 0, 0, 0);
     return dataSelecionada >= dataAtual ? null : { dataInvalida: true };

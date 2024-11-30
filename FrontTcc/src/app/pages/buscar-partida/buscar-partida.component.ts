@@ -34,6 +34,8 @@ export class BuscarPartidaComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.dataAtual.setHours(0, 0, 0, 0);
+
     this.serviceEsporte.getEsportes().subscribe({
       next:(res)=>{
         this.esporte = res.map((item) =>({
@@ -44,14 +46,14 @@ export class BuscarPartidaComponent implements OnInit {
       }
     })
 
-
-    
-
     this.service.getPartidas().subscribe({
       next: (res) => {
         this.partidas = res
         this.partidasParaExibir = res
-        .filter((item) => new Date(item.data) >= this.dataAtual)
+        .filter((item) => {
+          const dataItem = new Date(item.data + 'T00:00:00'); 
+          return dataItem >= this.dataAtual;
+        })
         .map((item) => ({
           idPartida: item.idPartida,
           titulo: item.titulo,

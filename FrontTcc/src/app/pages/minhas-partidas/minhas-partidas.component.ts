@@ -21,10 +21,15 @@ export class MinhaPartidasComponent implements OnInit {
   constructor(private service: PartidasService){}
 
   ngOnInit(): void {
+    this.dataAtual.setHours(0, 0, 0, 0);
+
     this.service.getPartidasAtleta().subscribe({
       next: (res) => {
         this.partidas = res
-        .filter((item) => new Date(item.data) >= this.dataAtual)
+        .filter((item) => {
+          const dataItem = new Date(item.data + 'T00:00:00'); 
+          return dataItem >= this.dataAtual;
+        })
         .map((item) => ({
           idPartida: item.idPartida,
           titulo: item.titulo,
