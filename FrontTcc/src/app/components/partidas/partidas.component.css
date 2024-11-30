@@ -90,6 +90,17 @@ button{
     color: var(--secundaria);
 }
 
+.mensagem{
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.5rem; 
+    margin-top: 1rem;
+    color:var(--detalhes);
+    display: flex; 
+    flex-direction: column;
+    gap:20px
+    }
+
 @media screen and (max-width: 480px){
     .placar {
         display: flex;

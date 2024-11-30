@@ -60,7 +60,8 @@ ngOnInit(): void {
       idInscricao: "",
       atleta: { 
         idAtleta: this.idAtleta ? this.idAtleta : '',  
-        nomeAtleta:''
+        nomeAtleta:'',
+        apelido:''
       },
       partida: {
         idPartida: this.idPartida

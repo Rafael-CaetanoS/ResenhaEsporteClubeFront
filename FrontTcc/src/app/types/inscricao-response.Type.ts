@@ -5,6 +5,7 @@ export type inscricaoResponse = {
         },
     atleta: {
         idAtleta: string,
-        nomeAtleta: string
+        nomeAtleta: string,
+        apelido:string
         }
 }

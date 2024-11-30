@@ -8,7 +8,8 @@ export type timeResponse = {
         inscricao: {
             idInscricao: string
             atleta:{
-                nomeAtleta:string
+                nomeAtleta:string,
+                apelido:string
             }
         }
     }[]

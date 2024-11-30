@@ -64,7 +64,8 @@ export class SorteioComponent implements OnInit {
           inscricao: {
             idInscricao: atleta.idInscricao,
             atleta: {
-              nomeAtleta: atleta.atleta.nomeAtleta
+              nomeAtleta: atleta.atleta.nomeAtleta,
+              apelido: atleta.atleta.apelido
             }
           }
         }))
