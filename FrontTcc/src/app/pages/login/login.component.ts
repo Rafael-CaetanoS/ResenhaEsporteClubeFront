@@ -5,6 +5,8 @@ import { Router, RouterLink } from '@angular/router';
 import Swal from 'sweetalert2'; // Importação do SweetAlert2
 import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { LoginService } from '../../services/login.service';
+import { error } from 'node:console';
+import { TmplAstSwitchBlockCase } from '@angular/compiler';
 
 @Component({
   selector: 'app-login',
@@ -15,6 +17,7 @@ import { LoginService } from '../../services/login.service';
 })
 export class LoginComponent implements OnInit{
   loginForm!: FormGroup;
+  erroCadastro: string | null = null;
 
   constructor(private formBuilder: FormBuilder, private service: LoginService, private router: Router) {
     this.loginForm = this.formBuilder.group({
@@ -35,15 +38,18 @@ export class LoginComponent implements OnInit{
       return;
     }
 
+    this.erroCadastro = null;
+
 
     this.service.login(this.loginForm.value.email, this.loginForm.value.senha).subscribe({
       next: () => {
         this.router.navigate(['/Inicio']); // Redireciona para a página inicial
       },
       error: (error) => {
-        console.error('Erro ao fazer login:', error);
 
-        // Exibe notificação de erro
+        if(error.status === 400 && error.error?.message === 'e-mail inválido'){
+          this.erroCadastro = "E-mail inválido.";
+        }
         Swal.fire({
           icon: 'error',
           title: 'Erro no login',

@@ -22,7 +22,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin: 100px auto;
+    margin: auto;
     width: 25vw;
 
 }
@@ -102,6 +102,12 @@ hr{
 
 #logo{
     width: 15vw;
+}
+
+span{
+    margin-left: 35px;
+    color:red;
+    font-size: 16px;
 }
 
 @media only screen and (max-width: 1440px) {

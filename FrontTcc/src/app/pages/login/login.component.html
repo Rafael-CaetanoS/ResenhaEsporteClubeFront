@@ -16,13 +16,16 @@
                 <Label for="email">E-mail</Label>
                 <input type="email" id="email" formControlName="email">
                 <span *ngIf="loginForm.get('email')?.errors?.['required'] && loginForm.get('email')?.touched">
-                    Campo Obrigatorio
+                    Campo Obrigatório
+                </span>
+                <span *ngIf="loginForm.get('email')?.errors?.['email'] && loginForm.get('email')?.touched">
+                    E-mail inválido
                 </span>
 
                 <Label for="senha">Senha</Label>
                 <input type="password" id="senha" formControlName="senha">
                 <span *ngIf="loginForm.get('senha')?.errors?.['required'] && loginForm.get('senha')?.touched">
-                    Campo Obrigatorio
+                    Campo Obrigatório
                 </span>
 
                 <div class="botao">

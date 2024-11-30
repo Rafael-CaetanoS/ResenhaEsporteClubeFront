@@ -49,13 +49,8 @@ export class GerenciarPartidasComponent implements OnInit {
           next: partida => (this.partida = partida),
           error: err => console.error('Erro ao buscar partida:', err)
         });
+        this.buscarInscritos();
 
-        this.serviceInscricao.getInscritosPartidas(this.idUrl).subscribe({
-          next: inscricoes => {
-            this.inscricoes = inscricoes;
-          },
-          error: err => console.error('Não há inscrições', err)
-        });
       } else {
         console.error("ID não encontrado na URL");
       }
@@ -75,20 +70,44 @@ export class GerenciarPartidasComponent implements OnInit {
   }
 
   cancelarPartida(){
-        this.servicePartida.cancelarPartida(this.idUrl).subscribe({
-          next: (response) => {
-            Swal.fire({
-              icon: 'success',
-              title: 'Partida cancelada!',
-              text: 'Sua partida foi cancelada com sucesso.',
-              confirmButtonText: 'OK'
-            }).then(() => {
-              this.router.navigate([`/MinhasPartidas`]);
-            });
-
-
-          },
-          error: err => console.error('Erro ao buscar partida:', err)
+    this.servicePartida.cancelarPartida(this.idUrl).subscribe({
+      next: (response) => {
+        Swal.fire({
+          icon: 'success',
+          title: 'Partida cancelada!',
+          text: 'Sua partida foi cancelada com sucesso.',
+          confirmButtonText: 'OK'
+        }).then(() => {
+          this.router.navigate([`/MinhasPartidas`]);
         });
+
+
+      },
+      error: err => console.error('Erro ao buscar partida:', err)
+    });
+  }
+
+  buscarInscritos(){
+    this.serviceInscricao.getInscritosPartidas(this.idUrl).subscribe({
+      next: inscricoes => {
+        this.inscricoes = inscricoes;
+      },
+      error: err => console.error('Não há inscrições', err)
+    });
+  }
+
+  expulsar(id:string){
+    this.serviceInscricao.expulsarInscricao(id).subscribe({
+      next: (response) => {
+        Swal.fire({
+          icon: 'success',
+          title: 'Jogador Removido!',
+          text: 'Jogador removido da partida.',
+          confirmButtonText: 'OK'
+        });
+      this.buscarInscritos;
+      },
+      error: err => console.error('Erro ao buscar partida:', err)
+    });
   }
 }
