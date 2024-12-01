@@ -53,6 +53,62 @@
             <span *ngIf="formCadastro.hasError('senhasNaoConferem') && formCadastro.get('confirmaSenha')?.touched">
                 As senhas não conferem.
             </span>
+            <div class="modal-termos-uso" *ngIf="exibirModal">
+                <div class="modal-content">
+                    <h2>Termos de Uso</h2>
+                    <div class="termos-texto">
+                        <p><strong>1. Aceitação dos Termos</strong><br>
+                            Ao acessar ou usar este serviço, você concorda em cumprir e estar vinculado aos presentes Termos de Uso. Caso não concorde com algum dos termos, não utilize nosso serviço.
+                        </p><br>
+                        <p><strong>2. Descrição do Serviço</strong><br>
+                            Fornecemos essa aplicação exclusivamente para a organização de partidas. O uso deste serviço está sujeito a estes Termos de Uso e às leis aplicáveis.
+                        </p><br>
+                        <p><strong>3. Elegibilidade</strong><br>
+                            Este serviço está disponível para usuários de todas as idades. No entanto, para proteção de menores de idade, usuários com menos de 18 anos devem utilizar o serviço sob a supervisão de um responsável legal.
+                        </p><br>
+                        <p><strong>4. Cadastro e Conta</strong><br>
+                            Para acessar certas funcionalidades, pode ser necessário criar uma conta. Você é responsável por fornecer informações verdadeiras, manter a confidencialidade de suas credenciais e notificar imediatamente em caso de uso não autorizado de sua conta.
+                        </p><br>
+                        <p><strong>5. Uso Permitido</strong><br>
+                            Você concorda em usar o serviço apenas para fins lícitos e em conformidade com estes Termos. É proibido:</p>
+                        <ul>
+                            <li>Violar qualquer lei ou regulamento aplicável.</li>
+                            <li>Utilizar o serviço para fins fraudulentos, ofensivos ou abusivos.</li>
+                            <li>Tentar acessar sistemas ou dados não autorizados.</li>
+                        </ul><br>
+                        <p><strong>6. Propriedade Intelectual</strong><br>
+                            Todo o conteúdo disponibilizado no serviço, incluindo, mas não se limitando a textos, imagens, logotipos e software, é protegido por direitos autorais, marcas registradas e outras leis de propriedade intelectual. Você não tem permissão para reproduzir, distribuir, modificar ou criar obras derivadas sem consentimento prévio por escrito.
+                        </p><br>
+                        <p><strong>7. Limitação de Responsabilidade</strong><br>
+                            Não nos responsabilizamos por:</p>
+                        <ul>
+                            <li>Danos diretos, indiretos, incidentais ou consequenciais decorrentes do uso ou incapacidade de usar o serviço.</li>
+                            <li>Conteúdo enviado por outros usuários.</li>
+                        </ul><br>
+                        <p><strong>8. Política de Privacidade</strong><br>
+                            Seu uso do serviço está sujeito ao nosso documento de Termos de Uso, que descreve como coletamos, usamos e protegemos suas informações pessoais.
+                        </p><br>
+                        <p><strong>9. Rescisão</strong><br>
+                            Reservamo-nos o direito de suspender ou encerrar o acesso ao serviço a qualquer momento, sem aviso prévio, caso você viole estes Termos de Uso ou a lei aplicável.
+                        </p><br>
+                        <p><strong>10. Alterações nos Termos</strong><br>
+                            Podemos modificar estes Termos a qualquer momento. Alterações significativas serão comunicadas com antecedência razoável. O uso contínuo do serviço após a modificação constitui sua aceitação dos termos revisados.
+                        </p><br>
+                        <p><strong>11. Legislação Aplicável e Foro</strong><br>
+                            Estes Termos de Uso serão regidos e interpretados de acordo com as leis da República Federativa do Brasil, em especial as disposições do Código Civil, Código de Defesa do Consumidor e, quando aplicável, as normas específicas relacionadas a práticas esportivas e direitos esportivos.<br>
+                            Qualquer disputa decorrente do uso da aplicação será resolvida no foro da comarca em que se encontra a sede da empresa, com exclusão de qualquer outro, por mais privilegiado que seja.
+                        </p>
+                    </div>
+                    <button (click)="fecharModal()" class="btn-fechar">Fechar</button>
+                </div>
+            </div>                                   
+            <label class="termos-uso">
+                <input type="checkbox" formControlName="aceitaTermos">
+                Aceito os <a href="javascript:void(0)" (click)="abrirModal()">termos de uso</a>.
+            </label>
+            <span class="erro" *ngIf="formCadastro.get('aceitaTermos')?.errors?.['required'] && formCadastro.get('aceitaTermos')?.touched">
+                Você deve aceitar os termos de uso.
+            </span>
             <div class="botoes">
                 <a [routerLink]="['']" class="botao voltar">Cancelar</a>
                 <button type="submit" (click)="postar()" class="botao" [disabled]="formCadastro.invalid">Cadastrar</button>

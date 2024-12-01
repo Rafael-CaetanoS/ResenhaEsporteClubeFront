@@ -2,21 +2,21 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import Swal from 'sweetalert2'; 
-import { NavbarComponent } from '../../components/navbar/navbar.component';
+import Swal from 'sweetalert2';
 import { CadastrarAtletaService } from '../../services/cadastrar-atleta.service';
 import { atletaResponse } from '../../types/atleta-response.type';
 
 @Component({
   selector: 'app-cadastrar-atleta',
   standalone: true,
-  imports: [RouterLink, NavbarComponent, FormsModule, ReactiveFormsModule, CommonModule],
+  imports: [RouterLink, FormsModule, ReactiveFormsModule, CommonModule],
   templateUrl: './cadastrar-atleta.component.html',
   styleUrls: ['./cadastrar-atleta.component.css']
 })
 export class CadastrarAtletaComponent {
   formCadastro!: FormGroup;
   erroCadastro: string | null = null;
+  exibirModal = false;
 
   constructor(
     private service: CadastrarAtletaService,
@@ -32,6 +32,7 @@ export class CadastrarAtletaComponent {
         telefone: ['', Validators.required],
         senha: ['', Validators.required],
         confirmaSenha: ['', Validators.required],
+        aceitaTermos: [false, Validators.requiredTrue]
       },
       { validator: this.senhasIguaisValidator }
     );
@@ -66,7 +67,7 @@ export class CadastrarAtletaComponent {
       imagem: '' ,
       nomeAtleta: this.formCadastro.value.nomeAtleta,
       senha: this.formCadastro.value.senha,
-      telefone: this.formCadastro.value.telefone
+      telefone: this.formCadastro.value.telefone.replace(/[^\d]+/g, '') //replace para salvar sem qualquer caractere
     }
 
 
@@ -106,5 +107,14 @@ export class CadastrarAtletaComponent {
         }
       },
     });
+  }
+
+
+  abrirModal() {
+    this.exibirModal = true;
+  }
+
+  fecharModal() {
+      this.exibirModal = false;
   }
 }
