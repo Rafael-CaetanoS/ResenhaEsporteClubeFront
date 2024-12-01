@@ -12,7 +12,7 @@
             <label for="nome">Nome</label>
             <input type="text" id="nomeAtleta" placeholder="Nome" formControlName="nomeAtleta">
             <span *ngIf="formCadastro.get('nomeAtleta')?.errors?.['required'] && formCadastro.get('nomeAtleta')?.touched">
-                Campo Obrigatorio
+                Campo Obrigatório
             </span>
             <label for="apelido">Apelido</label>
             <input type="text" id="apelido" placeholder="Apelido" formControlName="apelido">
@@ -35,11 +35,16 @@
             <span *ngIf="formCadastro.get('email')?.errors?.['email'] && formCadastro.get('email')?.touched">
                 E-mail inválido
             </span>
+
             <label for="telefone">Telefone</label>
-            <input type="text" id="telefone" placeholder="Telefone" formControlName="telefone">
+            <input type="text" id="telefone" placeholder="Telefone" maxlength="15" formControlName="telefone" (keyup)="validarTelefone(); telefoneValidator();" (blur)="telefoneValidator()">
             <span *ngIf="formCadastro.get('telefone')?.errors?.['required'] && formCadastro.get('telefone')?.touched">
-                Campo Obrigatorio
+                Campo Obrigatório
             </span>
+            <span *ngIf="erroTelefone" class="erro-mensagem">
+                Telefone inválido
+            </span>
+
             <label for="senha">Senha</label>
             <input type="password" id="senha" placeholder="Senha" formControlName="senha">
             <span *ngIf="formCadastro.get('senha')?.errors?.['required'] && formCadastro.get('senha')?.touched">
@@ -111,7 +116,7 @@
             </span>
             <div class="botoes">
                 <a [routerLink]="['']" class="botao voltar">Cancelar</a>
-                <button type="submit" (click)="postar()" class="botao" [disabled]="formCadastro.invalid">Cadastrar</button>
+                <button type="submit" (click)="postar()" class="botao">Cadastrar</button>
             </div>
         </form>
     </div>

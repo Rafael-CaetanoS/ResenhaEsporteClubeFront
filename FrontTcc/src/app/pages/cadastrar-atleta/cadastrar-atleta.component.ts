@@ -17,6 +17,7 @@ export class CadastrarAtletaComponent {
   formCadastro!: FormGroup;
   erroCadastro: string | null = null;
   exibirModal = false;
+  erroTelefone: boolean = false;
 
   constructor(
     private service: CadastrarAtletaService,
@@ -29,7 +30,7 @@ export class CadastrarAtletaComponent {
         apelido: ['', Validators.required],
         dataNascimento: ['', [Validators.required, this.dataPassadaValidator]], // Corrigido aqui
         email: ['', [Validators.required, Validators.email]],
-        telefone: ['', Validators.required],
+        telefone: ['', Validators.required], // Corrigido 
         senha: ['', Validators.required],
         confirmaSenha: ['', Validators.required],
         aceitaTermos: [false, Validators.requiredTrue]
@@ -46,18 +47,71 @@ export class CadastrarAtletaComponent {
     return dataNascimento > hoje ? { dataFutura: true } : null;
   }
 
+  telefoneValidator(telefone: any = this.formCadastro.get('telefone')?.value) {
+    const telefoneFormatado = telefone.replace(/[^\d]+/g, '');
+
+    console.log(telefone);
+    if(telefoneFormatado.length === 10 || telefoneFormatado.length === 11) {
+      this.formatarTelefone(); 
+      this.erroTelefone = false;
+    }else if(telefoneFormatado !== ''){
+      this.erroTelefone = true;
+    }else{
+      this.erroTelefone = false;
+    }
+
+    return telefoneFormatado.length === 10 || telefoneFormatado.length === 11;
+  }
+
+  validarTelefone() {
+    let telefone = this.formCadastro.get('telefone')?.value;
+    telefone = telefone.replace(/[^\d]+/g, '');
+     
+    if (telefone.length > 11) {
+      telefone = telefone.substring(0, 11); 
+    }
+    this.formCadastro.get('telefone')?.setValue(telefone); 
+  }
+
+  formatarTelefone() {
+    let telefone = this.formCadastro.get('telefone')?.value;
+
+    if (/[^\d]/.test(telefone.charAt(telefone.length - 1))) {
+      telefone = telefone.slice(0, -1);
+    }
+
+    telefone = telefone.replace(/[^\d]+/g, ''); 
+
+    if (telefone.length <= 10) {
+      telefone = telefone.replace(/(\d{2})(\d{4})(\d{4})/, '($1) $2-$3'); // telefone fixo
+    } else if (telefone.length === 11) {
+      telefone = telefone.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3'); // celular
+    }
+
+    this.formCadastro.get('telefone')?.setValue(telefone); 
+  }
+
   senhasIguaisValidator(formGroup: FormGroup) {
     const senha = formGroup.get('senha')?.value;
     const confirmaSenha = formGroup.get('confirmaSenha')?.value;
     return senha === confirmaSenha ? null : { senhasNaoConferem: true };
   }
 
+  abrirModal() {
+    this.exibirModal = true;
+  }
+
+  fecharModal() {
+      this.exibirModal = false;
+  }
+
   postar() {
+
     if (this.formCadastro.invalid) {
       this.formCadastro.markAllAsTouched();
+      console.log('Formulário inválido', this.formCadastro);
       return;
     }
-
 
     const atletaData : atletaResponse = {
       idAtleta: '',
@@ -70,51 +124,44 @@ export class CadastrarAtletaComponent {
       telefone: this.formCadastro.value.telefone.replace(/[^\d]+/g, '') //replace para salvar sem qualquer caractere
     }
 
-
-    this.service.cadastrarAtleta(atletaData).subscribe({
-      next: (response) => {
-        console.log('Cadastro realizado com sucesso:', response);
-
-        this.erroCadastro = null;
-
-        Swal.fire({
-          icon: 'success',
-          title: 'Cadastro realizado!',
-          text: 'Seu cadastro foi concluído com sucesso.',
-          confirmButtonText: 'OK',
-        }).then(() => {
-          this.router.navigate(['']); 
-        });
-      },
-      error: (error) => {
-        console.error('Erro ao cadastrar:', error);
-
-        if (error.status === 409) { 
+    if(this.telefoneValidator()){
+      this.service.cadastrarAtleta(atletaData).subscribe({
+        next: (response) => {
+          console.log('Cadastro realizado com sucesso:', response);
+  
+          this.erroCadastro = null;
+  
           Swal.fire({
-            icon: 'error',
-            title: 'Usuário já cadastrado!',
-            text: 'Ocorreu um problema ao realizar o cadastro. Tente inserir outro e-mail.',
+            icon: 'success',
+            title: 'Cadastro realizado!',
+            text: 'Seu cadastro foi concluído com sucesso.',
             confirmButtonText: 'OK',
+          }).then(() => {
+            this.router.navigate(['']); 
           });
-        } else if (error.status === 400 && error.error?.message === 'Email inválido') {
-          this.erroCadastro = 'E-mail inválido.';
-        } else {
-          Swal.fire({
-            icon: 'error',
-            title: 'Erro ao cadastrar',
-            text: 'Ocorreu um problema ao realizar o cadastro. Tente novamente mais tarde.',
-          });
-        }
-      },
-    });
+        },
+        error: (error) => {
+          console.error('Erro ao cadastrar:', error);
+  
+          if (error.status === 409) { 
+            Swal.fire({
+              icon: 'error',
+              title: 'Usuário já cadastrado!',
+              text: 'Ocorreu um problema ao realizar o cadastro. Tente inserir outro e-mail.',
+              confirmButtonText: 'OK',
+            });
+          } else if (error.status === 400 && error.error?.message === 'Email inválido') {
+            this.erroCadastro = 'E-mail inválido.';
+          } else {
+            Swal.fire({
+              icon: 'error',
+              title: 'Erro ao cadastrar',
+              text: 'Ocorreu um problema ao realizar o cadastro. Tente novamente mais tarde.',
+            });
+          }
+        },
+      });
+    }
   }
 
-
-  abrirModal() {
-    this.exibirModal = true;
-  }
-
-  fecharModal() {
-      this.exibirModal = false;
-  }
 }

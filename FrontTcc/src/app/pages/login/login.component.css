@@ -82,6 +82,10 @@ hr{
 
 }
 
+.botao button:hover {
+    background-color: #ff6347;
+}
+
 .links{
     align-items: center;
     display: flex;
@@ -93,6 +97,10 @@ hr{
 .link{
     color: var(--branco);
     text-decoration: none;
+}
+
+.link:hover {
+    text-decoration: underline;
 }
 .logo{
     margin-top: 20px;
