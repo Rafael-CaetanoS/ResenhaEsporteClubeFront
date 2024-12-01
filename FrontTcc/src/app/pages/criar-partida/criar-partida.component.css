@@ -78,6 +78,10 @@ textarea{
     border-radius: 5px;
 }
 
+.botao:hover {
+    background-color: #ff6347;
+}
+
 .botoes button{
     border: none;
     cursor: pointer;

@@ -25,7 +25,13 @@
 
                     <div class="col">
                         <label>Quantidade de atletas<span *ngIf="formPartida.get('qtdeAtletas')?.errors?.['required'] && formPartida.get('qtdeAtletas')?.touched">*</span></label>
-                        <input type="number" formControlName="qtdeAtletas">
+                        <input type="number" formControlName="qtdeAtletas" min="0" max="1000" maxlength="4" (keypress)="apenasNumeros($event)">
+                        <span *ngIf="formPartida.get('qtdeAtletas')?.errors?.['min'] && formPartida.get('qtdeAtletas')?.touched" class="erro-mensagem">
+                            O número de atletas não pode ser negativo.
+                        </span>
+                        <span *ngIf="formPartida.get('qtdeAtletas')?.errors?.['max'] && formPartida.get('qtdeAtletas')?.touched" class="erro-mensagem">
+                            O número máximo permitido é 1000.
+                        </span>
                     </div>
                 </div>
 

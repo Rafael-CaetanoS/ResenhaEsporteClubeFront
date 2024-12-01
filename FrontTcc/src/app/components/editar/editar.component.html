@@ -25,7 +25,13 @@
               
                   <div class="col">
                     <label for="qtdeAtletas">Quantidade de Atletas <span *ngIf="formPartida.get('qtdeAtletas')?.errors?.['required'] && formPartida.get('qtdeAtletas')?.touched">*</span></label>
-                    <input type="number" id="qtdeAtletas" formControlName="qtdeAtletas">
+                    <input type="number" formControlName="qtdeAtletas" min="0" max="1000" maxlength="4" (keypress)="apenasNumeros($event)">
+                    <span *ngIf="formPartida.get('qtdeAtletas')?.errors?.['min'] && formPartida.get('qtdeAtletas')?.touched" class="erro-mensagem">
+                      O número de atletas não pode ser negativo.
+                    </span>
+                    <span *ngIf="formPartida.get('qtdeAtletas')?.errors?.['max'] && formPartida.get('qtdeAtletas')?.touched" class="erro-mensagem">
+                      O número máximo permitido é 1000.
+                    </span>
                   </div>
                 </div>
               
@@ -112,7 +118,7 @@
               
                 <div class="botoes">
                   <a [routerLink]="['/GerenciarPartidas',partida.idPartida]" class="botao">Cancelar</a>
-                  <button type="submit" class="botao" (click)="atualizar()">Salvar</button>
+                  <button type="submit" class="botao" (click)="atualizar()">Atualizar</button>
                 </div>
               </form>
         </div>

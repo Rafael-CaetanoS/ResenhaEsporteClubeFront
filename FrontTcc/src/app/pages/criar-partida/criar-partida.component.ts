@@ -29,7 +29,7 @@ export class CriarPartidaComponent implements OnInit {
       descricao: ['', Validators.required],
       horaInicio: ['', Validators.required],
       horaFim: ['', Validators.required],
-      qtdeAtletas: ['', Validators.required],
+      qtdeAtletas: ['', [Validators.required, Validators.min(0), Validators.max(1000)]],
       idEsporte: ['', Validators.required],
       endereco: ['', Validators.required],
       nomeLocal: ['', Validators.required],
@@ -52,6 +52,19 @@ export class CriarPartidaComponent implements OnInit {
         }));
       }
     });
+  }
+
+  apenasNumeros(event: KeyboardEvent) {
+    const input = event.target as HTMLInputElement;
+    
+    if (!/^\d+$/.test(event.key)) {
+      event.preventDefault();
+      return;
+    }
+    
+    if (input.value.length >= 4) {
+      event.preventDefault();
+    }
   }
 
  horarioValidador(formGroup: FormGroup) {

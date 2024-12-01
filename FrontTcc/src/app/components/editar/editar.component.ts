@@ -41,7 +41,7 @@ export class EditarComponent implements OnInit {
       horaInicio: ['', Validators.required],
       horaFim: ['', Validators.required],
       data: ['', Validators.required],
-      qtdeAtletas: ['', Validators.required],
+      qtdeAtletas: ['', [Validators.required, Validators.min(0), Validators.max(1000)]],
       endereco: ['', Validators.required],
       nomeLocal: ['', Validators.required],
       cidade: ['', Validators.required],
@@ -83,6 +83,19 @@ export class EditarComponent implements OnInit {
         });
       }
     });
+  }
+
+  apenasNumeros(event: KeyboardEvent) {
+    const input = event.target as HTMLInputElement;
+    
+    if (!/^\d+$/.test(event.key)) {
+      event.preventDefault();
+      return;
+    }
+    
+    if (input.value.length >= 4) {
+      event.preventDefault();
+    }
   }
 
   horarioValidador(formGroup: FormGroup) {
