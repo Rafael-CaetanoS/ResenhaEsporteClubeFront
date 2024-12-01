@@ -19,6 +19,7 @@ export class EditarJogadorComponent implements OnInit{
   formCadastro!: FormGroup;
   atleta!: atletaResponse;
   erroCadastro: string | null = null;
+  erroTelefone: boolean = false;;
 
   constructor(
     private service: CadastrarAtletaService,
@@ -57,6 +58,9 @@ ngOnInit(): void {
      }
     });
 }
+
+
+
 
 
   dataPassadaValidator(control: AbstractControl): ValidationErrors | null {
@@ -121,5 +125,49 @@ ngOnInit(): void {
         }
       },
     });
+  }
+
+  telefoneValidator(telefone: any = this.formCadastro.get('telefone')?.value) {
+    const telefoneFormatado = telefone.replace(/[^\d]+/g, '');
+
+    console.log(telefone);
+    if(telefoneFormatado.length === 10 || telefoneFormatado.length === 11) {
+      this.formatarTelefone(); 
+      this.erroTelefone = false;
+    }else if(telefoneFormatado !== ''){
+      this.erroTelefone = true;
+    }else{
+      this.erroTelefone = false;
+    }
+
+    return telefoneFormatado.length === 10 || telefoneFormatado.length === 11;
+  }
+
+  validarTelefone() {
+    let telefone = this.formCadastro.get('telefone')?.value;
+    telefone = telefone.replace(/[^\d]+/g, '');
+     
+    if (telefone.length > 11) {
+      telefone = telefone.substring(0, 11); 
+    }
+    this.formCadastro.get('telefone')?.setValue(telefone); 
+  }
+
+  formatarTelefone() {
+    let telefone = this.formCadastro.get('telefone')?.value;
+
+    if (/[^\d]/.test(telefone.charAt(telefone.length - 1))) {
+      telefone = telefone.slice(0, -1);
+    }
+
+    telefone = telefone.replace(/[^\d]+/g, ''); 
+
+    if (telefone.length <= 10) {
+      telefone = telefone.replace(/(\d{2})(\d{4})(\d{4})/, '($1) $2-$3'); // telefone fixo
+    } else if (telefone.length === 11) {
+      telefone = telefone.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3'); // celular
+    }
+
+    this.formCadastro.get('telefone')?.setValue(telefone); 
   }
 }

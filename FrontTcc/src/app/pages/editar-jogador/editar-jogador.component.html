@@ -41,9 +41,12 @@
                         E-mail inválido
                     </span>
                     <label for="telefone">Telefone</label>
-                    <input type="text" id="telefone" placeholder="Telefone" formControlName="telefone">
+                    <input type="text" id="telefone" placeholder="Telefone" maxlength="15" formControlName="telefone" (keyup)="validarTelefone(); telefoneValidator();" (blur)="telefoneValidator()">
                     <span *ngIf="formCadastro.get('telefone')?.errors?.['required'] && formCadastro.get('telefone')?.touched">
-                        Campo Obrigatorio
+                        Campo Obrigatório
+                    </span>
+                    <span *ngIf="erroTelefone" class="erro-mensagem">
+                        Telefone inválido
                     </span>
                     <div class="botoes">
                         <a [routerLink]="['/Inicio']" class="botao voltar">Cancelar</a>
