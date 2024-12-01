@@ -31,6 +31,8 @@ export class GerenciarPartidasComponent implements OnInit {
   idUrl: string = "";
 
   mostrarModal = false;
+  mostrarModalInscritos: number | null = null; // Controla qual modal está aberto
+
 
   constructor(
     private serviceInscricao: InscricaoService,
@@ -69,6 +71,15 @@ export class GerenciarPartidasComponent implements OnInit {
     this.mostrarModal = false;
   }
 
+  abrirModalInscritos(index: number) {
+    this.mostrarModalInscritos = index; // Define o índice do modal a ser exibido
+  }
+
+  fecharModalInscritos() {
+    this.mostrarModalInscritos = null; // Fecha o modal
+  }
+
+
   cancelarPartida(){
     this.servicePartida.cancelarPartida(this.idUrl).subscribe({
       next: (response) => {
@@ -104,6 +115,7 @@ export class GerenciarPartidasComponent implements OnInit {
         text: 'Não é possível remover o organizador da partida.',
         confirmButtonText: 'OK'
       });
+      this.fecharModalInscritos();
       return;
     }
     
@@ -115,7 +127,8 @@ export class GerenciarPartidasComponent implements OnInit {
           text: 'Jogador removido da partida.',
           confirmButtonText: 'OK'
         });
-      this.buscarInscritos;
+      this.buscarInscritos();
+      this.fecharModalInscritos();
       },
       error: err => console.error('Erro ao buscar partida:', err)
     });

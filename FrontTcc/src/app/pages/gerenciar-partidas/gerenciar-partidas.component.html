@@ -46,10 +46,19 @@
                 <h2>Inscritos</h2>
                 <div class="inscrito" *ngFor="let inscricao of inscricoes; let i = index">
                     <p>{{ i + 1 }} - {{ inscricao.atleta.apelido | uppercase }}</p>
-                    <span (dblclick)="expulsar(inscricao)" id="expulsar">X</span>
-                </div>
+                    <span (click)="abrirModalInscritos(i)" id="expulsar">X</span>
+                  
+                    <div class="modal" *ngIf="mostrarModalInscritos === i">
+                      <div class="modal-dados">
+                        <p>Deseja expulsar o {{ inscricao.atleta.apelido }}?</p>
+                        <div class="buttons-cancelar">
+                          <button class="button-cancelar" (click)="fecharModalInscritos()">Não</button>
+                          <button class="button-cancelar" (click)="expulsar(inscricao)">Sim</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
             </div>
-            
         </div> 
 
         <div class="times"  *ngIf="activeTab === 'times'">
