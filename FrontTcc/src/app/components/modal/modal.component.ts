@@ -31,6 +31,8 @@ export class ModalComponent implements OnInit{
 
   @Input() qtdeAtletas:string = '';
 
+  @Input() nomeEsporte:string = ';'
+
   @Output() closeModal = new EventEmitter<void>(); 
 
   idAtleta: string | null = null;
