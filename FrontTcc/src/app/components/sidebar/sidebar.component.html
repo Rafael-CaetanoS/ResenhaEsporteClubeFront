@@ -37,7 +37,7 @@
             <img id="eng" src="../../../assets/images/engicon.svg" alt="opções" (click)="toggleMenu()">
             
             <ul class="navbar-links" [ngClass]="{'active': isMenuOpen}">
-               <li><a [routerLink]="['/Inicio']">Editar Perfil</a></li>
+               <li><a [routerLink]="['/EditarJogador',idJogador ]">Editar Perfil</a></li>
                <li (click)="sair()"><a >Sair</a></li>
             </ul>
 

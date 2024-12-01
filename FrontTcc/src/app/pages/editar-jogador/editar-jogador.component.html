@@ -1,0 +1,58 @@
+<div class="container-sidebar">
+    <app-sidebar></app-sidebar>
+    <app-navbarprincipal></app-navbarprincipal>
+    
+    <div class="content">
+        <div class="container">
+            <div class="formulario">
+                <div class="logo">
+                    <img src="../../../assets/images/LOGO_MENOR.png" alt="logo" id="logo">
+                </div>
+                <h1>Editar Dados do Jogador</h1>
+                <hr>
+                <div *ngIf="erroCadastro" class="erro-cadastro">
+                    {{ erroCadastro }}
+                </div>
+                <form [formGroup]="formCadastro">
+                    <label for="nome">Nome</label>
+                    <input type="text" id="nomeAtleta" placeholder="Nome" formControlName="nomeAtleta">
+                    <span *ngIf="formCadastro.get('nomeAtleta')?.errors?.['required'] && formCadastro.get('nomeAtleta')?.touched">
+                        Campo Obrigatorio
+                    </span>
+                    <label for="apelido">Apelido</label>
+                    <input type="text" id="apelido" placeholder="Apelido" formControlName="apelido">
+                    <span *ngIf="formCadastro.get('apelido')?.errors?.['required'] && formCadastro.get('apelido')?.touched">
+                        Campo Obrigatório
+                    </span>
+                    <label for="data">Data de nascimento</label>
+                    <input type="date" id="dataNascimento" placeholder="Data de Nascimento" formControlName="dataNascimento">
+                    <span *ngIf="formCadastro.get('dataNascimento')?.errors?.['required'] && formCadastro.get('dataNascimento')?.touched">
+                        Campo Obrigatório
+                    </span>
+                    <span *ngIf="formCadastro.get('dataNascimento')?.errors?.['dataFutura'] && formCadastro.get('dataNascimento')?.touched">
+                        A data de nascimento não pode ser no futuro.
+                    </span>
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" placeholder="E-mail" formControlName="email">
+                    <span *ngIf="formCadastro.get('email')?.errors?.['required'] && formCadastro.get('email')?.touched">
+                        Campo Obrigatório
+                    </span>
+                    <span *ngIf="formCadastro.get('email')?.errors?.['email'] && formCadastro.get('email')?.touched">
+                        E-mail inválido
+                    </span>
+                    <label for="telefone">Telefone</label>
+                    <input type="text" id="telefone" placeholder="Telefone" formControlName="telefone">
+                    <span *ngIf="formCadastro.get('telefone')?.errors?.['required'] && formCadastro.get('telefone')?.touched">
+                        Campo Obrigatorio
+                    </span>
+                    <div class="botoes">
+                        <a [routerLink]="['/Inicio']" class="botao voltar">Cancelar</a>
+                        <button type="submit" (click)="atualizar()" class="botao" [disabled]="formCadastro.invalid">Atualizar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+
+    </div>
+</div>

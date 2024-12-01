@@ -12,6 +12,8 @@ import { EditarComponent } from './components/editar/editar.component';
 import { authGuard } from './guards/auth.guard';
 import { gerenciarGuard } from './guards/gerenciar.guard';
 import { inscritoGuard } from './guards/inscrito.guard';
+import { EditarJogadorComponent } from './pages/editar-jogador/editar-jogador.component';
+import { atualizarJogadorGuard } from './guards/atualizar-jogador.guard';
 
 export const routes: Routes = [
     {path: '', 
@@ -52,5 +54,9 @@ export const routes: Routes = [
     {
         path:'DetalhesPartida/:id', component : DetalhesPartidaComponent, canActivate: [authGuard, inscritoGuard]
     },
+    {
+        path:'EditarJogador/:id', component : EditarJogadorComponent,     canActivate: [atualizarJogadorGuard],
+    }
+    ,
     { path: '**', redirectTo: '' }
 ];
