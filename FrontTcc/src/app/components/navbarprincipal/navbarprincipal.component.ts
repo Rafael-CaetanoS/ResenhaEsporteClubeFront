@@ -12,11 +12,18 @@ import { LoginService } from '../../services/login.service';
 })
 export class NavbarprincipalComponent {
   isMenuOpen: boolean = false;
+  idJogador:  string | null = null;
+
 
   constructor(private service: LoginService, private router: Router) {}
 
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
+  }
+  ngOnInit(): void {
+    if (typeof window !== 'undefined') {
+      this.idJogador = sessionStorage.getItem('idAtleta')
+    }
   }
 
   sair() {
