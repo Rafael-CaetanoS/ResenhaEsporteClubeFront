@@ -49,6 +49,10 @@ export class BuscarPartidaComponent implements OnInit {
     this.service.getPartidas().subscribe({
       next: (res) => {
         this.partidas = res
+        if(this.partidas === null){
+          return;
+        }
+
         this.partidasParaExibir = res
         .filter((item) => {
           const dataItem = new Date(item.data + 'T00:00:00'); 
@@ -100,12 +104,18 @@ export class BuscarPartidaComponent implements OnInit {
     }
     
     this.partidasParaExibir = this.partidasFiltradas.filter(
-      (partida) => new Date(partida.data) >= this.dataAtual
+      
+      (partida) =>{
+   
+          const dataItem = new Date(partida.data + 'T00:00:00'); 
+           dataItem >= this.dataAtual;
+        
+      } 
     );
 
     }
 
-    this.partidasParaExibir = query ? this.partidasFiltradas.filter((partida) =>new Date(partida.data) >= this.dataAtual) : this.partidas.filter((partida) =>new Date(partida.data) >= this.dataAtual);
+    this.partidasParaExibir = query ? this.partidasFiltradas.filter((partida) =>new Date(partida.data + 'T00:00:00') >= this.dataAtual) : this.partidas.filter((partida) =>new Date(partida.data + 'T00:00:00') >= this.dataAtual);
   }
 
   filtrarPorEsporte(): void {
@@ -123,7 +133,7 @@ export class BuscarPartidaComponent implements OnInit {
     }
 
     this.partidasParaExibir = this.partidasFiltradas.filter(
-      (partida) => new Date(partida.data) >= this.dataAtual
+      (partida) => new Date(partida.data + 'T00:00:00') >= this.dataAtual
     );
   }
 
@@ -142,7 +152,7 @@ export class BuscarPartidaComponent implements OnInit {
       );
     }
     this.partidasParaExibir = this.partidasFiltradas.filter(
-      (partida) => new Date(partida.data) >= this.dataAtual
+      (partida) => new Date(partida.data + 'T00:00:00') >= this.dataAtual
     );
   }
 

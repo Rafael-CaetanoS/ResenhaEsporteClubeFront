@@ -16,7 +16,9 @@ import { NavbarprincipalComponent } from "../../components/navbarprincipal/navba
 })
 export class MinhaPartidasComponent implements OnInit {
   partidas: PartidaResponse[] = [];
-  dataAtual = new Date();
+  dataAtual = new Date(); 
+  errorMessage: string = '';
+
 
   constructor(private service: PartidasService){}
 
@@ -54,7 +56,13 @@ export class MinhaPartidasComponent implements OnInit {
           }
         }));
       },
-      error: () => console.log("Não tem partidas cadastradas"),
+      error: (err) =>{
+        if (err.status === 403) {
+          this.errorMessage = err.error.message;
+        } else {
+          console.log("teste2")
+        }
+      } 
     });
   }
 }

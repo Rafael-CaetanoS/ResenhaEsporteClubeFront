@@ -49,8 +49,6 @@ export class CadastrarAtletaComponent {
 
   telefoneValidator(telefone: any = this.formCadastro.get('telefone')?.value) {
     const telefoneFormatado = telefone.replace(/[^\d]+/g, '');
-
-    console.log(telefone);
     if(telefoneFormatado.length === 10 || telefoneFormatado.length === 11) {
       this.formatarTelefone(); 
       this.erroTelefone = false;
@@ -109,7 +107,6 @@ export class CadastrarAtletaComponent {
 
     if (this.formCadastro.invalid) {
       this.formCadastro.markAllAsTouched();
-      console.log('Formulário inválido', this.formCadastro);
       return;
     }
 
@@ -126,9 +123,7 @@ export class CadastrarAtletaComponent {
 
     if(this.telefoneValidator()){
       this.service.cadastrarAtleta(atletaData).subscribe({
-        next: (response) => {
-          console.log('Cadastro realizado com sucesso:', response);
-  
+        next: () => {
           this.erroCadastro = null;
   
           Swal.fire({
@@ -141,8 +136,6 @@ export class CadastrarAtletaComponent {
           });
         },
         error: (error) => {
-          console.error('Erro ao cadastrar:', error);
-  
           if (error.status === 409) { 
             Swal.fire({
               icon: 'error',
