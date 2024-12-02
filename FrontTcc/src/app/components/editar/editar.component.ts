@@ -136,7 +136,8 @@ export class EditarComponent implements OnInit {
       cidade: this.formPartida.value.cidade,
       atleta: {
         idAtleta: this.partida.atleta.idAtleta,
-        nomeAtleta: ''
+        nomeAtleta: '',
+        apelido:''
       },
       esporte: {
         idEsporte: this.formPartida.value.idEsporte,

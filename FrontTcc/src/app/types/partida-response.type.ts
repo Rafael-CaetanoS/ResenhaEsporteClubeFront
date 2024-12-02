@@ -11,7 +11,8 @@ export type PartidaResponse = {
         cidade:string,
         atleta: {
             idAtleta: string,
-            nomeAtleta:string
+            nomeAtleta:string,
+            apelido:string,
             }
         esporte:{
             idEsporte:string,

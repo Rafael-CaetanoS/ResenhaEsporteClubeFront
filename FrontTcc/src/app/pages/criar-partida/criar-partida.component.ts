@@ -101,7 +101,8 @@ export class CriarPartidaComponent implements OnInit {
       cidade: this.formPartida.value.cidade,
       atleta: {
         idAtleta: this.idAtleta ? this.idAtleta : '',
-        nomeAtleta: ''
+        nomeAtleta: '',
+        apelido:'',
       },
       esporte: {
         idEsporte: this.formPartida.value.idEsporte,

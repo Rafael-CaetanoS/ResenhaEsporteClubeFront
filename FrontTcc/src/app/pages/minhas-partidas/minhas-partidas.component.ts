@@ -46,6 +46,7 @@ export class MinhaPartidasComponent implements OnInit {
           atleta: {
             idAtleta: item.atleta.idAtleta,
             nomeAtleta: item.atleta.nomeAtleta,
+            apelido: item.atleta.apelido
           },
           esporte: {
             idEsporte: item.esporte.idEsporte,
