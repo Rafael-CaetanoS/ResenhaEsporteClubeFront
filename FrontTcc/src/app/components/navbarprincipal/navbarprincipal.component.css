@@ -1,10 +1,7 @@
-/* navbar.component.css */
-
-/* Estilos gerais */
 .navbar {
     background-color: var(--secundaria);
     padding: 10px;
-    width: 100vw;
+    width: 104%;
   }
   
   .navbar-container {
@@ -23,6 +20,7 @@
     list-style-type: none;
     display: flex;
     padding: 0;
+    right: -20px;
   }
   
   .navbar-links li {
@@ -52,28 +50,34 @@
   img{
     width: 30%;
   }
-  
-  /* Responsividade: Navbar com menu hambúrguer em telas menores */
+
   @media only screen and (max-width: 1024px) {
     .navbar-links {
       display: none;
       flex-direction: column;
       background-color: var(--secundaria);
       position: absolute;
-      top: 50px;
-      right: 0;
-      width: 100%;
+      top: 97px;
       padding: 10px;
     }
   
     .navbar-links.active {
       display: flex;
       gap: 6px;
+      z-index: 10;
     }
   
     .menu-toggle {
       display: block; /* Exibe o botão de menu hambúrguer */
 
     }
+  
+  @media only screen and (max-width: 720px) {
+    .navbar-links {
+
+      right: -20px;
+    }
+  }
+
   }
   

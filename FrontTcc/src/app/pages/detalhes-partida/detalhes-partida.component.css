@@ -160,7 +160,7 @@ h4{
 
 .times-clas{
     display: flex;
-    
+    margin-bottom: 4px;
 }
 
 .nome{
@@ -201,11 +201,22 @@ h4{
 #jogador{
     margin-top: 2px;
     font-size: 1.2rem;
+    margin-bottom: 6px;
 }
 
 .detalhes{
     margin-bottom: 5px;
 }
+
+@media only screen and (max-width: 1024px) {
+    .card{
+        margin: 20px auto;
+    }
+
+
+}
+
+
 
 @media only screen and (max-width: 768px) {
 
@@ -318,77 +329,39 @@ h4{
 @media only screen and (max-width: 480px) {
 
     .titulo{
-    font-size: 2rem;
-    color: var(--secundaria);
-    margin-top: 1rem;
+    font-size: 1.5rem;
     text-align: center;
     }
     
     hr{
-        border-color:var(--secundaria);
-        width: 98%;
-        margin-bottom: 20px;
+        width: 100%;
     }
+
     .card {
-        background-color: var(--secundaria);
-        width: 90%;
-        padding: 0vw;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        margin-left: 22px;
+        width: 95%;
+        margin: 0 auto;
     }
     
     .nomePartida{
-        font-size: 2rem;
-        color: var(--detalhes);
-        font-weight: 100;
-        padding: 20px;
-    }
-    
-    .carousel-container {
-        position: relative;
-        width: 100%;
-        margin-bottom: 20px;
-        overflow: hidden;
-    }
-    
-    #divisoria{
-        margin-top: 20px;
-        border-color:var(--branco);
-        width: 98%;
-    }
-    
-    .dados{
-        display: flex;
-        justify-content: space-around;
-        text-align: center;
+        font-size: 1.4rem;
     }
     
     .dado p {
-        font-size: 1.2rem;
+        font-size: 1rem;
         color: var(--branco);
     }
     
     .estatisticas{
-        margin-top: 15px;
         display: flex;
         width: 85%;
         height: 0%;
-        justify-content: space-around;
+        margin: 10px auto;
         flex-direction: column;
-        margin-left: 30px;
         gap: 10px;
     }
-    .info{
-        width:100%;
-        background-color: var(--detalhes);
-        border-radius: 15px;
-    }
+
     .titulo-info{
-        text-align: center;
-        margin-top: 20px;
-        font-size: 1.2em;
-        text-transform: uppercase;
+        font-size: 1em;
     }
     
     .inscritos{
@@ -400,9 +373,7 @@ h4{
     }
     
     .inscrito{
-        font-size: 1.2em;
-        margin-left: 20px;
-        margin-bottom: 10px;
+        font-size: 1em;
     }
     
     .botoes{

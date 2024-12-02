@@ -59,7 +59,7 @@
 .carousel-controls {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     width: 7%;
     padding: 0 15px;
 }
@@ -77,4 +77,16 @@
 
 .control:hover {
     background-color: #d84315;
+}
+
+
+@media only screen and (max-width: 720px) {
+
+}
+
+@media only screen and (max-width: 480px) {
+    .circle {
+        width: 43px;
+        height: 38px;
+    }
 }

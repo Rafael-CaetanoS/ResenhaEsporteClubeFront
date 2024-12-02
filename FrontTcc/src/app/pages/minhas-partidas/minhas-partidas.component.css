@@ -16,6 +16,26 @@ hr{
     flex-wrap: wrap;
     gap: 2rem;
 }
+
+@media only screen and (max-width: 1024px) {
+    .titulo{
+        font-size: 3rem;
+        color: var(--secundaria);
+        margin-top: 1rem;
+        text-align: center;
+    }
+    
+    
+    .cards{ 
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-left: 20px;
+        width: 65%;
+    }
+}
+
+
 @media only screen and (max-width: 768px) {
 
     .titulo{
@@ -63,7 +83,7 @@ hr{
         display: flex;
         flex-wrap: wrap;
         gap: 3rem;
-        margin-left: 8%;
+        margin: 0 auto;
         flex-direction: column;
     }
 }

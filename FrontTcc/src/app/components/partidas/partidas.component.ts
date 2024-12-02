@@ -42,10 +42,11 @@ export class PartidasComponent implements OnInit {
       next: (res) => {
         this.times = res;
 
-        if (this.times.length >= 2){
-          this.inicializarTimes();
+        if(res != null){
+          if (this.times.length >= 2){
+            this.inicializarTimes();
+          }
         }
-
       },
       error: (error) => {
         console.error(error);

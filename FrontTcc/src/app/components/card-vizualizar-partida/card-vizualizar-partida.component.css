@@ -233,7 +233,8 @@ input#slide3:checked ~ .carousel-dots label[for="slide3"] {
 @media only screen and (max-width: 480px) {
     
     .titulo{
-        font-size: 2rem;
+        width: 104%;
+        font-size: 1.2rem;
         font-weight: 100;
     }
     
@@ -345,6 +346,6 @@ input#slide3:checked ~ .carousel-dots label[for="slide3"] {
     }
     
     .text{
-        font-size: 1rem;
+        font-size: 0.8rem;
     }
 }

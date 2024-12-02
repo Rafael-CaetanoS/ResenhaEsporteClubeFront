@@ -89,6 +89,32 @@ img{
     z-index: 1000;
 }
 
+@media only screen and (max-width: 1024px) {
+
+    .modal{
+        margin: 19px 15px;
+        background-color: var(--principal);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 55vw;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    .container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 107vw;
+        height: 107vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(0, 0, 0, 0.5); 
+        z-index: 1000;
+    }
+}
+
 @media only screen and (max-width: 768px) {
 
     .modal{
@@ -171,8 +197,8 @@ img{
         position: fixed;
         top: 0;
         left: 0;
-        width: 100vw;
-        height: 100vh;
+        width: 107vw;
+        height: 107vh;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -197,7 +223,7 @@ img{
         display: flex;
         flex-direction: column;
         align-items: center;
-        width: 95vw;
+        width: 106vw;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
     .topo{
@@ -206,20 +232,20 @@ img{
     }
     
     .titulo{
-        font-size: 40px;
+        font-size: 30px;
         font-weight: bold;
         color: var(--detalhes);
         margin-bottom: 10px;
     }
     
     .descricao{
-        font-size: 25px;
+        font-size: 20px;
         color: var(--secundaria);
         margin-bottom: 20px;
     }
     
     img{
-        width: 50vw;
+        width: 40vw;
         height: 20vh;
         border-radius: 15px;
     }
@@ -247,13 +273,14 @@ img{
         gap: 1.5rem;
         align-items: center;
         margin-bottom:5px ;
-        font-size: 20px;
+        font-size: 14px;
         color: var(--secundaria);
     }
     .dados-org{
         display: flex;
         gap: 9px;
         margin-left: 10px;
+        align-items: center;
     }
     .botao{
         cursor: pointer;
@@ -266,13 +293,14 @@ img{
         border: none;
         width: 50%;
         text-align: center;
+        font-size: 10px;
     }
     .container {
         position: fixed;
         top: 0;
         left: 0;
-        width: 100vw;
-        height: 100vh;
+        width: 111vw;
+        height: 111vh;
         display: flex;
         justify-content: center;
         align-items: center;

@@ -30,6 +30,9 @@ hr{
     .cards{
         justify-content: center;
     }
+    .titulo{
+        text-align: center;;
+    }
 }
 
 
@@ -44,7 +47,7 @@ hr{
     
     hr{
         border-color:var(--secundaria);
-        width: 102%;
+        width: 100%;
         margin-bottom: 20px;
         margin-left: 0px;
     }
@@ -67,8 +70,9 @@ hr{
 }
 @media only screen and (max-width: 480px) {
 
+
     .titulo{
-        font-size: 2rem;
+        font-size: 1.5rem;
         color: var(--secundaria);
         margin-top: 1rem;
         text-align: center;;
@@ -76,7 +80,7 @@ hr{
     
     hr{
         border-color:var(--secundaria);
-        width: 102%;
+        width: 100%;
         margin-bottom: 20px;
         margin-left: 0px;
     }

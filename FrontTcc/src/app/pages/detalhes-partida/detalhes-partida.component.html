@@ -37,7 +37,7 @@
                         <h3 class="titulo-info">Time vencedor:</h3>
                         <div *ngIf="getTimeComMaisPontos() as time" class="vencedor">
                             <h4 id="titulo-time">{{ time.nomeTime | uppercase }}</h4>
-                            <p *ngFor="let jogadores of time.jogadores" id="jogador">{{jogadores.inscricao.atleta.nomeAtleta}}</p>
+                            <p *ngFor="let jogadores of time.jogadores" id="jogador">{{jogadores.inscricao.atleta.apelido}}</p>
                         </div>
                     </div>
     

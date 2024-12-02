@@ -52,10 +52,12 @@ export class SorteioComponent implements OnInit {
     this.timesGerados = [];
     const atletasEmbaralhados = this.embaralharArray(this.inscricoes);
 
+    let contadorDeTimes = 1;
+
     for (let i = 0; i < atletasEmbaralhados.length; i += this.jogadoresPorTime) {
       const time = atletasEmbaralhados.slice(i, i + this.jogadoresPorTime);
       const mapearTime: timeResponse = {
-        nomeTime: `Time - ${i + 1} `,
+        nomeTime: `Time - ${contadorDeTimes} `,
         totalPontos: '0',
         partida: {
           idPartida: this.idPartida
@@ -70,7 +72,7 @@ export class SorteioComponent implements OnInit {
           }
         }))
       };
-
+      contadorDeTimes++;
       this.timesGerados.push(mapearTime);
     }
     return this.timesGerados;

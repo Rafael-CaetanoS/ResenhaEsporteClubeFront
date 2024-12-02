@@ -55,7 +55,7 @@
 
     .cards{
         flex-wrap: wrap;
-        width: 103%;
+        width: 100%;
     }
     
     
@@ -63,7 +63,7 @@
 
 @media only screen and (max-width: 480px) {
     .mensagem{
-        width: 105%;
+        width: 100%;
     }
     
     .bem-vindo{

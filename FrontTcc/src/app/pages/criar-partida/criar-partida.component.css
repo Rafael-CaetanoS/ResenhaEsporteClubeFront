@@ -103,18 +103,11 @@ span{
     .formulario{
         width: 80vw;
     }
-    .content{
-        width: 104% !important;
-    }
-
 }
 
 @media only screen and (max-width: 768px) {
     .formulario{
-        width: 90vw;
-    }
-    .content{
-        width: 104% !important;
+        width: 100vw;
     }
     .texto{
         color: var(--secundaria);
@@ -128,7 +121,9 @@ span{
 }
 
 @media only screen and (max-width: 480px) {
-
+    .content{
+        width: 108%;
+    }
     .texto{
         color: var(--secundaria);
         font-size: 1.6rem;
@@ -138,14 +133,11 @@ span{
     }
 
     .formulario{
-        width: 100vw;
-        margin: 1rem auto;
+        width: 106vw;
         align-items: center;
         text-align: center;
     }
-    .content{
-        width: 104% !important;
-    }
+
 
     .formulario input{
         width: 20vw;
@@ -161,17 +153,18 @@ span{
 
     .formulario label{
         text-align: start;
-        font-size: 0.7rem;
+        font-size: 0.6rem;
         color: var(--branco);
     }
 
     select{
         width: 30vw;
+        padding: 3px;
     }
 
     textarea{
         width: 30vw;
-        padding: 0px 0;
+        padding: 0px 0px;
     }
 
     .botao{

@@ -109,6 +109,10 @@ h3{
 }
 
 @media only screen and (max-width: 480px) {
+    .content{
+        width: 109%!important;
+    }
+    
     .titulo{
         font-size: 2rem;
         color: var(--secundaria);
@@ -118,7 +122,7 @@ h3{
     
     hr{
         border-color:var(--secundaria);
-        width: 100%; 
+        width: 98%; 
         margin-bottom: 20px;
         margin-left: 0px;
     }
@@ -155,8 +159,8 @@ h3{
         display: flex;
         flex-wrap: wrap;
         gap: 2rem;
-        width: 85%;
-        margin-left: 2rem;
+        width: 76%;
+        margin: 0px auto;
         flex-direction: column;
     }
     

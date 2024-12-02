@@ -103,42 +103,48 @@ span{
     .formulario{
         width: 80vw;
     }
-    .content{
-        width: 104% !important;
-    }
 
 }
 
 @media only screen and (max-width: 768px) {
     .formulario{
-        width: 90vw;
+        width: 100vw;
     }
-    .content{
-        width: 104% !important;
+    .texto{
+        color: var(--secundaria);
+        font-size: 1.7rem;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        margin-left: 3rem;
+        text-align: center;
     }
 
 }
 
 @media only screen and (max-width: 480px) {
-
+    .titulo{
+        font-size: 1.5rem;
+    }
+    hr{
+        margin-bottom: 2px;
+    }
+    .content{
+        width: 108%;
+    }
     .texto{
         color: var(--secundaria);
-        font-size: 1.6rem;
-        margin-top: 2rem;
-        margin-bottom: 2rem;
+        font-size: 1.2rem;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
         text-align: start;
-
     }
 
     .formulario{
-        width: 100vw;
-        margin: 1rem auto;
+        width: 106vw;
         align-items: center;
         text-align: center;
     }
-    .content{
-        width: 104% !important;
-    }
+
 
     .formulario input{
         width: 20vw;
@@ -154,17 +160,18 @@ span{
 
     .formulario label{
         text-align: start;
-        font-size: 0.7rem;
+        font-size: 0.6rem;
         color: var(--branco);
     }
 
     select{
         width: 30vw;
+        padding: 3px;
     }
 
     textarea{
         width: 30vw;
-        padding: 0px 0;
+        padding: 0px 0px;
     }
 
     .botao{
@@ -175,5 +182,4 @@ span{
         padding-bottom: 10vw;
     }
     
-
 }
