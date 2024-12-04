@@ -19,7 +19,7 @@
   </div>
 
   <div *ngIf=" timesCadastrados === null || timesGerados.length === 0">
-    <h3 class="mensagem">Não há times cadastrados</h3>
+    <h3 *ngIf=" timesCadastrados === null" class="mensagem">Não há times cadastrados</h3>
     <span *ngIf="aviso" class="mensagem">Número de times insuficientes</span>
   </div>
 
