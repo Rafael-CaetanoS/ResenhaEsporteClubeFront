@@ -14,14 +14,6 @@
   <a href="#colab">Colaboradores</a> •
 </p>
 
-
-<p align="center">
-    <img src="../resenha.png" alt="Image Example" width="400px">
-</p>
-<p align="center">
-    <img src="../resenha2.png" alt="Image Example" width="400px">
-</p>
-
 <h2 id="about">📌 Sobre </h2>
 
 Este foi o meu sistema de TCC, que consiste na criação e busca de partidas. Ele permite que o usuário crie e gerencie suas partidas, além de buscar jogos para praticar esportes perto de sua localização. 
@@ -47,3 +39,22 @@ ng server
 <h2 id="colab">🤝 Colaboradores</h2>
 
 Os colaboradores desse projeto foram: Erick Alencar e Larissa Sarmento
+
+<p align="center">
+    <img src="/resenha1.png" alt="Image Example" width="800px">
+</p>
+<p align="center">
+    <img src="/resenha2.png" alt="Image Example" width="800px">
+</p>
+
+<p align="center">
+    <img src="/resenha3.png" alt="Image Example" width="800px">
+</p>
+<p align="center">
+    <img src="/resenha4.png" alt="Image Example" width="800px">
+</p>
+
+<p align="center">
+    <img src="/resenha5.png" alt="Image Example" width="800px">
+</p>
+
